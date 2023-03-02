@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders')
+sys.path.append('/home/ramana44/autoencoder-regularisation-')
 
 from datasets import  getDataset
 import wandb
