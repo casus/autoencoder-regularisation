@@ -10,7 +10,7 @@ import torch
 
 train_loader, test_loader, noChannels, dx, dy = getDataset('FashionMNIST', 200, False)
 
-import train_ae_fmnist_ws_percent as train_ae
+import trainNonHybridMLPAE_AEREGwithFMNIST as train_ae
 from activations import Sin
 
 (model, model_reg, loss_arr_reg, loss_arr_reco, loss_arr_base, loss_arr_val_reco, loss_arr_val_base) = train_ae.train(train_loader, test_loader, dx, dy, noChannels, no_epochs=100, TDA=0.4, reco_loss="mse", latent_dim=10, 
