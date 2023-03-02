@@ -1,0 +1,1124 @@
+2022-10-21 12:21:41,601 INFO    MainThread:126214 [internal.py:wandb_internal():87] W&B internal server running at pid: 126214, started at: 2022-10-21 12:21:41.601254
+2022-10-21 12:21:41,603 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: check_version
+2022-10-21 12:21:41,603 INFO    WriterThread:126214 [datastore.py:open_for_write():77] open: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/run-3w0ogxue.wandb
+2022-10-21 12:21:41,605 DEBUG   SenderThread:126214 [sender.py:send():234] send: header
+2022-10-21 12:21:41,605 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: check_version
+2022-10-21 12:21:41,678 DEBUG   SenderThread:126214 [sender.py:send():234] send: run
+2022-10-21 12:21:42,009 INFO    SenderThread:126214 [dir_watcher.py:__init__():169] watching files in: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files
+2022-10-21 12:21:42,009 INFO    SenderThread:126214 [sender.py:_start_run_threads():804] run started: 3w0ogxue with start time 1666347700
+2022-10-21 12:21:42,009 DEBUG   SenderThread:126214 [sender.py:send():234] send: summary
+2022-10-21 12:21:42,009 INFO    SenderThread:126214 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-10-21 12:21:42,010 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: run_start
+2022-10-21 12:21:42,015 DEBUG   HandlerThread:126214 [meta.py:__init__():40] meta init
+2022-10-21 12:21:42,015 DEBUG   HandlerThread:126214 [meta.py:__init__():54] meta init done
+2022-10-21 12:21:42,015 DEBUG   HandlerThread:126214 [meta.py:probe():214] probe
+2022-10-21 12:21:42,022 DEBUG   HandlerThread:126214 [meta.py:_setup_git():204] setup git
+2022-10-21 12:21:42,042 DEBUG   HandlerThread:126214 [meta.py:_setup_git():211] setup git done
+2022-10-21 12:21:42,043 DEBUG   HandlerThread:126214 [meta.py:_save_pip():58] save pip
+2022-10-21 12:21:42,044 DEBUG   HandlerThread:126214 [meta.py:_save_pip():72] save pip done
+2022-10-21 12:21:42,065 DEBUG   HandlerThread:126214 [meta.py:_save_conda():79] save conda
+2022-10-21 12:21:43,011 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_created():217] file/dir created: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/wandb-summary.json
+2022-10-21 12:21:43,011 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_created():217] file/dir created: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/requirements.txt
+2022-10-21 12:21:43,012 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_created():217] file/dir created: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/conda-environment.yaml
+2022-10-21 12:21:43,529 DEBUG   HandlerThread:126214 [meta.py:_save_conda():89] save conda done
+2022-10-21 12:21:43,529 DEBUG   HandlerThread:126214 [meta.py:probe():252] probe done
+2022-10-21 12:21:43,591 DEBUG   SenderThread:126214 [sender.py:send():234] send: files
+2022-10-21 12:21:43,591 INFO    SenderThread:126214 [sender.py:_save_file():939] saving file wandb-metadata.json with policy now
+2022-10-21 12:21:43,595 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:21:43,596 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:21:44,011 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_created():217] file/dir created: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:21:44,012 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_created():217] file/dir created: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/wandb-metadata.json
+2022-10-21 12:21:44,172 INFO    Thread-11 :126214 [upload_job.py:push():137] Uploaded file /tmp/tmp0267_tk8wandb/310m4kad-wandb-metadata.json
+2022-10-21 12:21:58,773 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:21:58,773 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:22:10,346 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:22:13,945 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:22:13,945 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:22:29,118 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:22:29,118 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:22:40,681 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:22:44,296 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:22:44,296 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:22:59,474 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:22:59,475 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:23:04,070 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:23:06,073 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:23:10,994 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:23:14,646 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:23:14,647 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:23:29,814 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:23:29,814 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:23:41,303 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:23:44,990 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:23:44,990 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:23:58,112 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:24:00,167 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:24:00,167 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:24:11,628 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:24:15,339 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:24:15,340 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:24:30,512 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:24:30,512 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:24:41,935 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:24:45,692 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:24:45,692 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:24:50,195 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:25:00,868 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:25:00,868 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:25:12,257 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:25:16,048 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:25:16,049 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:25:31,223 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:25:31,223 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:25:42,222 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:25:42,585 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:25:46,392 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:25:46,393 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:26:01,562 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:26:01,562 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:26:12,906 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:26:16,735 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:26:16,735 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:26:31,911 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:26:31,911 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:26:34,259 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:26:43,210 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:26:47,081 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:26:47,081 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:27:02,254 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:27:02,254 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:27:13,528 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:27:17,424 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:27:17,425 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:27:26,297 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:27:32,601 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:27:32,601 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:27:43,841 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:27:47,772 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:27:47,772 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:28:02,947 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:28:02,947 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:28:14,152 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:28:18,120 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:28:18,120 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:28:20,335 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:28:33,292 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:28:33,293 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:28:44,455 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:28:48,464 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:28:48,464 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:29:03,635 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:29:03,636 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:29:12,376 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:29:14,772 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:29:18,806 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:29:18,806 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:29:33,973 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:29:33,973 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:29:45,101 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:29:49,150 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:29:49,150 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:30:04,323 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:30:04,323 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:30:04,428 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:30:15,423 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:30:19,501 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:30:19,501 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:30:34,674 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:30:34,674 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:30:45,731 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:30:49,844 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:30:49,844 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:30:56,489 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:31:05,013 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:31:05,014 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:31:16,046 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:31:20,182 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:31:20,183 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:31:35,353 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:31:35,353 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:31:46,367 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:31:48,556 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:31:50,527 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:31:50,527 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:32:05,697 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:32:05,697 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:32:16,673 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:32:20,866 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:32:20,867 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:32:36,118 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:32:36,118 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:32:40,631 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:32:46,990 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:32:51,287 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:32:51,288 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:33:06,459 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:33:06,459 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:33:17,300 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:33:21,632 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:33:21,632 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:33:32,701 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:33:36,805 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:33:36,806 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:33:47,617 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:33:51,974 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:33:51,975 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:34:07,142 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:34:07,142 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:34:17,935 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:34:22,315 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:34:22,315 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:34:24,760 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:34:37,485 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:34:37,485 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:34:48,254 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:34:52,657 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:34:52,658 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:35:07,829 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:35:07,830 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:35:16,819 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:35:18,569 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:35:23,001 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:35:23,001 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:35:38,336 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:35:38,337 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:35:48,888 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:35:53,509 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:35:53,509 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:36:08,691 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:36:08,691 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:36:08,885 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:36:19,200 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:36:23,868 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:36:23,868 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:36:39,127 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:36:39,127 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:36:49,515 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:36:54,306 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:36:54,306 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:37:00,961 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:37:09,475 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:37:09,476 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:37:19,829 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:37:24,644 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:37:24,644 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:37:39,815 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:37:39,815 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:37:50,129 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:37:54,986 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:37:54,986 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:37:55,010 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:38:10,155 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:38:10,155 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:38:20,442 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:38:25,326 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:38:25,327 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:38:40,497 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:38:40,497 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:38:47,076 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:38:50,747 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:38:55,667 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:38:55,668 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:39:10,838 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:39:10,838 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:39:21,058 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:39:26,006 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:39:26,007 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:39:39,122 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:39:41,183 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:39:41,184 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:39:51,376 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:39:56,352 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:39:56,353 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:40:11,526 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:40:11,527 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:40:21,682 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:40:26,698 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:40:26,699 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:40:31,204 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:40:41,868 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:40:41,868 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:40:51,991 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:40:57,058 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:40:57,059 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:41:12,229 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:41:12,229 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:41:22,304 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:41:23,252 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:41:27,398 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:41:27,398 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:41:42,567 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:41:42,567 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:41:52,623 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:41:57,742 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:41:57,742 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:42:12,920 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:42:12,921 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:42:15,311 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:42:22,948 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:42:28,092 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:42:28,092 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:42:43,263 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:42:43,264 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:42:53,263 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:42:58,432 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:42:58,433 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:43:07,357 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:43:13,628 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:43:13,629 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:43:23,576 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:43:28,798 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:43:28,799 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:43:43,968 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:43:43,968 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:43:53,882 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:43:59,148 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:43:59,148 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:43:59,385 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:44:14,325 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:44:14,325 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:44:24,197 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:44:29,495 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:44:29,495 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:44:44,668 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:44:44,669 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:44:51,427 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:44:54,491 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:44:59,838 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:44:59,838 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:45:15,010 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:45:15,010 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:45:24,799 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:45:30,179 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:45:30,179 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:45:43,487 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:45:45,348 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:45:45,349 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:45:55,105 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:46:00,525 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:46:00,525 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:46:15,698 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:46:15,699 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:46:25,417 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:46:30,872 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:46:30,872 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:46:37,569 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:46:46,042 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:46:46,042 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:46:55,713 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:47:01,220 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:47:01,220 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:47:16,414 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:47:16,414 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:47:26,028 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:47:29,655 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:47:31,588 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:47:31,588 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:47:46,765 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:47:46,766 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:47:56,322 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:48:01,939 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:48:01,940 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:48:17,114 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:48:17,114 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:48:21,701 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:48:26,594 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:48:32,284 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:48:32,284 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:48:47,457 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:48:47,457 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:48:56,859 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:49:02,631 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:49:02,632 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:49:13,748 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:49:17,804 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:49:17,804 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:49:27,125 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:49:32,978 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:49:32,978 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:49:48,149 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:49:48,150 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:49:57,385 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:50:03,324 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:50:03,324 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:50:05,812 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:50:18,493 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:50:18,494 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:50:27,659 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:50:33,664 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:50:33,664 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:50:48,837 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:50:48,837 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:50:57,855 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:50:57,960 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:51:04,013 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:51:04,013 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:51:19,183 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:51:19,183 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:51:28,265 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:51:34,353 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:51:34,353 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:51:49,523 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:51:49,523 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:51:49,917 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:51:58,572 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:52:04,704 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:52:04,704 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:52:19,875 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:52:19,875 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:52:28,882 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:52:35,049 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:52:35,049 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:52:41,996 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:52:50,218 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:52:50,219 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:52:59,160 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:53:05,388 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:53:05,389 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:53:20,564 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:53:20,565 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:53:29,442 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:53:35,734 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:53:35,735 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:53:36,098 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:53:50,906 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:53:50,907 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:53:59,759 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:54:06,077 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:54:06,077 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:54:21,251 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:54:21,251 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:54:28,198 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:54:30,088 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:54:36,424 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:54:36,424 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:54:51,596 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:54:51,596 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:55:00,383 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:55:06,765 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:55:06,766 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:55:20,265 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:55:21,937 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:55:21,937 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:55:30,669 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:55:37,107 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:55:37,107 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:55:52,276 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:55:52,276 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:56:00,979 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:56:07,453 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:56:07,453 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:56:12,368 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:56:22,628 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:56:22,628 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:56:31,279 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:56:37,803 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:56:37,803 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:56:52,974 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:56:52,974 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:57:01,578 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:57:04,443 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:57:08,150 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:57:08,151 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:57:23,320 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:57:23,320 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:57:31,866 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:57:38,490 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:57:38,490 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:57:53,661 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:57:53,661 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:57:56,518 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:58:02,185 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:58:08,829 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:58:08,829 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:58:23,998 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:58:23,998 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:58:32,499 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:58:39,171 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:58:39,171 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:58:48,597 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:58:54,340 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:58:54,340 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:59:02,822 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:59:09,511 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:59:09,511 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:59:24,688 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:59:24,688 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:59:33,122 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 12:59:39,858 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:59:39,859 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 12:59:40,674 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 12:59:55,032 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 12:59:55,032 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:00:03,420 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:00:10,205 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:00:10,205 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:00:25,381 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:00:25,381 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:00:32,748 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:00:33,727 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:00:40,558 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:00:40,558 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:00:55,728 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:00:55,728 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:01:04,040 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:01:10,906 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:01:10,907 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:01:26,087 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:01:26,087 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:01:26,814 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:01:34,350 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:01:41,260 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:01:41,260 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:01:56,435 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:01:56,435 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:02:04,654 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:02:11,619 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:02:11,619 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:02:18,864 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:02:26,796 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:02:26,796 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:02:34,957 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:02:41,969 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:02:41,970 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:02:57,153 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:02:57,153 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:03:05,272 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:03:10,939 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:03:12,330 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:03:12,330 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:03:27,515 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:03:27,515 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:03:35,566 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:03:42,687 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:03:42,687 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:03:57,858 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:03:57,859 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:04:03,000 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:04:05,876 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:04:13,028 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:04:13,028 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:04:28,203 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:04:28,204 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:04:36,176 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:04:43,380 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:04:43,380 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:04:55,052 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:04:58,557 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:04:58,557 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:05:06,478 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:05:13,735 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:05:13,735 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:05:28,913 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:05:28,913 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:05:36,772 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:05:44,085 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:05:44,085 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:05:47,121 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:05:59,262 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:05:59,262 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:06:07,073 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:06:14,433 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:06:14,433 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:06:29,608 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:06:29,609 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:06:37,374 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:06:39,157 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:06:44,778 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:06:44,779 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:06:59,949 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:06:59,949 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:07:07,679 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:07:15,136 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:07:15,137 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:07:30,310 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:07:30,310 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:07:31,186 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:07:37,992 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:07:45,481 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:07:45,481 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:08:00,651 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:08:00,651 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:08:08,300 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:08:15,823 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:08:15,823 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:08:23,213 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:08:30,998 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:08:30,999 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:08:38,616 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:08:46,171 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:08:46,171 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:09:01,342 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:09:01,343 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:09:08,933 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:09:16,531 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:09:16,531 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:09:17,239 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:09:31,700 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:09:31,701 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:09:39,235 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:09:46,875 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:09:46,875 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:10:02,068 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:10:02,068 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:10:09,259 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:10:09,539 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:10:17,240 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:10:17,241 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:10:32,436 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:10:32,436 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:10:39,842 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:10:47,637 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:10:47,637 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:11:01,285 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:11:02,806 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:11:02,806 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:11:10,139 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:11:17,991 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:11:17,992 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:11:33,162 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:11:33,162 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:11:40,438 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:11:48,334 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:11:48,335 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:11:53,312 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:12:03,510 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:12:03,511 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:12:10,748 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:12:18,680 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:12:18,680 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:12:33,851 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:12:33,851 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:12:41,057 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:12:45,362 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:12:49,021 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:12:49,022 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:13:04,199 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:13:04,199 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:13:11,370 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:13:19,378 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:13:19,378 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:13:34,550 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:13:34,550 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:13:37,397 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:13:41,671 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:13:49,720 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:13:49,721 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:14:04,907 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:14:04,908 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:14:11,971 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:14:20,078 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:14:20,078 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:14:29,457 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:14:35,251 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:14:35,251 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:14:42,267 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:14:50,421 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:14:50,421 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:15:05,600 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:15:05,600 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:15:12,577 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:15:20,773 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:15:20,773 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:15:21,521 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:15:35,943 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:15:35,943 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:15:42,885 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:15:51,315 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:15:51,315 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:16:06,493 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:16:06,493 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:16:13,195 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:16:13,571 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:16:21,667 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:16:21,667 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:16:36,838 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:16:36,838 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:16:43,500 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:16:52,008 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:16:52,008 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:17:05,598 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:17:07,182 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:17:07,183 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:17:13,804 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:17:22,360 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:17:22,360 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:17:37,531 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:17:37,531 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:17:44,106 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:17:52,706 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:17:52,706 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:18:00,638 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:18:07,878 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:18:07,878 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:18:14,417 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:18:23,048 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:18:23,048 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:18:38,217 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:18:38,217 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:18:44,727 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:18:52,689 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:18:53,388 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:18:53,388 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:19:08,557 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:19:08,558 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:19:15,000 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:19:23,728 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:19:23,728 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:19:38,899 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:19:38,899 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:19:44,749 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:19:45,262 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:19:54,076 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:19:54,076 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:20:09,249 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:20:09,250 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:20:15,545 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:20:24,421 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:20:24,421 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:20:36,832 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:20:39,609 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:20:39,609 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:20:45,858 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:20:54,876 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:20:54,876 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:21:10,046 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:21:10,047 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:21:16,146 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:21:25,225 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:21:25,225 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:21:28,903 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:21:40,402 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:21:40,403 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:21:46,447 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:21:55,584 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:21:55,584 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:22:10,763 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:22:10,763 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:22:16,712 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:22:19,988 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:22:25,941 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:22:25,941 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:22:41,118 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:22:41,118 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:22:46,980 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:22:56,289 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:22:56,289 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:23:11,464 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:23:11,464 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:23:13,033 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:23:17,248 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:23:26,636 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:23:26,636 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:23:41,810 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:23:41,810 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:23:47,552 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:23:56,979 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:23:56,980 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:24:04,103 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:24:12,152 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:24:12,152 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:24:17,830 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:24:27,322 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:24:27,322 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:24:42,498 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:24:42,498 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:24:48,097 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:24:57,144 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:24:57,668 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:24:57,668 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:25:12,836 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:25:12,837 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:25:18,362 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:25:28,007 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:25:28,008 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:25:43,176 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:25:43,176 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:25:48,654 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:25:49,173 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:25:58,345 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:25:58,345 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:26:13,517 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:26:13,517 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:26:18,955 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:26:28,690 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:26:28,690 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:26:43,207 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:26:43,862 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:26:43,862 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:26:49,259 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:26:59,031 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:26:59,031 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:27:14,208 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:27:14,208 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:27:19,565 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:27:29,383 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:27:29,383 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:27:35,244 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:27:44,553 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:27:44,553 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:27:49,870 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:27:59,738 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:27:59,738 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:28:14,907 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:28:14,907 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:28:20,181 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:28:27,286 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:28:30,089 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:28:30,089 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:28:45,263 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:28:45,264 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:28:50,497 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:29:00,441 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:29:00,441 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:29:15,616 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:29:15,616 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:29:19,334 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:29:20,810 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:29:30,785 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:29:30,785 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:29:45,960 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:29:45,960 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:29:51,114 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:30:01,137 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:30:01,137 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:30:11,387 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:30:16,307 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:30:16,308 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:30:21,425 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:30:31,478 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:30:31,478 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:30:46,652 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:30:46,652 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:30:51,749 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:31:01,824 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:31:01,824 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:31:03,448 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:31:16,995 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:31:16,995 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:31:22,055 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:31:32,167 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:31:32,168 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:31:47,341 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:31:47,341 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:31:52,349 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:31:55,511 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:32:02,516 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:32:02,516 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:32:17,688 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:32:17,689 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:32:22,643 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:32:32,860 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:32:32,860 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:32:47,580 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:32:48,032 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:32:48,032 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:32:52,945 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:33:03,203 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:33:03,203 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:33:18,384 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:33:18,384 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:33:23,239 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:33:33,556 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:33:33,556 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:33:39,635 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:33:48,735 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:33:48,735 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:33:53,544 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:34:03,904 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:34:03,904 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:34:19,075 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:34:19,075 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:34:23,847 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:34:33,679 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:34:34,243 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:34:34,244 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:34:49,421 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:34:49,421 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:34:54,148 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:35:04,589 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:35:04,589 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:35:19,774 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:35:19,774 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:35:24,458 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:35:25,741 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:35:34,946 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:35:34,946 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:35:50,120 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:35:50,120 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:35:54,758 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:36:05,290 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:36:05,291 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:36:17,813 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:36:20,480 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:36:20,480 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:36:25,063 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:36:35,650 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:36:35,650 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:36:50,820 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:36:50,820 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:36:55,364 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:37:05,992 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:37:05,992 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:37:09,889 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:37:21,166 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:37:21,166 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:37:25,677 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:37:36,339 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:37:36,339 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:37:51,514 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:37:51,515 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:37:55,989 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:38:01,963 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:38:06,687 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:38:06,688 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:38:21,859 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:38:21,860 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:38:26,302 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:38:37,032 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:38:37,032 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:38:52,206 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:38:52,207 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:38:54,036 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:38:56,607 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:39:07,381 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:39:07,381 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:39:22,550 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:39:22,551 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:39:26,904 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:39:37,720 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:39:37,721 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:39:46,107 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:39:52,891 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:39:52,892 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:39:57,204 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:40:08,064 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:40:08,064 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:40:23,239 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:40:23,240 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:40:27,498 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:40:38,176 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:40:38,414 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:40:38,414 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:40:53,583 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:40:53,583 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:40:57,794 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:41:08,753 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:41:08,754 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:41:23,936 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:41:23,936 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:41:28,105 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:41:30,279 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:41:39,104 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:41:39,104 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:41:54,275 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:41:54,276 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:41:58,403 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:42:09,445 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:42:09,445 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:42:23,402 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:42:24,612 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:42:24,612 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:42:28,706 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:42:39,789 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:42:39,789 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:42:54,966 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:42:54,966 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:42:59,011 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:43:10,142 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:43:10,142 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:43:15,529 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:43:25,315 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:43:25,315 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:43:29,315 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:43:40,487 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:43:40,487 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:43:55,667 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:43:55,668 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:43:59,628 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:44:07,654 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:44:10,837 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:44:10,838 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:44:26,017 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:44:26,017 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:44:29,929 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:44:41,187 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:44:41,187 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:44:56,361 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:44:56,361 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:44:59,739 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:45:00,239 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:45:11,533 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:45:11,534 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:45:26,705 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:45:26,705 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:45:30,546 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:45:41,886 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:45:41,886 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:45:51,800 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:45:57,056 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:45:57,056 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:46:00,858 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:46:12,233 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:46:12,233 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:46:27,404 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:46:27,404 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:46:31,168 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:46:42,579 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:46:42,579 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:46:43,887 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:46:57,751 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:46:57,751 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:47:01,490 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:47:12,922 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:47:12,922 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:47:28,091 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:47:28,091 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:47:31,791 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:47:35,987 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:47:43,260 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:47:43,261 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:47:58,435 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:47:58,435 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:48:02,112 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:48:13,612 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:48:13,613 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:48:28,088 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:48:28,781 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:48:28,782 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:48:32,432 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:48:43,951 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:48:43,951 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:48:59,122 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:48:59,122 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:49:02,708 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:49:14,294 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:49:14,294 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:49:20,131 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:49:29,461 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:49:29,462 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:49:33,029 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:49:44,631 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:49:44,631 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:49:59,799 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: stop_status
+2022-10-21 13:49:59,800 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: stop_status
+2022-10-21 13:50:03,339 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:50:12,159 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:50:13,159 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:50:14,138 DEBUG   SenderThread:126214 [sender.py:send():234] send: telemetry
+2022-10-21 13:50:14,138 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: poll_exit
+2022-10-21 13:50:14,139 DEBUG   SenderThread:126214 [sender.py:send():234] send: exit
+2022-10-21 13:50:14,139 INFO    SenderThread:126214 [sender.py:send_exit():366] handling exit code: 0
+2022-10-21 13:50:14,139 INFO    SenderThread:126214 [sender.py:send_exit():368] handling runtime: 5312
+2022-10-21 13:50:14,140 INFO    SenderThread:126214 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-10-21 13:50:14,140 INFO    SenderThread:126214 [sender.py:send_exit():374] send defer
+2022-10-21 13:50:14,140 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: poll_exit
+2022-10-21 13:50:14,140 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: defer
+2022-10-21 13:50:14,140 INFO    HandlerThread:126214 [handler.py:handle_request_defer():147] handle defer: 0
+2022-10-21 13:50:14,141 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: defer
+2022-10-21 13:50:14,141 INFO    SenderThread:126214 [sender.py:send_request_defer():383] handle sender defer: 0
+2022-10-21 13:50:14,141 INFO    SenderThread:126214 [sender.py:transition_state():387] send defer: 1
+2022-10-21 13:50:14,141 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: defer
+2022-10-21 13:50:14,141 INFO    HandlerThread:126214 [handler.py:handle_request_defer():147] handle defer: 1
+2022-10-21 13:50:14,160 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:50:14,160 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/wandb-summary.json
+2022-10-21 13:50:14,250 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: poll_exit
+2022-10-21 13:50:14,250 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: defer
+2022-10-21 13:50:14,251 INFO    SenderThread:126214 [sender.py:send_request_defer():383] handle sender defer: 1
+2022-10-21 13:50:14,251 INFO    SenderThread:126214 [sender.py:transition_state():387] send defer: 2
+2022-10-21 13:50:14,251 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: poll_exit
+2022-10-21 13:50:14,251 DEBUG   SenderThread:126214 [sender.py:send():234] send: stats
+2022-10-21 13:50:14,251 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: defer
+2022-10-21 13:50:14,251 INFO    HandlerThread:126214 [handler.py:handle_request_defer():147] handle defer: 2
+2022-10-21 13:50:14,251 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: defer
+2022-10-21 13:50:14,251 INFO    SenderThread:126214 [sender.py:send_request_defer():383] handle sender defer: 2
+2022-10-21 13:50:14,251 INFO    SenderThread:126214 [sender.py:transition_state():387] send defer: 3
+2022-10-21 13:50:14,252 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: defer
+2022-10-21 13:50:14,252 INFO    HandlerThread:126214 [handler.py:handle_request_defer():147] handle defer: 3
+2022-10-21 13:50:14,252 DEBUG   SenderThread:126214 [sender.py:send():234] send: summary
+2022-10-21 13:50:14,252 INFO    SenderThread:126214 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-10-21 13:50:14,252 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: defer
+2022-10-21 13:50:14,252 INFO    SenderThread:126214 [sender.py:send_request_defer():383] handle sender defer: 3
+2022-10-21 13:50:14,252 INFO    SenderThread:126214 [sender.py:transition_state():387] send defer: 4
+2022-10-21 13:50:14,253 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: defer
+2022-10-21 13:50:14,253 INFO    HandlerThread:126214 [handler.py:handle_request_defer():147] handle defer: 4
+2022-10-21 13:50:14,253 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: defer
+2022-10-21 13:50:14,253 INFO    SenderThread:126214 [sender.py:send_request_defer():383] handle sender defer: 4
+2022-10-21 13:50:14,352 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: poll_exit
+2022-10-21 13:50:14,450 INFO    SenderThread:126214 [sender.py:transition_state():387] send defer: 5
+2022-10-21 13:50:14,450 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: poll_exit
+2022-10-21 13:50:14,451 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: defer
+2022-10-21 13:50:14,451 INFO    HandlerThread:126214 [handler.py:handle_request_defer():147] handle defer: 5
+2022-10-21 13:50:14,451 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: defer
+2022-10-21 13:50:14,451 INFO    SenderThread:126214 [sender.py:send_request_defer():383] handle sender defer: 5
+2022-10-21 13:50:14,451 INFO    SenderThread:126214 [dir_watcher.py:finish():283] shutting down directory watcher
+2022-10-21 13:50:14,552 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: poll_exit
+2022-10-21 13:50:15,160 INFO    Thread-8  :126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/wandb-summary.json
+2022-10-21 13:50:15,161 INFO    SenderThread:126214 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/config.yaml
+2022-10-21 13:50:15,161 INFO    SenderThread:126214 [dir_watcher.py:finish():313] scan: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files
+2022-10-21 13:50:15,161 INFO    SenderThread:126214 [dir_watcher.py:finish():327] scan save: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/conda-environment.yaml conda-environment.yaml
+2022-10-21 13:50:15,161 INFO    SenderThread:126214 [dir_watcher.py:finish():327] scan save: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/wandb-metadata.json wandb-metadata.json
+2022-10-21 13:50:15,161 INFO    SenderThread:126214 [dir_watcher.py:finish():327] scan save: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/config.yaml config.yaml
+2022-10-21 13:50:15,162 INFO    SenderThread:126214 [dir_watcher.py:finish():327] scan save: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/requirements.txt requirements.txt
+2022-10-21 13:50:15,162 INFO    SenderThread:126214 [dir_watcher.py:finish():327] scan save: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/wandb-summary.json wandb-summary.json
+2022-10-21 13:50:15,166 INFO    SenderThread:126214 [dir_watcher.py:finish():327] scan save: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log output.log
+2022-10-21 13:50:15,169 INFO    SenderThread:126214 [sender.py:transition_state():387] send defer: 6
+2022-10-21 13:50:15,169 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: poll_exit
+2022-10-21 13:50:15,169 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: defer
+2022-10-21 13:50:15,170 INFO    HandlerThread:126214 [handler.py:handle_request_defer():147] handle defer: 6
+2022-10-21 13:50:15,172 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: defer
+2022-10-21 13:50:15,172 INFO    SenderThread:126214 [sender.py:send_request_defer():383] handle sender defer: 6
+2022-10-21 13:50:15,172 INFO    SenderThread:126214 [file_pusher.py:finish():177] shutting down file pusher
+2022-10-21 13:50:15,271 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: poll_exit
+2022-10-21 13:50:15,271 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: poll_exit
+2022-10-21 13:50:15,372 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: poll_exit
+2022-10-21 13:50:15,372 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: poll_exit
+2022-10-21 13:50:15,473 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: poll_exit
+2022-10-21 13:50:15,474 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: poll_exit
+2022-10-21 13:50:15,575 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: poll_exit
+2022-10-21 13:50:15,575 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: poll_exit
+2022-10-21 13:50:15,677 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: poll_exit
+2022-10-21 13:50:15,677 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: poll_exit
+2022-10-21 13:50:15,768 INFO    Thread-14 :126214 [upload_job.py:push():137] Uploaded file /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/wandb-summary.json
+2022-10-21 13:50:15,773 INFO    Thread-13 :126214 [upload_job.py:push():137] Uploaded file /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/requirements.txt
+2022-10-21 13:50:15,778 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: poll_exit
+2022-10-21 13:50:15,778 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: poll_exit
+2022-10-21 13:50:15,833 INFO    Thread-12 :126214 [upload_job.py:push():137] Uploaded file /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/config.yaml
+2022-10-21 13:50:15,879 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: poll_exit
+2022-10-21 13:50:15,880 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: poll_exit
+2022-10-21 13:50:15,953 INFO    Thread-15 :126214 [upload_job.py:push():137] Uploaded file /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/files/output.log
+2022-10-21 13:50:15,981 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: poll_exit
+2022-10-21 13:50:15,981 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: poll_exit
+2022-10-21 13:50:16,082 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: poll_exit
+2022-10-21 13:50:16,082 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: poll_exit
+2022-10-21 13:50:16,153 INFO    Thread-7  :126214 [sender.py:transition_state():387] send defer: 7
+2022-10-21 13:50:16,154 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: defer
+2022-10-21 13:50:16,154 INFO    HandlerThread:126214 [handler.py:handle_request_defer():147] handle defer: 7
+2022-10-21 13:50:16,154 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: defer
+2022-10-21 13:50:16,154 INFO    SenderThread:126214 [sender.py:send_request_defer():383] handle sender defer: 7
+2022-10-21 13:50:16,183 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: poll_exit
+2022-10-21 13:50:16,807 INFO    SenderThread:126214 [sender.py:transition_state():387] send defer: 8
+2022-10-21 13:50:16,807 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: poll_exit
+2022-10-21 13:50:16,807 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: defer
+2022-10-21 13:50:16,807 INFO    HandlerThread:126214 [handler.py:handle_request_defer():147] handle defer: 8
+2022-10-21 13:50:16,808 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: defer
+2022-10-21 13:50:16,808 INFO    SenderThread:126214 [sender.py:send_request_defer():383] handle sender defer: 8
+2022-10-21 13:50:16,808 INFO    SenderThread:126214 [sender.py:transition_state():387] send defer: 9
+2022-10-21 13:50:16,808 DEBUG   SenderThread:126214 [sender.py:send():234] send: final
+2022-10-21 13:50:16,808 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: defer
+2022-10-21 13:50:16,808 DEBUG   SenderThread:126214 [sender.py:send():234] send: footer
+2022-10-21 13:50:16,808 INFO    HandlerThread:126214 [handler.py:handle_request_defer():147] handle defer: 9
+2022-10-21 13:50:16,808 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: defer
+2022-10-21 13:50:16,808 INFO    SenderThread:126214 [sender.py:send_request_defer():383] handle sender defer: 9
+2022-10-21 13:50:16,908 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: poll_exit
+2022-10-21 13:50:16,908 DEBUG   SenderThread:126214 [sender.py:send_request():248] send_request: poll_exit
+2022-10-21 13:50:16,908 INFO    SenderThread:126214 [file_pusher.py:join():182] waiting for file pusher
+2022-10-21 13:50:17,294 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: get_summary
+2022-10-21 13:50:17,294 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: sampled_history
+2022-10-21 13:50:17,295 DEBUG   HandlerThread:126214 [handler.py:handle_request():130] handle_request: shutdown
+2022-10-21 13:50:17,295 INFO    HandlerThread:126214 [handler.py:finish():731] shutting down handler
+2022-10-21 13:50:17,808 INFO    WriterThread:126214 [datastore.py:close():281] close: /home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/job_submissions_files/wandb/run-20221021_122140-3w0ogxue/run-3w0ogxue.wandb
+2022-10-21 13:50:18,294 INFO    SenderThread:126214 [sender.py:finish():1070] shutting down sender
+2022-10-21 13:50:18,294 INFO    SenderThread:126214 [file_pusher.py:finish():177] shutting down file pusher
+2022-10-21 13:50:18,294 INFO    SenderThread:126214 [file_pusher.py:join():182] waiting for file pusher
+2022-10-21 13:50:18,296 INFO    MainThread:126214 [internal.py:handle_exit():77] Internal process exited
