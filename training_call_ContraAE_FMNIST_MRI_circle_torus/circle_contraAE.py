@@ -25,7 +25,7 @@ weight_decay = 1e-5
 
 batch_size_cfs = 1
 #coeffs_saved_trn = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/AllFmnistTrainRKCoeffsDeg25.pt').to(device)
-image_batches_trn = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/circle_dataset_no_normalization/circleThreeTrainingPointsIn15D.pt').to(device)
+image_batches_trn = torch.load('/home/ramana44/autoencoder-regularisation-/circle_dataset_no_normalization/circleThreeTrainingPointsIn15D.pt').to(device)
 #print('image_batches_trn.max()', image_batches_trn.max())
 #print('image_batches_trn.min()', image_batches_trn.min())
 
@@ -34,7 +34,7 @@ image_batches_trn = image_batches_trn.reshape(int(image_batches_trn.shape[0]/bat
 
 
 #coeffs_saved_test = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/AllFmnistTestRKCoeffsDeg25.pt').to(device)
-image_batches_test = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/circle_dataset_no_normalization/circleThreeTrainingPointsIn15D.pt').to(device)
+image_batches_test = torch.load('/home/ramana44/autoencoder-regularisation-/circle_dataset_no_normalization/circleThreeTrainingPointsIn15D.pt').to(device)
 #image_batches_test = image_batches_test[:11200]
 image_batches_test = image_batches_test.reshape(int(image_batches_test.shape[0]/batch_size_cfs), batch_size_cfs, 1, 15)
 #coeffs_saved_test = coeffs_saved_test[:11200]
