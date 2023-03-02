@@ -1,0 +1,66 @@
+degree of Legendre Polynomial for FashionMNIST : 21
+
+15 dimensional circle and torus experiments:
+
+    MLP_AE and AE_REG: 
+
+        Input and Output layers size: 15
+        number of hidden layers : 2
+        size of hidden layers : 6
+        latent space dimension : 2 for circle and 3 for torus
+        activation function : sine
+        learning rate : 0.002
+        number of Legendre nodes sampled : 10
+        degree of Legendre Polynomial : 21
+
+        Loss function : MSE loss
+
+    CNN_AE:
+
+        Enocder:
+        Layer 1 (1d convolutional) : input layer : input channels 1, output channels 5, kernal size 3, stride 2, padding 1
+        Layer 2 (1d convolutional) : hidden layer 1 : input channels 5, output channels 5, kernal size 3, stride 2, padding 1
+        Layer 3 (1d convolutional): hidden layer 2 : input channels 5, output channels 5, kernal size 3, stride 1, padding 1
+        Layer 4 (Linear layer) : size : 20
+        latent space : size 2 for circle and 3 for torus 
+
+        Decoder : 
+        reverse of encoder layers
+
+        Loss Function : MSE
+
+    Contractive AE: 
+        Input and Output layers size: 15
+        number of hidden layers : 2
+        size of hidden layers : 6
+        latent space dimension : 2 for circle and 3 for torus
+        activation function : sine
+        learning rate : 0.002
+
+        Loss function : Binary Cross Entropy Loss
+
+
+    MLP VAE:
+
+        Input and Output layers size: 15
+        number of hidden layers : 2
+        size of hidden layers : 6
+        latent space dimension : 2 for circle and 3 for torus
+        activation function : sine
+        learning rate : 0.002
+
+        Loss function : Binary Cross Entropy Loss + KL Divergence 
+
+    CNN VAE:
+
+        Enocder:
+        Layer 1 (1d convolutional) : input layer : input channels 1, output channels 5, kernal size 3, stride 2, padding 1
+        Layer 2 (1d convolutional) : hidden layer 1 : input channels 5, output channels 5, kernal size 3, stride 2, padding 1
+        Layer 3 (1d convolutional): hidden layer 2 : input channels 5, output channels 5, kernal size 3, stride 1, padding 1
+        Layer 4 (Linear layer) : size : 20
+        latent space : size 2 for circle and 3 for torus
+
+        Decoder : 
+        reverse of encoder layers
+
+        Loss function : Binary Cross Entropy Loss + KL Divergence 

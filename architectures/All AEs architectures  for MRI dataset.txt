@@ -1,0 +1,86 @@
+degree of Legendre Polynomial for FashionMNIST : 21
+
+1024 dimensional torus experiments:
+
+    MLP_AE and AE_REG: 
+
+        Input and Output layers size: 9216
+        number of hidden layers : 5
+        size of hidden layers : 1000
+        latent space dimension : 10, 15, 20, 40, 60, 70
+        activation function : sine
+        learning rate : 0.0001
+        number of Legendre nodes sampled : 10
+        degree of Legendre Polynomial : 80
+        loss balance parameter (alpha) = 0.5
+
+        Loss function : MSE loss
+
+    Hybrid AE_REG: 
+        Hybridization Polynomial: Chebyshev Polynomial kind 1 of degree 80, RK45 for coefficients solution, 
+        Input and Output layers sizes: 6561
+        number of hidden layers :5
+        size of hidden layers : 1000
+        latent space dimension : 10, 15, 20, 40, 60, 70
+        activation function : sine
+        learning rate : 0.0001
+        number of Legendre nodes sampled : 10
+        degree of Legendre Polynomial : 80
+
+        Loss function : MSE loss
+
+    CNN_AE:
+
+        Enocder:
+        Layer 1 (2d convolutional) : input layer : input channels 1, output channels 16, kernal size 3, stride 2, padding 1
+        Layer 2 (2d convolutional) : hidden layer 1 : input channels 16, output channels 32, kernal size 3, stride 2, padding 1
+        Layer 3 (2d convolutional): hidden layer 2 : input channels 32, output channels 64, kernal size 3, stride 2, padding 1
+        Layer 4 (2d convolutional): hidden layer 3 : input channels 64, output channels 32, kernal size 5, stride 1, padding 1
+        Layer 4 (2d convolutional): hidden layer 3 : input channels 32, output channels 16, kernal size 4, stride 1, padding 1
+        Layer 5 (Linear layer) : size : 1296
+        latent space : 10, 15, 20, 40, 60, 70
+        activation function : ReLu everywhere, Sigmoid only at the end of the decoder
+
+        Decoder : 
+        reverse of encoder layers
+
+        Loss Function : MSE
+
+    Contractive AE: 
+        Input and Output layers size: 9216
+        number of hidden layers : 5
+        size of hidden layers : 1000
+        latent space dimension : 10, 15, 20, 40, 60, 70
+        activation function : ReLu everywhere, Sigmoid only at the end of the decoder
+        learning rate : 0.0001
+
+        Loss function : Binary Cross Entropy Loss
+
+
+    MLP VAE:
+
+        Input and Output layers size: 9216
+        number of hidden layers : 5
+        size of hidden layers : 1000
+        latent space dimension :  10, 15, 20, 40, 60, 70
+        activation function : ReLu everywhere, Sigmoid only at the end of the decoder
+        learning rate : 0.0001
+
+        Loss function : Binary Cross Entropy Loss + KL Divergence 
+
+    CNN VAE:
+
+        Enocder:
+        Layer 1 (2d convolutional) : input layer : input channels 1, output channels 16, kernal size 3, stride 2, padding 1
+        Layer 2 (2d convolutional) : hidden layer 1 : input channels 16, output channels 32, kernal size 3, stride 2, padding 1
+        Layer 3 (2d convolutional): hidden layer 2 : input channels 32, output channels 64, kernal size 3, stride 2, padding 1
+        Layer 4 (2d convolutional): hidden layer 3 : input channels 64, output channels 32, kernal size 5, stride 1, padding 1
+        Layer 4 (2d convolutional): hidden layer 3 : input channels 32, output channels 16, kernal size 4, stride 1, padding 1
+        Layer 5 (Linear layer) : size : 1296
+        latent space : 10, 15, 20, 40, 60, 70
+        activation function : ReLu everywhere, Sigmoid only at the end of the decoder
+
+        Decoder : 
+        reverse of encoder layers
+
+        Loss function : Binary Cross Entropy Loss + KL Divergence 
