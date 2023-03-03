@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders')
+sys.path.append('/home/ramana44/autoencoder-regularisation-')
 
 from get_data import get_data
 import torch

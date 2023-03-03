@@ -62,7 +62,7 @@ def loss_fn(recon_x, x, mu, logvar):
 
 batch_size_cfs = 1
 
-image_batches_trn = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/circle_dataset_no_normalization/circleThreeTrainingPointsIn15D.pt').to(device)
+image_batches_trn = torch.load('/home/ramana44/autoencoder-regularisation-/circle_dataset_no_normalization/circleThreeTrainingPointsIn15D.pt').to(device)
 
 image_batches_trn = image_batches_trn.reshape(int(image_batches_trn.shape[0]/batch_size_cfs), batch_size_cfs, 1, 15)
 
