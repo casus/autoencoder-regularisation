@@ -11,9 +11,8 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 transform = transforms.ToTensor()
 
-#FashionMNISt_data = datasets.FashionMNIST(root= './data', train=True, download=True, transform=transform.Resize(32) )
-
-#data_loader = torch.utils.data.DataLoader(dataset = FashionMNISt_data, batch_size = 200, shuffle = True)
+FashionMNISt_data = datasets.FashionMNIST(root= './data', train=True, download=True, transform=transform.Resize(32) )
+data_loader = torch.utils.data.DataLoader(dataset = FashionMNISt_data, batch_size = 200, shuffle = False)
 
 no_layers = 3
 latent_dim = 10
@@ -37,7 +36,11 @@ image_batches_test = image_batches_test[:int(image_batches_test.shape[0]*TDA)]
 print('image_batches_trn.shape',image_batches_trn.shape)
 print('image_batches_test.shape',image_batches_test.shape)
 
+first_batch = next(iter(data_loader))
 
+print('see', first_batch.shape)
+
+print('see this : ', sum(first_batch - image_batches_test[0]))
 
 print(torch.min(image_batches_trn), torch.max(image_batches_trn))
 

@@ -91,13 +91,13 @@ def getFashionMNIST(batch_size = 32, drop_last=False):
     fashionmnist_data = torchvision.datasets.FashionMNIST(download=True, root = 'data/fashionmnist', transform = 
                                                                                  transforms.Compose([transforms.Resize(32),
                                                                                  transforms.ToTensor(), 
-                                                                                 transforms.Lambda(lambda x: x.repeat(3, 1, 1))
+                                                                                 transforms.Lambda(lambda x: x.repeat(1, 1, 1))
                                                                                  ]))
 
     fashionmnist_data_test = torchvision.datasets.FashionMNIST(download=True, root = 'data/fashionmnist', train=False, transform = 
                                                                                  transforms.Compose([transforms.Resize(32),
                                                                                  transforms.ToTensor(), 
-                                                                                 transforms.Lambda(lambda x: x.repeat(3, 1, 1))
+                                                                                 transforms.Lambda(lambda x: x.repeat(1, 1, 1))
                                                                                  ]))
 
     train_loader = torch.utils.data.DataLoader(fashionmnist_data,
