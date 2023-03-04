@@ -60,7 +60,7 @@ def loss_grad_std_full(loss, net):
 
 
 
-def train(train_loader, test_loader, no_epochs=60, reco_loss='mse', latent_dim=20, 
+def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_test, no_epochs=50, reco_loss='mse', latent_dim=20, 
           hidden_size=1000, no_layers=5, activation = F.relu, lr = 1e-4, alpha=1e-3, bl=False, 
           seed = 2342, train_base_model=True, no_samples=5, deg_poly=20,
           reg_nodes_sampling="legendre", no_val_samples = 10, use_guidance = True, train_set_size=0.8,
@@ -89,8 +89,8 @@ def train(train_loader, test_loader, no_epochs=60, reco_loss='mse', latent_dim=2
     
     '''no_channels = 1
     dx, dy = (train_loader.dataset.__getitem__(1).shape)'''
-    print('(train_loader.dataset.__getitem__(1).shape)',(train_loader.dataset.__getitem__(1).shape))
-    no_channels, dx, dy = (train_loader.dataset.__getitem__(1).shape)
+    #print('(train_loader.dataset.__getitem__(1).shape)',(train_loader.dataset.__getitem__(1).shape))
+    #no_channels, dx, dy = (train_loader.dataset.__getitem__(1).shape)
 
 
     set_seed(2342)
@@ -139,43 +139,11 @@ def train(train_loader, test_loader, no_epochs=60, reco_loss='mse', latent_dim=2
     X_p = (u_ob.data_axes([x,x]).T)
     X_p = (X_p.float()).to(device)
 
-    batch_size_cfs = 200
-    coeffs_saved_trn = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/trainDataRK_coeffs.pt').to(device)
-    image_batches_trn = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/trainDataSet.pt').to(device)
-    image_batches_trn = image_batches_trn.reshape(int(image_batches_trn.shape[0]/batch_size_cfs), batch_size_cfs, 1, 96,96)
-    coeffs_saved_trn = coeffs_saved_trn.reshape(int(coeffs_saved_trn.shape[0]/batch_size_cfs), batch_size_cfs, coeffs_saved_trn.shape[1]).unsqueeze(2) 
-
-
-    coeffs_saved_test = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/testDataRK_coeffs.pt').to(device)
-    image_batches_test = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/testDataSet.pt').to(device)
-    image_batches_test = image_batches_test[:11200]
-    image_batches_test = image_batches_test.reshape(int(image_batches_test.shape[0]/batch_size_cfs), batch_size_cfs, 1, 96,96)
-    coeffs_saved_test = coeffs_saved_test[:11200]
-    coeffs_saved_test = coeffs_saved_test.reshape(int(coeffs_saved_test.shape[0]/batch_size_cfs), batch_size_cfs, coeffs_saved_test.shape[1]).unsqueeze(2) 
-
-    print('coeffs_saved_trn.shape',coeffs_saved_trn.shape)
-
-    print('image_batches_trn.shape',image_batches_trn.shape)
-
-    print('coeffs_saved_test.shape',coeffs_saved_test.shape)
-
-    print('image_batches_test.shape',image_batches_test.shape)
-
     image_batches_trn = image_batches_trn[:int(image_batches_trn.shape[0]*train_set_size)]
     image_batches_test = image_batches_test[:int(image_batches_test.shape[0]*train_set_size)]
     
     coeffs_saved_trn = coeffs_saved_trn[:int(coeffs_saved_trn.shape[0]*train_set_size)]
     coeffs_saved_test = coeffs_saved_test[:int(coeffs_saved_test.shape[0]*train_set_size)]
-
-
-    print('coeffs_saved_trn.shape',coeffs_saved_trn.shape)
-
-    print('image_batches_trn.shape',image_batches_trn.shape)
-
-    print('coeffs_saved_test.shape',coeffs_saved_test.shape)
-
-    print('image_batches_test.shape',image_batches_test.shape)
-
 
 
     for epoch in tqdm(range(no_epochs)):

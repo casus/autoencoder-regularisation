@@ -92,7 +92,29 @@ wandb.init(project='Test_mrt', entity='ae_reg_team', config=config_defaults)
 
 train_loader, test_loader = get_train_test_set(all_paths, device, train_set_size=train_set_size, batch_size=200)
 
-model, model_reg, loss_arr_reg, loss_arr_reco, loss_arr_base, loss_arr_val_reco, loss_arr_val_base = train(train_loader, test_loader, no_epochs=50, reco_loss="mse", latent_dim=latent_dim, 
+
+batch_size_cfs = 200
+coeffs_saved_trn = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/trainDataRK_coeffs.pt').to(device)
+image_batches_trn = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/trainDataSet.pt').to(device)
+image_batches_trn = image_batches_trn.reshape(int(image_batches_trn.shape[0]/batch_size_cfs), batch_size_cfs, 1, 96,96)
+coeffs_saved_trn = coeffs_saved_trn.reshape(int(coeffs_saved_trn.shape[0]/batch_size_cfs), batch_size_cfs, coeffs_saved_trn.shape[1]).unsqueeze(2) 
+
+
+coeffs_saved_test = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/testDataRK_coeffs.pt').to(device)
+image_batches_test = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/testDataSet.pt').to(device)
+image_batches_test = image_batches_test[:11200]
+image_batches_test = image_batches_test.reshape(int(image_batches_test.shape[0]/batch_size_cfs), batch_size_cfs, 1, 96,96)
+coeffs_saved_test = coeffs_saved_test[:11200]
+coeffs_saved_test = coeffs_saved_test.reshape(int(coeffs_saved_test.shape[0]/batch_size_cfs), batch_size_cfs, coeffs_saved_test.shape[1]).unsqueeze(2) 
+
+
+
+
+
+
+
+
+model, model_reg, loss_arr_reg, loss_arr_reco, loss_arr_base, loss_arr_val_reco, loss_arr_val_base = train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_test, no_epochs=50, reco_loss="mse", latent_dim=latent_dim, 
           hidden_size=hidden_size, no_layers=no_layers, activation = Sin(), lr=lr, alpha = alpha, bl=False,
           seed = 2342, train_base_model=True, no_samples=20, deg_poly=deg_poly,
           reg_nodes_sampling=reg_nodes_sampling, no_val_samples = 10, use_guidance = False, train_set_size=train_set_size,
