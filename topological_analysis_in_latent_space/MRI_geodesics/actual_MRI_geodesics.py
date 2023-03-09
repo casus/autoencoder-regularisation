@@ -32,13 +32,13 @@ from vae_models_for_fmnist import VAE_try_MRI, VAE_mlp_MRI
 
 Hybrid_poly_deg = 80
 latent_dim = 40
-gnp = 50 # gaussian noise percentage
+gnp = 70 # gaussian noise percentage
 chosen_lat_dim = latent_dim
 
 
 mlpae = False
-aereg = True
-Hybrid_aereg = False
+aereg = False
+Hybrid_aereg = True
 cnnae = False
 contra_ae = False
 mlp_vae = False
@@ -143,13 +143,18 @@ perturbed_testCoeffs_70 = perturbed_testCoeffs_70_all'''
 
 if(gnp ==0):
     testCoeffs = testCoeffs
+    testImages = testImages
 if(gnp ==10):
+    testImages = perturbed_testImages_noise_percent_10
     testCoeffs = perturbed_testCoeffs_10
 if(gnp ==20):
+    testImages = perturbed_testImages_noise_percent_20
     testCoeffs = perturbed_testCoeffs_20
 if(gnp ==50):
+    testImages = perturbed_testImages_noise_percent_50
     testCoeffs = perturbed_testCoeffs_50
 if(gnp ==70):
+    testImages = perturbed_testImages_noise_percent_70
     testCoeffs = perturbed_testCoeffs_70
 
 trainImages = trainImages[:Analys_size]
@@ -1031,7 +1036,8 @@ Geodesic = [int(a) for a in printed]
 
 print("A", Geodesic)
 t = 0
-
+testImages = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/testDataSet.pt',map_location=torch.device('cpu'))
+testImages = testImages[:Analys_size]
 wassDistList = []
 for k in Geodesic:
 
