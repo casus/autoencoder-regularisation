@@ -32,20 +32,20 @@ from vae_models_for_fmnist import VAE_try_MRI, VAE_mlp_MRI
 
 Hybrid_poly_deg = 80
 latent_dim = 40
-gnp = 70 # gaussian noise percentage
+gnp = 10 # gaussian noise percentage
 chosen_lat_dim = latent_dim
 
 
 mlpae = False
 aereg = False
-Hybrid_aereg = True
+Hybrid_aereg = False
 cnnae = False
 contra_ae = False
-mlp_vae = False
+mlp_vae = True
 cnn_vae = False
 
-input_im1 = 23
-input_im2 = 24
+input_im1 = 73
+input_im2 = 88
 all_hyb_base_models = []
 Analys_size = 100
 
