@@ -174,7 +174,7 @@ for epoch in range(num_epochs):
         #print('list(model.encoder.parameters())[8]',list(model.encoder.parameters())[1].shape)
         #break
         img = img.float()
-        
+        #print('img.shape', img.shape)
         #if(epoch==99):
             #print('model.encoder(img).max', model.encoder(img).max())
             #print('model.encoder(img).min', model.encoder(img).min())

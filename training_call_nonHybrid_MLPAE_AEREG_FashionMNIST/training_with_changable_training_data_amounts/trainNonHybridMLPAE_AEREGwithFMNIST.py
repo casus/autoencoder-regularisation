@@ -132,7 +132,7 @@ def train(trainImagesInBatches, testImagesInBatches, no_channels, dx, dy, no_epo
             loss_C1 = torch.FloatTensor([0.]).to(device) 
 
             batch_x = batch_x.to(device)
-
+            #print('batch_x.shape', batch_x.shape)
             reconstruction = model_reg(batch_x)
             reconstruction = reconstruction.view(batch_x.shape)
 

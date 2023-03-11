@@ -26,8 +26,8 @@ weight_decay = 1e-5
 batch_size_cfs = 1
 #coeffs_saved_trn = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/AllFmnistTrainRKCoeffsDeg25.pt').to(device)
 image_batches_trn = torch.load('/home/ramana44/autoencoder-regularisation-/circle_dataset_no_normalization/circleThreeTrainingPointsIn15D.pt').to(device)
-#print('image_batches_trn.max()', image_batches_trn.max())
-#print('image_batches_trn.min()', image_batches_trn.min())
+print('image_batches_trn.max()', image_batches_trn.max())
+print('image_batches_trn.min()', image_batches_trn.min())
 
 image_batches_trn = image_batches_trn.reshape(int(image_batches_trn.shape[0]/batch_size_cfs), batch_size_cfs, 1, 15)
 #coeffs_saved_trn = coeffs_saved_trn.reshape(int(coeffs_saved_trn.shape[0]/batch_size_cfs), batch_size_cfs, coeffs_saved_trn.shape[1]).unsqueeze(2) 
@@ -166,7 +166,10 @@ for epoch in range(num_epochs):
 
         #print("need shape here ", img.shape)
         img = img.float()
+
+        #print('img.shape', img.shape)
         recon = model(img)
+        #print('recon.shape', recon.shape)
         #print('model.encoder(img).shape', model.encoder(img).shape)
         #print('list(model.parameters())[0].shape', list(model.parameters())[8].shape)   
 
@@ -178,7 +181,7 @@ for epoch in range(num_epochs):
 
         loss, testcontraLoss = loss_function(W, img, recon,
                              hidden_representation, lam)
-
+        #print('loss',loss)
         #break     
         #loss = criterion(recon, img)
         
