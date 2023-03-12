@@ -15,8 +15,8 @@ from torchvision import datasets, transforms
 
 transform = transforms.ToTensor()
 
-from models_for_circle import ConvoAE, Autoencoder_linear, VAE_mlp_circle_new
-from loss_functions import contractive_loss_function, loss_fn_mlp_vae
+from models_for_circle import ConvoAE, Autoencoder_linear, VAE_mlp_circle_new, ConvVAE_circle
+from loss_functions import contractive_loss_function, loss_fn_mlp_vae, loss_fn_cnn_vae
 from torch.autograd import Variable
 
 pi = math.pi
@@ -44,7 +44,7 @@ arr_points = np.array(points)
 plt.scatter(arr_points[:,0], arr_points[:,1])
 plt.grid(True)
 plt.show()
-plt.savefig('/home/ramana44/autoencoder-regularisation-/circle_experiments_previous/imagesaves/orig_circle.png')
+#plt.savefig('/home/ramana44/autoencoder-regularisation-/circle_experiments_previous/imagesaves/orig_circle.png')
 plt.close()
 ##################################################################################################################
 transform_to_3D = np.random.rand(2, 3)
@@ -56,7 +56,7 @@ ax = fig.add_subplot(projection='3d')
 ax.scatter(circle_3D[:,0], circle_3D[:,1], circle_3D[:,2])
 
 plt.show()
-plt.savefig('/home/ramana44/autoencoder-regularisation-/circle_experiments_previous/imagesaves/circleIn3DSpace.png')
+#plt.savefig('/home/ramana44/autoencoder-regularisation-/circle_experiments_previous/imagesaves/circleIn3DSpace.png')
 plt.close()
 ##################################################################################################################
 import torch
@@ -137,10 +137,11 @@ model_conv = ConvoAE(latent_dim).to(device)
 
 model_contra = Autoencoder_linear(latent_dim).to(device)
 
-model_vae = BetaVAE(dim, no_filters, no_layers_conv,
-                  kernel_size, latent_dim=2, activation = Sin(), beta=0.01, use_mu=1.).to(device)
-#model_mlp_vae = MLPVAE(dim, hidden_size, 2, no_layers, beta=0.01).to(device)
-#
+#model_vae = BetaVAE(dim, no_filters, no_layers_conv, kernel_size, latent_dim=2, activation = Sin(), beta=0.01, use_mu=1.).to(device)
+
+model_cnn_vae = ConvVAE_circle(image_channels=1, h_dim=5*4, z_dim=latent_dim).to(device)
+
+
 model_mlp_vae = VAE_mlp_circle_new(image_size=15, h_dim=6, z_dim=latent_dim).to(device)
 #model_reg_tr = copy.deepcopy(model)
 #model_reg_ran = copy.deepcopy(model)
@@ -161,10 +162,8 @@ optimizer_mlp_vae = torch.optim.Adam(model_mlp_vae.parameters(), lr=1e-3)
 #optimizer_conv = torch.optim.Adam(model_conv.parameters(), lr=5e-3)
 #
 optimizer_conv = torch.optim.Adam(model_conv.parameters(), lr =0.002, weight_decay = 1e-5)
-
 optimizer_contra = torch.optim.Adam(model_contra.parameters(), lr =0.002, weight_decay = 1e-5)
-
-optimizer_vae = torch.optim.Adam(model_vae.parameters(), lr=5e-3)
+optimizer_cnn_vae = torch.optim.Adam(model_cnn_vae.parameters(), lr=1e-3) 
 
 mod_loss = []
 mod_loss_tr = []
@@ -197,19 +196,19 @@ from regularisers_without_vegas import computeC1Loss, sampleChebyshevNodes, samp
                     "conv", "vae", "mlp_vae"])'''
                     
 regNodesSamplings = (["mlp_ae", "trainingData", "random", "chebyshev", "legendre",
-                    "conv", "contra", "mlp_vae"])
+                    "conv", "contra", "mlp_vae", "cnn_vae"])
 
 '''models = ([model_reg_tr, model_reg_ran, model_reg_cheb, model_reg_leg,
         model_conv, model_vae, model_mlp_vae])'''
 
 models = ([model, model_reg_tr, model_reg_ran, model_reg_cheb, model_reg_leg,
-        model_conv, model_contra, model_mlp_vae])
+        model_conv, model_contra, model_mlp_vae, model_cnn_vae])
 
 '''optimizers = ([optimizer_tr, optimizer_ran, optimizer_cheb, optimizer_leg, 
             optimizer_conv, optimizer_contra,  optimizer_vae, optimizer_mlp_vae])'''
 
 optimizers = ([optimizer, optimizer_tr, optimizer_ran, optimizer_cheb, optimizer_leg, 
-            optimizer_conv, optimizer_contra, optimizer_mlp_vae])
+            optimizer_conv, optimizer_contra, optimizer_mlp_vae, optimizer_cnn_vae])
 
 szSample = 10
 latent_dim = 2
@@ -224,7 +223,7 @@ for ind, model_reg in enumerate(models):
     #print(mod_loss_reg)
     for epoch in range(no_epochs):
 
-        if (regNodesSampling != "conv") and (regNodesSampling != "vae") and (regNodesSampling != "mlp_vae") and (regNodesSampling != "contra") and (regNodesSampling != "mlp_ae") and (regNodesSampling != "mlp_vae"):
+        if (regNodesSampling != "conv") and (regNodesSampling != "vae") and (regNodesSampling != "mlp_vae") and (regNodesSampling != "contra") and (regNodesSampling != "mlp_ae") and (regNodesSampling != "mlp_vae") and (regNodesSampling != "cnn_vae"):
                         
             model_output = model_reg(data_tr.to(device))
             loss = torch.nn.MSELoss()(model_output, data_tr.to(device))
@@ -278,11 +277,18 @@ for ind, model_reg in enumerate(models):
             #print('recon_images.shape', recon_images.shape)
             loss, bce, kld = loss_fn_mlp_vae(recon_images.to(device), images.to(device), mu.to(device), logvar.to(device))
             
-            print("mlp vae loss", loss)
             mod_loss_reg.append(float(loss.item()))
 
+        if regNodesSampling == "cnn_vae":
 
-        if regNodesSampling == "vae":
+            recon_images, mu, logvar = model_reg(data_tr.unsqueeze(1).float().to(device))
+            #print('recon_images.shape', recon_images.shape)
+            #print('data_tr.shape', data_tr.shape)
+            loss, bce, kld = loss_fn_cnn_vae(recon_images.to(device), data_tr.unsqueeze(1).to(device), mu.to(device), logvar.to(device))
+            mod_loss_reg.append(float(loss.item()))
+            print("cnn vae loss", loss)
+
+        '''if regNodesSampling == "vae":
             x_reco, mu, logvar = model_reg(data_tr.to(device))
             recon_loss = torch.nn.MSELoss()(data_tr.to(device), x_reco.squeeze(1))
             total_kld, dim_wise_kld, mean_kld = kl_divergence(mu, logvar)
@@ -293,7 +299,7 @@ for ind, model_reg in enumerate(models):
             recon_loss = torch.nn.MSELoss()(data_tr.to(device), x_reco)
             total_kld, dim_wise_kld, mean_kld = kl_divergence(mu, logvar)
             loss = recon_loss + model_vae.beta*total_kld
-            mod_loss_reg.append(float(recon_loss.item()))
+            mod_loss_reg.append(float(recon_loss.item()))'''
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
@@ -318,14 +324,14 @@ plt.scatter(points_val[:,0], points_val[:,1], color="orange")
 plt.scatter(points_tr[:,0], points_tr[:,1], color="blue")
 
 plt.scatter(arr_points[:,0], arr_points[:,1], color='grey', alpha=0.05)
-plt.grid(True)
+plt.grid(False)
 #plt.title("Baseline: training data")
 plt.show()
 
 
 #labels = ["Reg on training data", "Reg on random points", "Reg on chebyshev nodes", "Reg on legendre nodes","conv", "vae","mlp_vae"]
 
-labels = ["mlp_ae", "Reg on training data", "Reg on random points", "Reg on chebyshev nodes", "Reg on legendre nodes","conv", "contra", "mlp_vae"]
+labels = ["mlp_ae", "Reg on training data", "Reg on random points", "Reg on chebyshev nodes", "Reg on legendre nodes","conv", "contra", "mlp_vae", "cnn_vae"]
 
 for ind, model_reg in enumerate(models):
     if ind < 5:
@@ -334,10 +340,10 @@ for ind, model_reg in enumerate(models):
         plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
         plt.scatter(points_tr[:,0], points_tr[:,1], label='training samples', color="blue")
         plt.scatter(arr_points[:,0], arr_points[:,1], color='grey', alpha=0.05)
-        plt.grid(True)
-        plt.title(labels[ind])
+        plt.grid(False)
+        #plt.title(labels[ind])
         plt.show()
-        plt.savefig('/home/ramana44/autoencoder-regularisation-/circle_experiments_previous/imagesaves/s'+str(ind)+'.png')
+        plt.savefig('/home/ramana44/autoencoder-regularisation-/circle_experiments_previous/imagesaves/'+labels[ind]+'.png')
         plt.close()
 
     elif (labels[ind] == "conv" or labels[ind] == "contra" ):
@@ -350,10 +356,10 @@ for ind, model_reg in enumerate(models):
         plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
         plt.scatter(points_tr[:,0], points_tr[:,1], label='training samples', color="blue")
         plt.scatter(arr_points[:,0], arr_points[:,1], color='grey', alpha=0.05)
-        plt.grid(True)
-        plt.title(labels[ind])
+        plt.grid(False)
+        #plt.title(labels[ind])
         plt.show()
-        plt.savefig('/home/ramana44/autoencoder-regularisation-/circle_experiments_previous/imagesaves/s'+str(ind)+'.png')
+        plt.savefig('/home/ramana44/autoencoder-regularisation-/circle_experiments_previous/imagesaves/'+labels[ind]+'.png')
         plt.close()
     elif labels[ind] == "mlp_vae":
         #points_tr, _, _ = (model_reg.encode(data_tr.to(device), False))
@@ -370,10 +376,30 @@ for ind, model_reg in enumerate(models):
         plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
         plt.scatter(points_tr[:,0], points_tr[:,1], label='training samples', color="blue")
         plt.scatter(arr_points[:,0], arr_points[:,1], color='grey', alpha=0.05)
-        plt.grid(True)
-        plt.title(labels[ind])
+        plt.grid(False)
+        #plt.title(labels[ind])
         plt.show()
-        plt.savefig('/home/ramana44/autoencoder-regularisation-/circle_experiments_previous/imagesaves/s'+str(ind)+'.png')
+        plt.savefig('/home/ramana44/autoencoder-regularisation-/circle_experiments_previous/imagesaves/'+labels[ind]+'.png')
+        plt.close()
+    elif labels[ind] == "cnn_vae":
+        #points_tr, _, _ = (model_reg.encode(data_tr.to(device), False))
+        points_tr = model_reg.fc1(model_reg.encoder(data_tr.unsqueeze(1).float().to(device)))
+        points_tr = points_tr.detach().cpu().numpy()
+
+        #points_val,_ ,_ = (model_reg.encode(data_val.to(device), False))
+        points_val = model_reg.fc1(model_reg.encoder(data_val.unsqueeze(1).float().to(device)))
+        points_val = points_val.detach().cpu().numpy()
+
+        points_tr = points_tr.reshape(-1,2)
+        points_val = points_val.reshape(-1,2)
+
+        plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
+        plt.scatter(points_tr[:,0], points_tr[:,1], label='training samples', color="blue")
+        plt.scatter(arr_points[:,0], arr_points[:,1], color='grey', alpha=0.05)
+        plt.grid(False)
+        #plt.title(labels[ind])
+        plt.show()
+        plt.savefig('/home/ramana44/autoencoder-regularisation-/circle_experiments_previous/imagesaves/'+labels[ind]+'.png')
         plt.close()
     del model_reg
 ##################################################################################################################

@@ -153,3 +153,69 @@ class VAE_mlp_circle_new(nn.Module):
         z = self.fc3(z)
         #print('z.shape', z.shape)
         return self.decoder(z), mu, logvar
+
+
+class ConvVAE_circle(nn.Module):
+    def __init__(self, image_channels=1, h_dim=5*4, z_dim=2):
+        super(ConvVAE_circle, self).__init__()
+        self.encoder = nn.Sequential(
+            nn.Conv1d(1, 5, 3, stride=2, padding=1),  #N, 16, 16, 16
+            Sin(),
+            nn.Conv1d(5, 5, 3, stride=2, padding=1),   #N, 32, 8, 8
+            Sin(),
+            nn.Conv1d(5, 5, 3, stride=1, padding=1),   #N, 32, 8, 8
+            Sin(),            
+            nn.Flatten(1,-1),
+            #nn.Linear(8*2*2, z_dim)
+
+        )
+        
+        self.fc1 = nn.Sequential(
+            nn.Linear(h_dim, z_dim),
+            Sin()
+        )
+        self.fc2 = nn.Sequential(
+            nn.Linear(h_dim, z_dim),
+            Sin()
+        )
+        self.fc3 = nn.Sequential(
+            nn.Linear(z_dim, h_dim),
+            Sin()
+            )
+        
+        self.decoder = nn.Sequential(
+            
+            #nn.Linear(z_dim, 8*2*2),
+            nn.Unflatten(1, (5, 4)),
+            nn.ConvTranspose1d(5, 5, 3, stride=2, padding=1, output_padding=1),  #N, 32, 8, 8
+            Sin(),
+            nn.ConvTranspose1d(5, 5, 3, stride=1, padding=1, output_padding=0),  #N, 32, 8, 8
+            Sin(),
+            nn.ConvTranspose1d(5, 1, 3, stride=2, padding=1, output_padding=0),  #N, 32, 8, 8
+            #nn.Sigmoid()
+            Sin()
+        )
+        
+    def reparameterize(self, mu, logvar):
+        std = logvar.mul(0.5).exp_()
+        # return torch.normal(mu, std)
+        esp = torch.randn(*mu.size()).to(device)
+        z = mu + std * esp
+        return z.to(device)
+    
+    def bottleneck(self, h):
+        mu, logvar = self.fc1(h), self.fc2(h)
+        z = self.reparameterize(mu.to(device), logvar.to(device))
+        return z, mu, logvar
+        
+    def representation(self, x):
+        return self.bottleneck(self.encoder(x))[0]
+
+    def forward(self, x):
+        h = self.encoder(x)
+        z, mu, logvar = self.bottleneck(h.to(device))
+        z = self.fc3(z)
+        #print('z.shape', z.shape)
+        return self.decoder(z), mu, logvar
+
+        
