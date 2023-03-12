@@ -79,19 +79,37 @@ def get_loader(data):
     return loader
 
 dim = 15
-transform_to_nD = 4*np.random.rand(2, dim)-2
+transform_to_nD = 4*np.random.rand(3, dim)-2
 print(transform_to_nD)
 
-data_tr = torch.from_numpy(PointsInCircumNDim(PointsInCircum(1.,3)[:3], transform_to_nD)).float()
-data_val = torch.from_numpy(PointsInCircumNDim(PointsInCircum(1.,200), transform_to_nD)).float()
 
-print('PointsInCircum(1.,3)', PointsInCircum(1.,2))
+torus3d2kpoints = torch.load('/home/ramana44/autoencoder-regularisation-/savedData/3dtorus2000points.pt')
+#######################################################################
+fig = plt.figure()
+ax = fig.add_subplot(projection='3d')
+ax.scatter(torus3d2kpoints[:,0], torus3d2kpoints[:,1], torus3d2kpoints[:,2])
+plt.show()
+plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/tori_experiments/imagesaves/torusIn3DSpace.png')
+plt.close()
+#######################################################################
 
-print('len(PointsInCircum(1.,3))', len(PointsInCircum(1.,2)))
+data_tr = torus3d2kpoints[:200]
+data_val = torus3d2kpoints
+
+data_tr = torch.from_numpy(PointsInCircumNDim(np.array(torus3d2kpoints[:50]), transform_to_nD)).float()
+data_val = torch.from_numpy(PointsInCircumNDim(np.array(torus3d2kpoints[200:]), transform_to_nD)).float()
+
+print('pre data_tr.shape', data_tr.shape)
+print('pre data_val.shape', data_val.shape)
+
+
+#print('PointsInCircum(1.,3)', PointsInCircum(1.,2))
+
+#print('len(PointsInCircum(1.,3))', len(PointsInCircum(1.,2)))
 
 #print('data_tr.shape', data_tr.shape)
 
-print('data_tr', data_tr)
+#print('data_tr', data_tr)
 
 loader_tr = get_loader(data_tr)
 loader_val = get_loader(data_val)
@@ -122,9 +140,9 @@ del model_reg_ran
 del model_reg_cheb
 del model_reg_leg
 '''
-latent_dim = 2
+latent_dim = 3
 
-model = AE(dim, hidden_size, 2, no_layers, Sin()).to(device)
+model = AE(dim, hidden_size, latent_dim, no_layers, Sin()).to(device)
 
 model_reg_tr = AE(dim, hidden_size, latent_dim, no_layers, Sin()).to(device)
 model_reg_ran = AE(dim, hidden_size, latent_dim, no_layers, Sin()).to(device)
@@ -188,7 +206,7 @@ plt.ylabel("$loss$")
 plt.title("Baseline model")
 plt.grid(True)
 plt.show()
-plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/cycle_experimnets/imagesaves/baselineLoss.png')
+plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/tori_experimnets/imagesaves/baselineLoss.png')
 plt.close()'''
 from regularisers_without_vegas import computeC1Loss, sampleChebyshevNodes, sampleLegendreNodes
 
@@ -286,7 +304,7 @@ for ind, model_reg in enumerate(models):
             #print('data_tr.shape', data_tr.shape)
             loss, bce, kld = loss_fn_cnn_vae(recon_images.to(device), data_tr.unsqueeze(1).to(device), mu.to(device), logvar.to(device))
             mod_loss_reg.append(float(loss.item()))
-            print("cnn vae loss", loss)
+            #print("cnn vae loss", loss)
 
         '''if regNodesSampling == "vae":
             x_reco, mu, logvar = model_reg(data_tr.to(device))
@@ -310,7 +328,7 @@ for ind, model_reg in enumerate(models):
     plt.legend()
     plt.grid(True)
 plt.show()
-plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/cycle_experimnets/imagesaves/allLosses.png')
+plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/tori_experiments/imagesaves/allLosses.png')
 plt.close()
 for opt in optimizers:
     del opt
@@ -337,13 +355,23 @@ for ind, model_reg in enumerate(models):
     if ind < 5:
         points_tr = (model_reg.encoder(data_tr.to(device))).detach().cpu().numpy()
         points_val = (model_reg.encoder(data_val.to(device))).detach().cpu().numpy()
-        plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
+        points_val = points_val.reshape(-1,latent_dim)
+
+        torch.save(points_val, '/home/ramana44/autoencoder-regularisation-/all_results/tori_experiments/3dtensors_saved/'+labels[ind]+'.pt')
+        '''plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
         plt.scatter(points_tr[:,0], points_tr[:,1], label='training samples', color="blue")
         plt.scatter(arr_points[:,0], arr_points[:,1], color='grey', alpha=0.05)
         plt.grid(False)
         #plt.title(labels[ind])
         plt.show()
-        plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/cycle_experimnets/imagesaves/'+labels[ind]+'.png')
+        plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/tori_experimnets/imagesaves/'+labels[ind]+'.png')
+        plt.close()'''
+
+        fig = plt.figure()
+        ax = fig.add_subplot(projection='3d')
+        ax.scatter(points_val[:,0], points_val[:,1], points_val[:,2])
+        plt.show()
+        plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/tori_experiments/imagesaves/'+labels[ind]+'.png')
         plt.close()
 
     elif (labels[ind] == "conv" or labels[ind] == "contra" ):
@@ -352,15 +380,26 @@ for ind, model_reg in enumerate(models):
         points_val = (model_reg.encoder(data_val.unsqueeze(1).to(device))).detach().cpu().numpy()
         points_tr = points_tr.reshape(-1,latent_dim)
         points_val = points_val.reshape(-1,latent_dim)
+        torch.save(points_val, '/home/ramana44/autoencoder-regularisation-/all_results/tori_experiments/3dtensors_saved/'+labels[ind]+'.pt')
 
-        plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
+        '''plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
         plt.scatter(points_tr[:,0], points_tr[:,1], label='training samples', color="blue")
         plt.scatter(arr_points[:,0], arr_points[:,1], color='grey', alpha=0.05)
         plt.grid(False)
         #plt.title(labels[ind])
         plt.show()
-        plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/cycle_experimnets/imagesaves/'+labels[ind]+'.png')
+        plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/tori_experimnets/imagesaves/'+labels[ind]+'.png')
+        plt.close()'''
+
+        fig = plt.figure()
+        ax = fig.add_subplot(projection='3d')
+        ax.scatter(points_val[:,0], points_val[:,1], points_val[:,2])
+        plt.show()
+        plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/tori_experiments/imagesaves/'+labels[ind]+'.png')
         plt.close()
+
+
+
     elif labels[ind] == "mlp_vae":
         #points_tr, _, _ = (model_reg.encode(data_tr.to(device), False))
         points_tr = model_reg.fc1(model_reg.encoder(data_tr.float().to(device)))
@@ -373,14 +412,23 @@ for ind, model_reg in enumerate(models):
         points_tr = points_tr.reshape(-1,latent_dim)
         points_val = points_val.reshape(-1,latent_dim)
 
-        plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
+        '''plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
         plt.scatter(points_tr[:,0], points_tr[:,1], label='training samples', color="blue")
         plt.scatter(arr_points[:,0], arr_points[:,1], color='grey', alpha=0.05)
         plt.grid(False)
         #plt.title(labels[ind])
         plt.show()
-        plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/cycle_experimnets/imagesaves/'+labels[ind]+'.png')
+        plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/tori_experimnets/imagesaves/'+labels[ind]+'.png')
+        plt.close()'''
+        torch.save(points_val, '/home/ramana44/autoencoder-regularisation-/all_results/tori_experiments/3dtensors_saved/'+labels[ind]+'.pt')
+        fig = plt.figure()
+        ax = fig.add_subplot(projection='3d')
+        ax.scatter(points_val[:,0], points_val[:,1], points_val[:,2])
+        plt.show()
+        plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/tori_experiments/imagesaves/'+labels[ind]+'.png')
         plt.close()
+
+
     elif labels[ind] == "cnn_vae":
         #points_tr, _, _ = (model_reg.encode(data_tr.to(device), False))
         points_tr = model_reg.fc1(model_reg.encoder(data_tr.unsqueeze(1).float().to(device)))
@@ -393,14 +441,23 @@ for ind, model_reg in enumerate(models):
         points_tr = points_tr.reshape(-1,latent_dim)
         points_val = points_val.reshape(-1,latent_dim)
 
-        plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
+        '''plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
         plt.scatter(points_tr[:,0], points_tr[:,1], label='training samples', color="blue")
         plt.scatter(arr_points[:,0], arr_points[:,1], color='grey', alpha=0.05)
         plt.grid(False)
         #plt.title(labels[ind])
         plt.show()
-        plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/cycle_experimnets/imagesaves/'+labels[ind]+'.png')
+        plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/tori_experimnets/imagesaves/'+labels[ind]+'.png')
+        plt.close()'''
+
+        torch.save(points_val, '/home/ramana44/autoencoder-regularisation-/all_results/tori_experiments/3dtensors_saved/'+labels[ind]+'.pt')
+        fig = plt.figure()
+        ax = fig.add_subplot(projection='3d')
+        ax.scatter(points_val[:,0], points_val[:,1], points_val[:,2])
+        plt.show()
+        plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/tori_experiments/imagesaves/'+labels[ind]+'.png')
         plt.close()
+
     del model_reg
 ##################################################################################################################
 
