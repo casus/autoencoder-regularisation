@@ -100,7 +100,7 @@ data_tr = torch.from_numpy(PointsInCircumNDim(np.array(torus3d2kpoints[:2000]), 
 data_val = torch.from_numpy(PointsInCircumNDim(np.array(torus3d2kpoints), transform_to_nD)).float()
 
 
-'''A_transform5 = np.random.uniform(-1.2, 1.2, 3*1024).reshape(3, 1024)
+A_transform5 = np.random.uniform(-2, 2, 3*1024).reshape(3, 1024)
 A_trans_torus = torch.tensor(A_transform5)
 data_tr = torch.matmul(torus3d2kpoints, A_trans_torus)
 
@@ -108,10 +108,10 @@ data_tr = torch.matmul(torus3d2kpoints, A_trans_torus)
 #print('pre data_val.shape', data_val.shape)
 
 data_tr = (data_tr - data_tr.mean())/(data_tr.max() - data_tr.mean()) 
-
+data_val = data_tr
 print("data_tr.max()", data_tr.max())
 print("data_tr.min()", data_tr.min())
-print("data_tr.shape", data_tr.shape)'''
+print("data_tr.shape", data_tr.shape)
 #print('PointsInCircum(1.,3)', PointsInCircum(1.,2))
 
 #print('len(PointsInCircum(1.,3))', len(PointsInCircum(1.,2)))
@@ -176,7 +176,7 @@ model_mlp_vae = VAE_mlp_circle_new(image_size=dim, h_dim=6, z_dim=latent_dim).to
 #model_reg_cheb = copy.deepcopy(model)
 #model_reg_leg = copy.deepcopy(model)
 
-no_epochs = 100
+no_epochs = 550
 optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 optimizer_tr = torch.optim.Adam(model_reg_tr.parameters(), lr=lr)
 optimizer_ran = torch.optim.Adam(model_reg_ran.parameters(), lr=lr)
@@ -228,6 +228,9 @@ regNodesSamplings = (["mlp_ae", "trainingData", "random", "chebyshev", "legendre
 
 regNodesSamplings = (["legendre"])
 
+regNodesSamplings = (["mlp_ae", "legendre",
+                    "conv", "contra", "mlp_vae", "cnn_vae"])
+
 '''models = ([model_reg_tr, model_reg_ran, model_reg_cheb, model_reg_leg,
         model_conv, model_vae, model_mlp_vae])'''
 
@@ -236,10 +239,16 @@ models = ([model, model_reg_tr, model_reg_ran, model_reg_cheb, model_reg_leg,
 
 models = ([model_reg_leg])
 
-'''optimizers = ([optimizer_tr, optimizer_ran, optimizer_cheb, optimizer_leg, 
+models = ([model, model_reg_leg,
+        model_conv, model_contra, model_mlp_vae, model_cnn_vae])
+
+'''optimizers = ([optimizer, optimizer_tr, optimizer_ran, optimizer_cheb, optimizer_leg, 
             optimizer_conv, optimizer_contra,  optimizer_vae, optimizer_mlp_vae])'''
 
 optimizers = ([optimizer_leg])
+
+optimizers = ([optimizer, optimizer_leg, 
+            optimizer_conv, optimizer_contra, optimizer_mlp_vae, optimizer_cnn_vae])
 
 szSample = 50
 #latent_dim = 2
@@ -247,15 +256,16 @@ weightJac = False
 degPoly=51
 alpha = 0.1
 
-batch_size_cfs = 200
+batch_size_cfs = 20
 
-data_tr = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/torus_dataset/1024_dim_torus_24000pts.pt').to(device)
+#data_tr = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/torus_dataset/1024_dim_torus_24000pts.pt').to(device)
 #torch.save(data_tr, '/home/ramana44/autoencoder-regularisation-/savedData/1024torus2000.pt')
-data_tr = data_tr.float()[:2000]
+data_tr = data_tr.float()[:20]
 data_tr_ = data_tr.reshape(int(data_tr.shape[0]/batch_size_cfs), batch_size_cfs, dim)
 
 
 #data_val = data_tr[:2000]
+data_val = data_val.float()[:2000]
 
 ###########################################################
 # Legendre
@@ -377,10 +387,12 @@ labels = ["mlp_ae", "Reg on training data", "Reg on random points", "Reg on cheb
 
 labels = ["Reg on legendre nodes"]
 
+labels = ["mlp_ae", "Reg on legendre nodes","conv", "contra", "mlp_vae", "cnn_vae"]
+
 for ind, model_reg in enumerate(models):
-    if ind < 5:
-        points_tr = (model_reg.encoder(data_tr.to(device))).detach().cpu().numpy()
-        points_val = (model_reg.encoder(data_val.to(device))).detach().cpu().numpy()
+    if ind < 2:
+        points_tr = (model_reg.encoder(data_tr.unsqueeze(1).to(device))).detach().cpu().numpy()
+        points_val = (model_reg.encoder(data_val.unsqueeze(1).to(device))).detach().cpu().numpy()
         points_val = points_val.reshape(-1,latent_dim)
 
         torch.save(points_val, '/home/ramana44/autoencoder-regularisation-/all_results/tori1024_experiments/3dtensors_saved/'+labels[ind]+'.pt')
@@ -428,16 +440,17 @@ for ind, model_reg in enumerate(models):
 
     elif labels[ind] == "mlp_vae":
         #points_tr, _, _ = (model_reg.encode(data_tr.to(device), False))
-        points_tr = model_reg.fc1(model_reg.encoder(data_tr.float().to(device)))
-        points_tr = points_tr.detach().cpu().numpy()
+        #points_tr = model_reg.fc1(model_reg.encoder(data_tr.float().to(device)))
+        #points_tr = points_tr.detach().cpu().numpy()
 
         #points_val,_ ,_ = (model_reg.encode(data_val.to(device), False))
         points_val = model_reg.fc1(model_reg.encoder(data_val.float().to(device)))
         points_val = points_val.detach().cpu().numpy()
 
-        points_tr = points_tr.reshape(-1,latent_dim)
+        #points_tr = points_tr.reshape(-1,latent_dim)
         points_val = points_val.reshape(-1,latent_dim)
 
+        print('points_val.shape : mlp_cae', points_val.shape)
         '''plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
         plt.scatter(points_tr[:,0], points_tr[:,1], label='training samples', color="blue")
         plt.scatter(arr_points[:,0], arr_points[:,1], color='grey', alpha=0.05)
@@ -466,6 +479,9 @@ for ind, model_reg in enumerate(models):
 
         points_tr = points_tr.reshape(-1,latent_dim)
         points_val = points_val.reshape(-1,latent_dim)
+
+        #points_val = (points_val - points_val.mean())/(points_val.max() - points_val.mean()) 
+
 
         '''plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
         plt.scatter(points_tr[:,0], points_tr[:,1], label='training samples', color="blue")

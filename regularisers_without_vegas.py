@@ -82,12 +82,12 @@ def sampleChebyshevNodes(batch_size, latent_dim, weightJac, n):
 
 
 
-def sampleLegendreNodes(batch_size, latent_dim, weightJac, n):
+def sampleLegendreNodes(batch_size, latent_dim, weightJac, points, weights, n):
     Gamma = np.random.randint(low=0, high=n, size=(latent_dim, batch_size))
     
-    points = np.polynomial.legendre.leggauss(n)[0][::-1]
+    '''points = np.polynomial.legendre.leggauss(n)[0][::-1]
     
-    weights = np.polynomial.legendre.leggauss(n)[1][::-1]
+    weights = np.polynomial.legendre.leggauss(n)[1][::-1]'''
     
     PP = np.zeros((latent_dim, batch_size))
     for i in range(batch_size):
