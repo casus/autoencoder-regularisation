@@ -44,6 +44,8 @@ for epoch in range(num_epochs):
     print(f'Epoch: {epoch+1}, Loss: {loss.item():.4f}')
     outputs.append((epoch, img, recon))
 
-path = '/home/ramana44/FashionMNIST5LayersTrials/output/MRT_full/test_run_saving/'
+path = './models_saved/'
 os.makedirs(path, exist_ok=True)
 name = '_'+str(TDA)+'_'+str(latent_dim)+'_'+str(lr)+'_'+str(no_layers)
+torch.save(model.state_dict(), path+'/model_base_cae_TDA'+name)
+3
