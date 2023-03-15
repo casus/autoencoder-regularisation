@@ -239,11 +239,11 @@ weightJac = False
 degPoly=51
 alpha = 0.1
 
-batch_size_cfs = 20
+batch_size_cfs = 50
 
 #data_tr = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/torus_dataset/1024_dim_torus_24000pts.pt').to(device)
 #torch.save(data_tr, '/home/ramana44/autoencoder-regularisation-/savedData/1024torus2000.pt')
-data_tr = data_tr.float()[:20]
+data_tr = data_tr.float()[:50]
 data_tr_ = data_tr.reshape(int(data_tr.shape[0]/batch_size_cfs), batch_size_cfs, dim)
 
 

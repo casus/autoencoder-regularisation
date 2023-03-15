@@ -38,8 +38,8 @@ I = torch.eye(5)
 print(I)
 ##################################################################################################################
 
-n = 1000
-points = PointsInCircum(1.,1000)
+n = 100
+points = PointsInCircum(1.,100)
 arr_points = np.array(points)
 plt.scatter(arr_points[:,0], arr_points[:,1])
 plt.grid(True)
@@ -335,7 +335,8 @@ points_val = (model.encoder(data_val.to(device))).detach().cpu().numpy()
 plt.scatter(points_val[:,0], points_val[:,1], color="orange")
 plt.scatter(points_tr[:,0], points_tr[:,1], color="blue")
 
-plt.scatter(arr_points[:,0], arr_points[:,1], color='grey', alpha=0.05)
+#plt.scatter(arr_points[:,0], arr_points[:,1], color='gray', alpha=0.05)
+plt.scatter(arr_points[:,0], arr_points[:,1], color='gray')
 plt.grid(False)
 #plt.title("Baseline: training data")
 plt.show()
@@ -351,7 +352,8 @@ for ind, model_reg in enumerate(models):
         points_val = (model_reg.encoder(data_val.to(device))).detach().cpu().numpy()
         plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
         plt.scatter(points_tr[:,0], points_tr[:,1], label='training samples', color="blue")
-        plt.scatter(arr_points[:,0], arr_points[:,1], color='grey', alpha=0.05)
+        #plt.scatter(arr_points[:,0], arr_points[:,1], color='gray', alpha=0.05)
+        plt.scatter(arr_points[:,0], arr_points[:,1], color='gray')
         plt.grid(False)
         #plt.title(labels[ind])
         plt.show()
@@ -367,7 +369,8 @@ for ind, model_reg in enumerate(models):
 
         plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
         plt.scatter(points_tr[:,0], points_tr[:,1], label='training samples', color="blue")
-        plt.scatter(arr_points[:,0], arr_points[:,1], color='grey', alpha=0.05)
+        #plt.scatter(arr_points[:,0], arr_points[:,1], color='gray', alpha=0.05)
+        plt.scatter(arr_points[:,0], arr_points[:,1], color='gray')
         plt.grid(False)
         #plt.title(labels[ind])
         plt.show()
@@ -387,7 +390,8 @@ for ind, model_reg in enumerate(models):
 
         plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
         plt.scatter(points_tr[:,0], points_tr[:,1], label='training samples', color="blue")
-        plt.scatter(arr_points[:,0], arr_points[:,1], color='grey', alpha=0.05)
+        #plt.scatter(arr_points[:,0], arr_points[:,1], color='gray', alpha=0.05)
+        plt.scatter(arr_points[:,0], arr_points[:,1], color='gray')
         plt.grid(False)
         #plt.title(labels[ind])
         plt.show()
@@ -407,7 +411,8 @@ for ind, model_reg in enumerate(models):
 
         plt.scatter(points_val[:,0], points_val[:,1], label='validation samples', color="orange")
         plt.scatter(points_tr[:,0], points_tr[:,1], label='training samples', color="blue")
-        plt.scatter(arr_points[:,0], arr_points[:,1], color='grey', alpha=0.05)
+        #plt.scatter(arr_points[:,0], arr_points[:,1], color='gray', alpha=0.05)
+        plt.scatter(arr_points[:,0], arr_points[:,1], color='gray')
         plt.grid(False)
         #plt.title(labels[ind])
         plt.show()
