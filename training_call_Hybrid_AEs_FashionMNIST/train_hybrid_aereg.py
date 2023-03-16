@@ -10,16 +10,8 @@ from tqdm import tqdm
 from regularisers_without_vegas_fmnist import sampleNodes, computeC1Loss, sampleChebyshevNodes, sampleLegendreNodes, computeC1Loss_upd
 from models import AE
 import copy
-#from layers import SinkhornDistance
-#import sinkhorn_pointcloud as spc
-# Sinkhorn parameters
-#epsilon = 0.01
-#niter = 100
 from jmp_solver1.diffeomorphisms import hyper_rect
 import jmp_solver1.surrogates
-
-#from jmp_solver.diffeomorphisms import hyper_rect
-#import jmp_solver.surrogates 
 
 import os
 import re
@@ -67,38 +59,21 @@ def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_
           enable_wandb=False, wandb_project=None, wandb_entity=None):
 
 
-    #sinkhorn = SinkhornDistance(eps=0.0000000001, max_iter=100)
-    wass_outputs = []
-    wass_outputs_val = []
 
     weight_jac = False
     
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
-    '''no_channels = 1
-    dx, dy = (train_loader.dataset.__getitem__(1).shape)'''
-    #print('(train_loader.dataset.__getitem__(1).shape)',(train_loader.dataset.__getitem__(1).shape))
-    #no_channels, dx, dy = (train_loader.dataset.__getitem__(1).shape)
 
 
     set_seed(2342)
     
-    #deg_quads = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
-    #deg_quads = [25, 24, 23, 22, 21, 20, 19, 18, 17, 16]
-    #deg_quads = [20, 21, 19, 22, 18, 23, 17, 24, 16, 25]
-    deg_quad = HybridPolyDegree #, 22, 19, 23, 18, 24, 17, 25, 16]
 
-    # precomputing legendre points and weights instead of within the loop
-
-    points = np.polynomial.legendre.leggauss(deg_poly)[0][::-1]
-    
+    deg_quad = HybridPolyDegree 
+    points = np.polynomial.legendre.leggauss(deg_poly)[0][::-1]    
     weights = np.polynomial.legendre.leggauss(deg_poly)[1][::-1]
 
 
-    #for deg_quad in deg_quads:
-
-    #inp_dim = [no_channels, dx-21, dy-21]
-    #inp_dim = [no_channels, deg_leg, deg_leg]
     inp_dim = (deg_quad+1)*(deg_quad+1)
     model_reg = AE(inp_dim, hidden_size, latent_dim, 
                     no_layers, activation).to(device) # regularised autoencoder
@@ -107,12 +82,8 @@ def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_
                     no_layers, activation).to(device) # baseline autoencoder
         model = copy.deepcopy(model_reg)
 
-    #print('model_reg', model_reg)
-    #print('model', model) 
 
     global_step = 0
-    cond_step = 0
-
         
     optimizer = torch.optim.Adam(model_reg.parameters(), lr=lr, amsgrad=True)
     
@@ -120,7 +91,7 @@ def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_
     if train_base_model:
         optimizer_base = torch.optim.Adam(model.parameters(), lr=lr, amsgrad=True)
     
-    #arrays for holding loss
+
     loss_arr_reg = []
     loss_arr_reco = []
     loss_arr_base = []
@@ -279,7 +250,7 @@ def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_
             loss_base_val.append(sum(tmp_base_list)/len(tmp_base_list))
             loss_arr_val_base.append(torch.Tensor([sum(tmp_base_list)/len(tmp_base_list)]))
         
-    path = '/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_space/output/MRT_full/test_run_saving/'
+    path = './models_saved/'
     os.makedirs(path, exist_ok=True)
     name = '_'+reg_nodes_sampling+'_'+str(train_set_size)+'_'+str(alpha)+'_'+str(hidden_size)+'_'+str(deg_poly)+'_'+str(latent_dim)+'_'+str(lr)+'_'+str(no_layers)#+'_'+str(train_set_size)
     torch.save(loss_arr_reg, path+'/loss_arr_regLSTQS'+str(deg_quad)+''+name)

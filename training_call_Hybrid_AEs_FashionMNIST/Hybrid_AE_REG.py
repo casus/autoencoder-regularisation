@@ -1,14 +1,14 @@
 import sys
-sys.path.append('/home/ramana44/autoencoder-regularisation-')
+sys.path.append('./')
 
 from get_data import get_data
 import torch
 import os
 import numpy as np
 
-from datasets import InMemDataLoader
+#from datasets import InMemDataLoader
 
-from train_ae_LSTSQ20_noSamples100degPoly55 import train
+from train_hybrid_aereg import train
 from activations import Sin
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
