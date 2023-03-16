@@ -4,8 +4,7 @@ sys.path.append('./')
 import torch
 import torch.nn.functional as F
 import os
-#from vae import VAE_try_MRI
-from models import VAE_try_MRI
+from models import CNN_VAE_MRI
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 latent_dim = 10
@@ -26,7 +25,7 @@ deg_poly = 21
 alpha = 0.1
 
 
-model = VAE_try_MRI(image_channels=1, h_dim=16*9*9, z_dim=z_dim).to(device)
+model = CNN_VAE_MRI(image_channels=1, h_dim=16*9*9, z_dim=z_dim).to(device)
 
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-3) 
 
@@ -47,7 +46,6 @@ for epoch in range(epochs):
     inum = 0
     for images in image_batches_trn:    
         inum = inum+1
-        this = model.encoder(images.to(device))
         recon_images, mu, logvar = model(images.to(device))
         loss, bce, kld = loss_fn(recon_images.to(device), images.to(device), mu.to(device), logvar.to(device))
 

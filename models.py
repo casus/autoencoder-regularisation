@@ -237,9 +237,9 @@ class CNN_VAE_FMNIST(nn.Module):
         return self.decoder(z), mu, logvar
 
 
-class VAE_try_MRI(nn.Module):
+class CNN_VAE_MRI(nn.Module):
     def __init__(self, image_channels=3, h_dim=16*9*9, z_dim=4):
-        super(VAE_try_MRI, self).__init__()
+        super(CNN_VAE_MRI, self).__init__()
         self.encoder = nn.Sequential(
             nn.Conv2d(1, 16, 3, stride=2, padding=1),  #N, 1, 32, 32
             nn.ReLU(),

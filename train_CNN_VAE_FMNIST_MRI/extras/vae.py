@@ -252,7 +252,6 @@ class VAE_try_MRI(nn.Module):
             nn.Conv2d(32, 16, 4, stride=1, padding=1),  #N, 1, 32, 32
             nn.ReLU(),
             nn.Flatten(1,-1)
-            #nn.Linear(8*2*2, z_dim)
 
         )
         
@@ -262,7 +261,6 @@ class VAE_try_MRI(nn.Module):
         
         self.decoder = nn.Sequential(
             
-            #nn.Linear(z_dim, 8*2*2),
             nn.Unflatten(1, (16, 9, 9)),
             nn.ConvTranspose2d(16, 32, 4, stride=1, padding=1),   #N, 1, 32, 32
             nn.ReLU(),
