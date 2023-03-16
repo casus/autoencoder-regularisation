@@ -3,8 +3,6 @@ sys.path.append('./')
 
 import torch
 import torch.nn as nn
-#import torch.optim as optim
-#from matplotlib.pyplot import plot
 import os
 from models import ConvoAE_mri
 
