@@ -332,3 +332,46 @@ class Autoencoder_linear_contra_fmnist(nn.Module):
         encoded = self.encoder(x)
         decoded = self.decoder(encoded)
         return decoded
+
+
+class Autoencoder_linear_contra_MRI(nn.Module):
+    def __init__(self,latent_dim):
+
+        super().__init__()
+        self.encoder = nn.Sequential(
+            nn.Linear(96*96, 1000),  #input layer
+            nn.ReLU(),
+            nn.Linear(1000, 1000),   #h1
+            nn.ReLU(),
+            nn.Linear(1000, 1000),    #h1
+            nn.ReLU(),
+            nn.Linear(1000, 1000),    #h1
+            nn.ReLU(),
+            nn.Linear(1000, 1000),    #h1
+            nn.ReLU(),
+            nn.Linear(1000, 1000),    #h1
+            nn.ReLU(),
+            nn.Linear(1000,latent_dim)  # latent layer
+        )
+
+        self.decoder = nn.Sequential(
+            nn.Linear(latent_dim, 1000),  #input layer
+            nn.ReLU(),
+            nn.Linear(1000, 1000),   #h1
+            nn.ReLU(),
+            nn.Linear(1000, 1000),   #h1
+            nn.ReLU(),
+            nn.Linear(1000, 1000),   #h1
+            nn.ReLU(),
+            nn.Linear(1000, 1000),    #h1
+            nn.ReLU(),
+            nn.Linear(1000, 1000),    #h1
+            nn.ReLU(),
+            nn.Linear(1000, 96*96),  # latent layer
+            nn.Sigmoid()
+        )
+
+    def forward(self, x):
+        encoded = self.encoder(x)
+        decoded = self.decoder(encoded)
+        return decoded
