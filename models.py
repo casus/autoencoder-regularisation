@@ -297,3 +297,38 @@ class CNN_VAE_MRI(nn.Module):
         z = self.fc3(z)
         #print('z.shape', z.shape)
         return self.decoder(z), mu, logvar
+
+
+class Autoencoder_linear_contra_fmnist(nn.Module):
+    def __init__(self,latent_dim):
+
+        super().__init__()
+        self.encoder = nn.Sequential(
+            nn.Linear(32*32, 100),  #input layer
+            nn.ReLU(),
+            nn.Linear(100, 100),   #h1
+            nn.ReLU(),
+            nn.Linear(100, 100),    #h1
+            nn.ReLU(),
+            nn.Linear(100, 100),    #h1
+            nn.ReLU(),
+            nn.Linear(100,latent_dim)  # latent layer
+        )
+
+        self.decoder = nn.Sequential(
+            nn.Linear(latent_dim, 100),  #input layer
+            nn.ReLU(),
+            nn.Linear(100, 100),   #h1
+            nn.ReLU(),
+            nn.Linear(100, 100),    #h1
+            nn.ReLU(),
+            nn.Linear(100, 100),    #h1
+            nn.ReLU(),
+            nn.Linear(100, 32*32),  # latent layer
+            nn.Sigmoid()
+        )
+
+    def forward(self, x):
+        encoded = self.encoder(x)
+        decoded = self.decoder(encoded)
+        return decoded
