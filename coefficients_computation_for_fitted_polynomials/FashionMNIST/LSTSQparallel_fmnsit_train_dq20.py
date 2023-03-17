@@ -9,7 +9,7 @@ from pkg_resources import find_distributions
 import numpy as np
 import torch
 import sys
-sys.path.append('/home/ramana44/autoencoder-regularisation-')
+sys.path.append('./')
 
 #sys.path.insert(1, '/home/suarez08/PhD_PINNs/PIPS_framework')
 from jmp_solver1.sobolev import Sobolev
@@ -30,19 +30,25 @@ import nibabel as nib     # Read / write access to some common neuroimaging file
 import ot
 import scipy
 import scipy.integrate
-
+from datasets import  getDataset
 #device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 device = torch.device('cpu')
 
 torch.set_default_dtype(torch.float64)
 
-trainDataset = torch.load('/home/ramana44/withR_matrix_Fmnist_RK_method/coeffs_saved/trainImages.pt')
-testDataset = torch.load('/home/ramana44/withR_matrix_Fmnist_RK_method/coeffs_saved/testImages.pt')
+
+train_loader, test_loader, noChannels, dx, dy = getDataset('FashionMNIST', 60000, False)
+
+trainDataset, train_labels = next(iter(train_loader))
+testDataset, test_labels = next(iter(test_loader))
+
+'''trainDataset = torch.load('/home/ramana44/withR_matrix_Fmnist_RK_method/coeffs_saved/trainImages.pt')
+testDataset = torch.load('/home/ramana44/withR_matrix_Fmnist_RK_method/coeffs_saved/testImages.pt')'''
 
 
-#trainDataset = trainDataset[:100]
-#testDataset = testDataset[:50]
+trainDataset = trainDataset[:50]
+testDataset = testDataset[:50]
 print('trainDataset.shape', trainDataset.shape)
 
 deg_quad = 20
@@ -65,7 +71,7 @@ for i in range(trainDataset.shape[0]):
     #print(testRK.shape)
     all_coeffs_lstsq = torch.cat((all_coeffs_lstsq, testRK),0)
 
-torch.save(all_coeffs_lstsq, '/home/ramana44/withR_matrix_Fmnist_RK_method/coeffs_saved/LSTSQ_traincoeffs_FMNIST_dq'+str(deg_quad)+'.pt')
+torch.save(all_coeffs_lstsq, './coefficients_computation_for_fitted_polynomials/FashionMNIST/saved_coefficients/LSTSQ_traincoeffs_FMNIST_dq'+str(deg_quad)+'.pt')
 
 print('all_coeffs.shape',all_coeffs_lstsq.shape)
 
@@ -77,7 +83,7 @@ for i in range(testDataset.shape[0]):
     #print(testRK.shape)
     all_coeffs_lstsq = torch.cat((all_coeffs_lstsq, testRK),0)
 
-#torch.save(all_coeffs_lstsq, '/home/ramana44/withR_matrix_Fmnist_RK_method/coeffs_saved/LSTSQ_testcoeffs_FMNIST_dq'+str(deg_quad)+'.pt')
+torch.save(all_coeffs_lstsq, './coefficients_computation_for_fitted_polynomials/FashionMNIST/saved_coefficients/LSTSQ_testcoeffs_FMNIST_dq'+str(deg_quad)+'.pt')
 
 
 finish = time.perf_counter()
@@ -85,13 +91,3 @@ print('all_coeffs.shape',all_coeffs_lstsq.shape)
 print(f'Finished in {round(finish-start, 2)} seconds')
 
 
-#now loading the saved coeffs and printing
-
-#print('now loading the saved coeffs and printing')
-
-#traincoeffss = torch.load('/home/ramana44/withR_matrix_Fmnist_RK_method/coeffs_saved/LSTSQ_traincoeffs_FMNIST_dq'+str(deg_quad)+'.pt')
-#testcoeffss = torch.load('/home/ramana44/withR_matrix_Fmnist_RK_method/coeffs_saved/LSTSQ_testcoeffs_FMNIST_dq'+str(deg_quad)+'.pt')
-
-#print('traincoeffss.shape', traincoeffss.shape)
-
-#print('testcoeffss.shape', testcoeffss.shape)

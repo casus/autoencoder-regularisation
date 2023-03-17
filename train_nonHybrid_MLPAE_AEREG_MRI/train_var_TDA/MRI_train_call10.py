@@ -1,6 +1,5 @@
 import sys
-#sys.path.append('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders')
-sys.path.append('./autoencoder-regularisation-')
+sys.path.append('./')
 
 from datasets import  getDataset
 import wandb
@@ -16,6 +15,8 @@ import torch
 
 trainImagesMRI = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/trainDataSet.pt',map_location=torch.device('cuda'))
 #shape: 60000, 1, 96, 96
+
+
 
 testImagesMRI = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/testDataSet.pt',map_location=torch.device('cuda'))
 testImagesMRI = testImagesMRI[:10000]

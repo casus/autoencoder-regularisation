@@ -15,9 +15,9 @@ seed(1)
 
 #from swd import swd
 
-from regularisers import sampleNodes, computeC1Loss, sampleChebyshevNodes, sampleLegendreNodes, barycenterSubsampleLegendreNodes
+from regularisers_without_vegas_fmnist import sampleNodes, computeC1Loss, sampleChebyshevNodes, sampleLegendreNodes
 
-from barycenter_subsampling import get_convergent_barycenters
+#from barycenter_subsampling import get_convergent_barycenters
 from models import AE
 from datasets import  getDataset
 import copy
@@ -65,7 +65,7 @@ def loss_grad_std_full(loss, net):
             
     return torch.std(grad_)
 
-def train(train_loader, test_loader, no_channels, dx, dy, no_epochs=2, TDA=0.4, reco_loss='mse', latent_dim=10, 
+def train(trainImagesInBatches, testImagesInBatches, no_channels, dx, dy, no_epochs=2, TDA=0.4, reco_loss='mse', latent_dim=10, 
           hidden_size=1024, no_layers=3, activation = F.relu, lr = 3e-4, alpha=1., bl=False, 
           seed = 2342, train_base_model=False, no_samples=5, deg_poly=21,
           reg_nodes_sampling="legendre_exp", no_val_samples = 10, use_guidance = True,
@@ -79,30 +79,6 @@ def train(train_loader, test_loader, no_channels, dx, dy, no_epochs=2, TDA=0.4, 
         points = np.polynomial.legendre.leggauss(deg_poly)[0][::-1]
         
         weights = np.polynomial.legendre.leggauss(deg_poly)[1][::-1]
-
-
-    if (reg_nodes_sampling == 'bary_legendre'):
-        points = np.polynomial.legendre.leggauss(deg_poly)[0][::-1]
-        
-        weights = np.polynomial.legendre.leggauss(deg_poly)[1][::-1]
-        #print('points.shape', points.shape[0])
-        oneD_LegendreGrid = points.reshape(points.shape[0],1)
-        sweeing_radius = 0.15
-        leg_bary, leg_indices = get_convergent_barycenters(oneD_LegendreGrid, oneD_LegendreGrid[oneD_LegendreGrid.shape[0]//2],sweeing_radius)
-
-        #print('leg_bary.shape', leg_bary.shape)
-        no_samples = leg_bary.shape[0]
-        z1, z2 = np.meshgrid(leg_bary, leg_bary) 
-
-        z1 = z1.flatten()
-        z2 = z2.flatten()
-
-        oneDSubsampledLeg_grid = np.column_stack((z1,z2))
-        #print("check bary legendre")
-
-        #print('oneDSubsampledLeg_grid.shape', oneDSubsampledLeg_grid.shape)
-
-
 
     
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -149,11 +125,11 @@ def train(train_loader, test_loader, no_channels, dx, dy, no_epochs=2, TDA=0.4, 
     #Jac_val_pts = torch.FloatTensor(np.random.uniform(-1,1,size=(no_val_samples, latent_dim))).to(device)
     
 
-    '''trainImagesInBatches = trainImagesInBatches[:int(trainImagesInBatches.shape[0]*TDA)]
+    trainImagesInBatches = trainImagesInBatches[:int(trainImagesInBatches.shape[0]*TDA)]
     testImagesInBatches = testImagesInBatches[:int(testImagesInBatches.shape[0]*TDA)]
 
     print('Again image_batches_trn.shape',trainImagesInBatches.shape)
-    print('Again image_batches_test.shape',testImagesInBatches.shape)'''
+    print('Again image_batches_test.shape',testImagesInBatches.shape)
 
 
     for epoch in tqdm(range(no_epochs)):
@@ -163,8 +139,11 @@ def train(train_loader, test_loader, no_channels, dx, dy, no_epochs=2, TDA=0.4, 
         loss_rec_base = []
         loss_c1 = []
         print('Epoch : '+str(epoch)+ 'started')
+        inum = 0
+        #for inum, batch_x in enumerate(train_loader):
         #inum = 0
-        for inum, batch_x in enumerate(train_loader):
+        for batch_x in trainImagesInBatches:    
+            inum = inum+1
 
             batch_x = batch_x.float()
             global_step += 1
@@ -216,12 +195,10 @@ def train(train_loader, test_loader, no_channels, dx, dy, no_epochs=2, TDA=0.4, 
         print()
         print("[%d] rAE loss = %.4e, rAE reconstruction loss = %.4e" % (epoch, loss, loss_reconstruction))
         print()
-
- 
         
     if train_base_model:
 
-        path = '/home/ramana44/FashionMNIST5LayersTrials/output/MRT_full/test_run_saving/'
+        path = './models_saved/'
         #path = './output/MRT_full/test_run_saving/'
         os.makedirs(path, exist_ok=True)
         name = '_'+reg_nodes_sampling+'_'+'_'+str(TDA)+'_'+str(alpha)+'_'+str(hidden_size)+'_'+str(deg_poly)+'_'+str(latent_dim)+'_'+str(lr)+'_'+str(no_layers)+'_'+str(no_samples)

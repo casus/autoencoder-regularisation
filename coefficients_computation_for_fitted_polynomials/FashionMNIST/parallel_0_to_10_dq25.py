@@ -1,3 +1,6 @@
+import sys
+sys.path.append('./')
+
 import concurrent.futures
 import secrets
 import time
@@ -8,8 +11,7 @@ from pkg_resources import find_distributions
 
 import numpy as np
 import torch
-import sys
-sys.path.append('/home/ramana44/withR_matrix_Fmnist_RK_method')
+
 
 #sys.path.insert(1, '/home/suarez08/PhD_PINNs/PIPS_framework')
 from jmp_solver1.sobolev import Sobolev
@@ -40,8 +42,9 @@ torch.set_default_dtype(torch.float64)
 trainDataset = torch.load('/home/ramana44/withR_matrix_Fmnist_RK_method/coeffs_saved/trainImages.pt')
 #testDataset = torch.load('/home/ramana44/withR_matrix_Fmnist_RK_method/coeffs_saved/testImages.pt')
 
+print("trainDataset.shape", trainDataset.shape)
 
-trainDataset = trainDataset[:10000]
+trainDataset = trainDataset[:640]
 
 
 deg_quad = 16
@@ -86,16 +89,14 @@ all_coeffs = torch.tensor([])
 with concurrent.futures.ProcessPoolExecutor() as executor:
 
     trainDataset = trainDataset.tolist()
-
     results = executor.map(get_all_thetas, trainDataset)
-    
     for result in results:
         all_coeffs = torch.cat((all_coeffs, result))
-
     all_coeffs = all_coeffs.reshape(int(all_coeffs.shape[0]/ (deg_quad+1)**2),int((deg_quad+1)**2))
-    torch.save(all_coeffs, '/home/ramana44/withR_matrix_Fmnist_RK_method/coeffs_saved/RKcoeff_0_to_10_dq16.pt')
+    torch.save(all_coeffs, './coefficients_computation_for_fitted_polynomials/FashionMNIST/saved_coefficients/RKcoeff_0_to_10_dq16.pt')
 
-    print('all_coeffs.shape',all_coeffs.shape)
+
 finish = time.perf_counter()
 
+print('all_coeffs.shape',all_coeffs.shape)
 print(f'Finished in {round(finish-start, 2)} seconds')

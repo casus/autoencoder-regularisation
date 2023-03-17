@@ -17,7 +17,12 @@ no_layers = 3
 no_epochs= 100
 hidden_size = 100
 
-
+# the pelow parameters are the parameters(reg_nodes_sampling, deg_poly, alpha) of the correspondig AE-REG(regularized autoencoder) with which the 
+# MLP-VAE is going to be compared
+# These parameters are nowhere used in CNN-VAE, but only in the naming of CNN-VAE
+reg_nodes_sampling = 'legendre'
+deg_poly = 21
+alpha = 0.5
 
 
 model = MLP_VAE_FMNIST(image_size, h_dim, latent_dim).to(device)

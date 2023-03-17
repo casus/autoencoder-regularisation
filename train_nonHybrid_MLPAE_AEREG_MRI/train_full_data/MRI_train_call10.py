@@ -1,6 +1,5 @@
 import sys
-#sys.path.append('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders')
-sys.path.append('./autoencoder-regularisation-')
+sys.path.append('./')
 
 from datasets import  getDataset
 import wandb
@@ -44,7 +43,7 @@ for root, dirs, files in os.walk(os.path.abspath("/home/ramana44/all_scans_singl
         #print(os.path.join(root, file))
         all_paths.append((os.path.join(root, file)))
 
-print('len(all_paths)',len(all_paths))
+#print('len(all_paths)',len(all_paths))
 
 
 ### load data ###
@@ -63,7 +62,7 @@ def get_train_test_set(paths, device, batch_size=200, train_set_size=0.8, test_s
 
     train_data = get_data([paths[i] for i in train_indices], device)  # only load specific indices preveiously selected
     test_data = get_data([paths[i] for i in test_indices], device)
-    print('train_data.shape',train_data.shape)
+    #print('train_data.shape',train_data.shape)
 
     train_loader = InMemDataLoader(train_data, batch_size=batch_size, shuffle=True, drop_last=True) # init dataloader for train and test set
     test_loader = InMemDataLoader(test_data, batch_size=batch_size, shuffle=True, drop_last=True) 
