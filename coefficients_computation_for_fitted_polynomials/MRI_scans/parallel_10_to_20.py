@@ -1,3 +1,5 @@
+import sys
+sys.path.append('./')
 import concurrent.futures
 import secrets
 import time
@@ -9,16 +11,14 @@ from pkg_resources import find_distributions
 import numpy as np
 import torch
 import sys
-sys.path.insert(1, '/home/suarez08/PhD_PINNs/PIPS_framework')
-from jmp_solver.sobolev import Sobolev
-from jmp_solver.sobolev import Sobolev
-from jmp_solver.solver import Solver
-from jmp_solver.utils import matmul
-import jmp_solver.surrogates
+from jmp_solver1.sobolev import Sobolev
+from jmp_solver1.sobolev import Sobolev
+from jmp_solver1.solver import Solver
+from jmp_solver1.utils import matmul
+import jmp_solver1.surrogates
 import time
-sys.path.insert(1, '/home/suarez08/minterpy/src')
 import minterpy as mp
-from jmp_solver.diffeomorphisms import hyper_rect
+from jmp_solver1.diffeomorphisms import hyper_rect
 import matplotlib
 import matplotlib.pyplot as plt
 #style.use('dark_background')
@@ -43,7 +43,7 @@ trainDataset = trainDataset[10000:20000]
 
 
 deg_quad = 70
-u_ob = jmp_solver.surrogates.Polynomial(n=deg_quad,p=np.inf, dim=2)
+u_ob = jmp_solver1.surrogates.Polynomial(n=deg_quad,p=np.inf, dim=2)
 x = np.linspace(-1,1,96)
 X_p = u_ob.data_axes([x,x]).T
 
@@ -91,7 +91,7 @@ with concurrent.futures.ProcessPoolExecutor() as executor:
         all_coeffs = torch.cat((all_coeffs, result))
 
     all_coeffs = all_coeffs.reshape(int(all_coeffs.shape[0]/ (deg_quad+1)**2),int((deg_quad+1)**2))
-    torch.save(all_coeffs, '/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/LSTQScoeff_10_to_20.pt')
+    torch.save(all_coeffs, './coefficients_computation_for_fitted_polynomials/MRI_scans/saved_coefficients/LSTQScoeff_10_to_20.pt')
 
     print('all_coeffs.shape',all_coeffs.shape)
 finish = time.perf_counter()

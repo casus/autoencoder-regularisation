@@ -1,3 +1,5 @@
+import sys
+sys.path.append('./')
 import concurrent.futures
 import secrets
 import time
@@ -8,8 +10,6 @@ from pkg_resources import find_distributions
 
 import numpy as np
 import torch
-import sys
-sys.path.append('./')
 from jmp_solver1.sobolev import Sobolev
 from jmp_solver1.sobolev import Sobolev
 from jmp_solver1.solver import Solver
@@ -97,9 +97,9 @@ with concurrent.futures.ProcessPoolExecutor() as executor:
     
     for result in results:
         all_coeffs = torch.cat((all_coeffs, result))
-
+        print("anything")
     all_coeffs = all_coeffs.reshape(int(all_coeffs.shape[0]/ (deg_quad+1)**2),int((deg_quad+1)**2))
-    #torch.save(all_coeffs, '/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/LSTQScoeff_0_to_10.pt')
+    torch.save(all_coeffs, './coefficients_computation_for_fitted_polynomials/MRI_scans/saved_coefficients/LSTQScoeff_0_to_10.pt')
 
     print('all_coeffs.shape',all_coeffs.shape)
 finish = time.perf_counter()
