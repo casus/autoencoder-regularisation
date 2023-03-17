@@ -8,7 +8,7 @@ import numpy as np
 
 #from datasets import InMemDataLoader
 
-from train_hybrid_aereg import train
+from train_hybrid_aereg_fmnist import train
 from activations import Sin
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 

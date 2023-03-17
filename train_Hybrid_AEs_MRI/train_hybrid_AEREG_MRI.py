@@ -7,25 +7,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm 
 
-from regularisers_without_vegas import sampleNodes, computeC1Loss, sampleChebyshevNodes, sampleLegendreNodes
+from regularisers_without_vegas_fmnist import sampleNodes, computeC1Loss, sampleChebyshevNodes, sampleLegendreNodes, computeC1Loss_upd
+
+
 from models import AE
 import copy
-#from layers import SinkhornDistance
-#import sinkhorn_pointcloud as spc
-# Sinkhorn parameters
-#epsilon = 0.01
-#niter = 100
+
 from jmp_solver1.diffeomorphisms import hyper_rect
 import jmp_solver1.surrogates
 
-#from jmp_solver.diffeomorphisms import hyper_rect
-#import jmp_solver.surrogates 
-
 import os
-import re
-import ot
-from scipy import interpolate
-#import wandb
 
 
 
@@ -63,7 +54,7 @@ def loss_grad_std_full(loss, net):
 def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_test, no_epochs=50, reco_loss='mse', latent_dim=20, 
           hidden_size=1000, no_layers=5, activation = F.relu, lr = 1e-4, alpha=1e-3, bl=False, 
           seed = 2342, train_base_model=True, no_samples=5, deg_poly=20,
-          reg_nodes_sampling="legendre", no_val_samples = 10, use_guidance = True, train_set_size=0.8,
+          reg_nodes_sampling="legendre", no_val_samples = 10, HybridPolyDegree=80, use_guidance = True, train_set_size=0.8,
           enable_wandb=False, wandb_project=None, wandb_entity=None):
 
 
@@ -87,17 +78,10 @@ def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_
     
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
-    '''no_channels = 1
-    dx, dy = (train_loader.dataset.__getitem__(1).shape)'''
-    #print('(train_loader.dataset.__getitem__(1).shape)',(train_loader.dataset.__getitem__(1).shape))
-    #no_channels, dx, dy = (train_loader.dataset.__getitem__(1).shape)
-
 
     set_seed(2342)
 
-    #inp_dim = [no_channels, dx-21, dy-21]
-    #inp_dim = [no_channels, deg_leg, deg_leg]
-    inp_dim = 81*81
+    inp_dim = (HybridPolyDegree+1)*(HybridPolyDegree+1)
     model_reg = AE(inp_dim, hidden_size, latent_dim, 
                        no_layers, activation).to(device) # regularised autoencoder
     if train_base_model:
@@ -131,7 +115,11 @@ def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_
 
     Jac_val_pts = torch.FloatTensor(np.random.uniform(-1,1,size=(no_val_samples, latent_dim))).to(device)
     
-    deg_quad = 80
+    deg_quad = HybridPolyDegree
+
+    points = np.polynomial.legendre.leggauss(deg_poly)[0][::-1]    
+    weights = np.polynomial.legendre.leggauss(deg_poly)[1][::-1]
+
     u_ob = jmp_solver1.surrogates.Polynomial(n=deg_quad,p=np.inf, dim=2)
     x = np.linspace(-1,1,96)
     x = torch.tensor(x)
@@ -159,15 +147,8 @@ def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_
             global_step += 1
             loss_C1 = torch.FloatTensor([0.]).to(device)
             batch_x = batch_x.float().to(device)
-            #batch_x = torch.FloatTensor(batch_x)
-            #batch_x = batch_x.to(device)
-
             reconstruction = model_reg(batch_x)
-            #print('before view', reconstruction.shape)
-            #reconstruction = reconstruction.view(batch_x.shape)
-            #print('inum',inum)
-            #print('after view')
-            #print('reconstruction.shape',reconstruction.shape)
+
             image_batches_trnp = image_batches_trn[inum-1]
             reconstructionH = (torch.matmul(X_p, reconstruction.squeeze(1).T).T).reshape(reconstruction.shape[0], 1, 96, 96)
             if reco_loss == 'mse':
@@ -179,7 +160,7 @@ def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_
                 nodes_subsample = torch.FloatTensor(nodes_subsample_np).to(device)
                 weights_subsample = torch.FloatTensor(weights_subsample_np).to(device)
             elif(reg_nodes_sampling == 'legendre'): 
-                nodes_subsample_np, weights_subsample_np = sampleLegendreNodes(no_samples, latent_dim, weight_jac, n=deg_poly)
+                nodes_subsample_np, weights_subsample_np = sampleLegendreNodes(no_samples, latent_dim, weight_jac, points, weights, n=deg_poly)
                 nodes_subsample = torch.FloatTensor(nodes_subsample_np).to(device)
 
                 weights_subsample = torch.FloatTensor(weights_subsample_np).to(device)
@@ -188,7 +169,7 @@ def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_
             elif(reg_nodes_sampling == 'trainingData'):
                 nodes_subsample = model_reg.encoder(batch_x[0:no_samples, :]).detach()
 
-            loss_C1, Jac = computeC1Loss(nodes_subsample, model_reg, device, guidanceTerm = use_guidance) # guidance term
+            loss_C1, Jac = computeC1Loss_upd(nodes_subsample, model_reg, device, guidanceTerm = use_guidance) # guidance term
             if bl:
                 with torch.no_grad():
                     stdr = loss_grad_std_full(loss_reconstruction, model_reg)
@@ -289,26 +270,16 @@ def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_
                 inum_ = inum_ + 1
                 val_step += 1
                 loss_C1_val = torch.FloatTensor([0.]).to(device)
-                #batch_val = get_encoded_batch(batch_val,Q_exact)
-                #batch_val = get_SmartGridBatch(batch_val,smart_indsX, smart_indsY)
+
                 batch_val = batch_val.float()
                 batch_val = batch_val.to('cuda')
-                #print('training batch size: ', batch_val.shape)
 
-                #batch_x[torch.where(batch_x < 0)] = 0
-                #batch_x = batch_x / batch_x.max()
-
-
-                #batch_val = batch_val.to(device)
-                #print('val batch size: ', batch_val.shape)
                 reconstruction_val = model_reg(batch_val)
-                #reconstruction_val = reconstruction_val.view(batch_val.shape)
                 image_batches_testp = image_batches_test[inum_-1]
                 reconstructionH_val = (torch.matmul(X_p, reconstruction_val.squeeze(1).T).T).reshape(reconstruction_val.shape[0], 1, 96, 96)
 
                 if reco_loss == 'mse':
                     loss_reconstruction_val = F.mse_loss(reconstructionH_val, image_batches_testp)
-                    #print('reconstruction_val.shape',reconstruction_val.shape)
 
                     
                 tmp_loss_list.append(float(loss_reconstruction_val.item()))
@@ -316,9 +287,6 @@ def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_
                 if enable_wandb:
                     wandb.log({'rAE-loss_reco_val': float(loss_reconstruction_val.item())})
                     if (inum_ == 0):
-                        '''im = torch.matmul(X_p, reconstruction_val[0])
-                        im[torch.where(im<0)] = 0
-                        im = im.reshape(96,96)'''
                         plt.imshow(reconstructionH_val[0][0].detach().cpu().numpy())
                         plt.title('Reg Reconstruction, step %d' % (epoch))
                         plt.colorbar()
@@ -328,9 +296,6 @@ def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_
                 if enable_wandb:
                     wandb.log({'rAE-loss_reco_val2': float(loss_reconstruction_val.item())})
                     if (inum_ == 0):
-                        '''im_or = torch.matmul(X_p, batch_val[0])
-                        im_or[torch.where(im_or<0)] = 0
-                        im_or = im_or.reshape(96,96)'''
                         plt.imshow(image_batches_testp[0][0].detach().cpu().numpy())
                         plt.title('Origional Image, step %d' % (epoch))
                         plt.colorbar()
@@ -339,18 +304,12 @@ def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_
                     
                 if train_base_model:
                     reco_base = model(batch_val)#.view(batch_val.size())
-                    #reconstruction_val = reconstruction_val.view(batch_val.shape)
-                    #image_batches_test = image_batches_test[inum_-1]
                     reco_base = (torch.matmul(X_p, reco_base.squeeze(1).T).T).reshape(reco_base.shape[0], 1, 96, 96)
-                    #loss_base_val_ = F.mse_loss(reco_base, batch_val)
                     loss_base_val_ = F.mse_loss(reco_base, image_batches_testp)
                     tmp_base_list.append(float(loss_base_val_.item()))
                     if enable_wandb:
                         wandb.log({'bAE-loss_reco_val': float(loss_base_val_.item())}) 
                         if (inum_ == 0):
-                            '''im_b = torch.matmul(X_p, reco_base[0])
-                            im_b[torch.where(im_b<0)] = 0
-                            im_b = im_b.reshape(96,96)'''
                             plt.imshow(reco_base[0][0].detach().cpu().numpy())
                             plt.title('Base Reconstruction, step %d' % (epoch))
                             plt.colorbar()
@@ -368,8 +327,7 @@ def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_
             wandb.log({'epoch': epoch }) 
         
     if train_base_model:
-        path = '/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/output/MRT_full/test_run_saving/'
-        #path = './output/MRT_full/test_run_saving/'
+        path = './models_saved/'
         os.makedirs(path, exist_ok=True)
         name = '_'+reg_nodes_sampling+'_'+str(train_set_size)+'_'+str(alpha)+'_'+str(hidden_size)+'_'+str(deg_poly)+'_'+str(latent_dim)+'_'+str(lr)+'_'+str(no_layers)
         torch.save(loss_arr_reg, path+'/loss_arr_reg_RKMRI_TDA'+name)
@@ -380,8 +338,6 @@ def train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_
         torch.save(model.state_dict(), path+'/model_base_RKMRI_TDA'+name)
         torch.save(model_reg.state_dict(), path+'/model_reg_RKMRI_TDA'+name)
 
-        #torch.save(model, path+'/model_base_old_try'+name)
-        #torch.save(model_reg, path+'/model_reg_old_try'+name)
         return model, model_reg, loss_arr_reg, loss_arr_reco, loss_arr_base, loss_arr_val_reco, loss_arr_val_base
     else:
         return model_reg, loss_arr_reg, loss_arr_reco

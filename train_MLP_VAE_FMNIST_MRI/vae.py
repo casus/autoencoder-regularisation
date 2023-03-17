@@ -182,9 +182,9 @@ class VAE_try(nn.Module):
         return self.decoder(z), mu, logvar
 
 
-class VAE_mlp(nn.Module):
+class MLP_VAE_FMNIST(nn.Module):
     def __init__(self, image_size=32*32, h_dim=100, z_dim=4):
-        super(VAE_mlp, self).__init__()
+        super(MLP_VAE_FMNIST, self).__init__()
         self.encoder = nn.Sequential(
             nn.Linear(image_size, h_dim),  #input layer
             nn.ReLU(),

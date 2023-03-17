@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/home/ramana44/autoencoder-regularisation-')
+sys.path.append('./')
 
 from get_data import get_data
 import torch
@@ -53,7 +53,7 @@ def get_train_test_set(paths, device, batch_size=200, train_set_size=0.8, test_s
 
 
 ### run training and monitor on W&B
-from train_ae_n import train
+from train_hybrid_AEREG_MRI import train
 from activations import Sin
 
 import wandb
@@ -76,6 +76,7 @@ latent_dim = 10
 lr = 1e-4
 no_layers = 5
 train_set_size = 0.05
+HybridPolyDegree = 80
 
 #chethan 
 config_defaults = {
@@ -109,15 +110,10 @@ coeffs_saved_test = coeffs_saved_test.reshape(int(coeffs_saved_test.shape[0]/bat
 
 
 
-
-
-
-
-
 model, model_reg, loss_arr_reg, loss_arr_reco, loss_arr_base, loss_arr_val_reco, loss_arr_val_base = train(image_batches_trn, image_batches_test, coeffs_saved_trn, coeffs_saved_test, no_epochs=50, reco_loss="mse", latent_dim=latent_dim, 
           hidden_size=hidden_size, no_layers=no_layers, activation = Sin(), lr=lr, alpha = alpha, bl=False,
           seed = 2342, train_base_model=True, no_samples=20, deg_poly=deg_poly,
-          reg_nodes_sampling=reg_nodes_sampling, no_val_samples = 10, use_guidance = False, train_set_size=train_set_size,
+          reg_nodes_sampling=reg_nodes_sampling, no_val_samples = 10, HybridPolyDegree=80, use_guidance = False, train_set_size=train_set_size,
           enable_wandb=False, wandb_project='Test_mrt', wandb_entity='ae_reg_team')
 
 

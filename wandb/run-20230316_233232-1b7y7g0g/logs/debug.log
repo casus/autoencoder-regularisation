@@ -1,0 +1,113 @@
+2023-03-16 23:32:32,624 INFO    MainThread:24530 [wandb_setup.py:_flush():71] setting env: {'api_key': '***REDACTED***'}
+2023-03-16 23:32:32,625 INFO    MainThread:24530 [wandb_setup.py:_flush():71] setting login settings: {}
+2023-03-16 23:32:32,625 INFO    MainThread:24530 [wandb_setup.py:_flush():71] setting login settings: {}
+2023-03-16 23:32:32,625 INFO    MainThread:24530 [wandb_init.py:_log_setup():371] Logging user logs to /home/ramana44/autoencoder-regularisation-/wandb/run-20230316_233232-1b7y7g0g/logs/debug.log
+2023-03-16 23:32:32,625 INFO    MainThread:24530 [wandb_init.py:_log_setup():372] Logging internal logs to /home/ramana44/autoencoder-regularisation-/wandb/run-20230316_233232-1b7y7g0g/logs/debug-internal.log
+2023-03-16 23:32:32,625 INFO    MainThread:24530 [wandb_init.py:init():404] calling init triggers
+2023-03-16 23:32:32,625 INFO    MainThread:24530 [wandb_init.py:init():409] wandb.init called with sweep_config: {}
+config: {'reg_nodes_sampling': 'legendre', 'alpha': 0.1, 'hidden_size': 1000, 'deg_poly': 21, 'latent_dim': 10, 'lr': 0.0001, 'no_layers': 5, 'train_set_size': 0.05}
+2023-03-16 23:32:32,625 INFO    MainThread:24530 [wandb_init.py:init():455] wandb.init() called when a run is still active
+2023-03-16 23:33:53,430 INFO    MainThread:24530 [wandb_run.py:_atexit_cleanup():1780] got exitcode: 255
+2023-03-16 23:33:53,436 INFO    MainThread:24530 [wandb_run.py:_restore():1752] restore
+2023-03-16 23:33:55,903 INFO    MainThread:24530 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 928
+  total_bytes: 928
+}
+
+2023-03-16 23:33:56,196 INFO    MainThread:24530 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 928
+  total_bytes: 928
+}
+
+2023-03-16 23:33:56,643 INFO    MainThread:24530 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 928
+  total_bytes: 17707
+}
+
+2023-03-16 23:33:56,744 INFO    MainThread:24530 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 928
+  total_bytes: 17707
+}
+
+2023-03-16 23:33:56,845 INFO    MainThread:24530 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 928
+  total_bytes: 17707
+}
+
+2023-03-16 23:33:56,946 INFO    MainThread:24530 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 17707
+  total_bytes: 17707
+}
+
+2023-03-16 23:33:57,048 INFO    MainThread:24530 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 17707
+  total_bytes: 17707
+}
+
+2023-03-16 23:33:57,149 INFO    MainThread:24530 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 17707
+  total_bytes: 17707
+}
+
+2023-03-16 23:33:57,251 INFO    MainThread:24530 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 17707
+  total_bytes: 17707
+}
+
+2023-03-16 23:33:57,352 INFO    MainThread:24530 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 17707
+  total_bytes: 17707
+}
+
+2023-03-16 23:33:57,937 INFO    MainThread:24530 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 17707
+  total_bytes: 17707
+}
+
+2023-03-16 23:33:58,402 INFO    MainThread:24530 [wandb_run.py:_wait_for_finish():1912] got exit ret: done: true
+exit_result {
+}
+file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 17707
+  total_bytes: 17707
+}
+local_info {
+}
+
+2023-03-16 23:33:59,525 INFO    MainThread:24530 [wandb_run.py:_append_files():2180] logging synced files
