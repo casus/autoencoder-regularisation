@@ -23,3 +23,8 @@ This repo contains code and supplemenatry material of the corresponding article,
 This step prior to training of the proposed Hybrid AE-REG involves fitting involves extraction of the coefficients for the fitted orthogonal polynomial series
 
 Before the running any files in the repository change the directory to root using `cd ./autoencoder-regularisation-`
+
+* Run `python ./coefficients_computation_for_fitted_polynomials/FashionMNIST/parallel_0_to_10_dq25.py` to perform polynomial regression over Fashion MNIST dataset. Set `no_images` and `deg_quad` as required of keep the default values.
+* Run `python ./coefficients_computation_for_fitted_polynomials/FashionMNIST/LSTSQparallel_fmnsit_train_dq20.py` to extract coefficients in parallel using multiple cores.
+
+* Similarly run `python ./coefficients_computation_for_fitted_polynomials/MRI_scans/parallel_0_to_10.py` and other files in  `./coefficients_computation_for_fitted_polynomials/MRI_scans/` to extract fitted polynomial coefficients. 

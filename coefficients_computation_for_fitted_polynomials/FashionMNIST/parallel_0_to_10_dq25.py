@@ -39,15 +39,18 @@ device = torch.device('cpu')
 
 torch.set_default_dtype(torch.float64)
 
+no_images = 10000
+deg_quad = 16
+
 trainDataset = torch.load('/home/ramana44/withR_matrix_Fmnist_RK_method/coeffs_saved/trainImages.pt')
 #testDataset = torch.load('/home/ramana44/withR_matrix_Fmnist_RK_method/coeffs_saved/testImages.pt')
 
 print("trainDataset.shape", trainDataset.shape)
 
-trainDataset = trainDataset[:640]
+trainDataset = trainDataset[:no_images]
 
 
-deg_quad = 16
+
 u_ob = jmp_solver1.surrogates.Polynomial(n=deg_quad,p=np.inf, dim=2)
 x = np.linspace(-1,1,32)
 X_p = u_ob.data_axes([x,x]).T
@@ -92,6 +95,7 @@ with concurrent.futures.ProcessPoolExecutor() as executor:
     results = executor.map(get_all_thetas, trainDataset)
     for result in results:
         all_coeffs = torch.cat((all_coeffs, result))
+        print("anything")
     all_coeffs = all_coeffs.reshape(int(all_coeffs.shape[0]/ (deg_quad+1)**2),int((deg_quad+1)**2))
     torch.save(all_coeffs, './coefficients_computation_for_fitted_polynomials/FashionMNIST/saved_coefficients/RKcoeff_0_to_10_dq16.pt')
 
