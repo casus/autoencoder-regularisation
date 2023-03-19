@@ -5,7 +5,7 @@ This repo contains code and supplemenatry material of the corresponding article,
 
 ## datasets considered
 * Fashion MNIST
-* MRI brain scans : [Open Access Series of Imaging Studies (OASIS) ] [https://oasis-brains.org/#data]
+* MRI brain scans : [Open Access Series of Imaging Studies (OASIS)][https://oasis-brains.org/#data]
 * synthetic datasets of points on highdimensional circle and torus 
 
 ## The repository consists of the following autoencoder models: 
