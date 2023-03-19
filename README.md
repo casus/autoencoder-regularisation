@@ -3,6 +3,8 @@ Legendre-Latent-Space Regularisation ensures Toplogical Data-Structure Preservat
 
 This repo contains code and supplemenatry material of the corresponding article, available here: TBA
 
+![CHEESE!](./all_results/tori1024_experiments/results_6/Reg on legendre nodes.png)
+
 ## datasets considered
 * Fashion MNIST
 * MRI brain scans : [Open Access Series of Imaging Studies (OASIS)](https://oasis-brains.org/#data)
@@ -17,6 +19,11 @@ This repo contains code and supplemenatry material of the corresponding article,
 * Contra AE : Contractive Autoencoder  
 * MLP-VAE : Multilayer perceptron based variational autoencoder
 * CNN-VAE : Convolutional neural network based variational autoencoder
+
+## Topology retention experiments using synthetic datasets of points on highdimensional circle and torus 
+* 15 dimensional circle : `python ./cycle_tori_experiments/circle_exp.py`
+* 15 dimensional torus : `python ./cycle_tori_experiments/tori_exp.py`
+* 1024 dimensional torus : `python ./cycle_tori_experiments/tori_dim_1024_exp.py`
 
 ## Preprocessing of MRI brain scans dataset 
 
