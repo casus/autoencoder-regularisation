@@ -22,4 +22,4 @@ This repo contains code and supplemenatry material of the corresponding article,
 
 This step prior to training of the proposed Hybrid AE-REG involves fitting involves extraction of the coefficients for the fitted orthogonal polynomial series
 
-Before the running any files in the repository change the directory to root using cd ./autoencoder-regularisation-
+Before the running any files in the repository change the directory to root using `cd ./autoencoder-regularisation-`
