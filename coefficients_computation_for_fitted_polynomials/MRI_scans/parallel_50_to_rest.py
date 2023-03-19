@@ -11,14 +11,12 @@ from pkg_resources import find_distributions
 import numpy as np
 import torch
 import sys
-sys.path.insert(1, '/home/suarez08/PhD_PINNs/PIPS_framework')
 from jmp_solver1.sobolev import Sobolev
 from jmp_solver1.sobolev import Sobolev
 from jmp_solver1.solver import Solver
 from jmp_solver1.utils import matmul
 import jmp_solver1.surrogates
 import time
-sys.path.insert(1, '/home/suarez08/minterpy/src')
 import minterpy as mp
 from jmp_solver1.diffeomorphisms import hyper_rect
 import matplotlib
