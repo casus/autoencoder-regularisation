@@ -35,7 +35,7 @@ The image shows different autoencoder embeddings of high dimensional tori to the
 From [Open Access Series of Imaging Studies (OASIS)](https://oasis-brains.org/#data) dataset images in the format .dwi (Diffusion-weighted imaging) were considered with a chosen single channel from each image. These three-dimensional images were sliced into two-dimensional cross-sections to generate the MRI brain scan image dataset used in the experiments performed. 
 
 
-## Orthogonal polynomial regression step for Hybrid AE-REG before training
+### Orthogonal polynomial regression step for Hybrid AE-REG before training
 
 This step before training of the proposed Hybrid AE-REG involves fitting involves extraction of the coefficients for the fitted orthogonal polynomial series
 
