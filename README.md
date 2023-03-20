@@ -1,9 +1,9 @@
-# autoencoder-regularisation-
+# Autoencoder regularisation 
 Legendre-Latent-Space Regularisation ensures Toplogical Data-Structure Preservation under Autoencoder Compression
 
 This repo contains code and supplementary material of the corresponding article, available here: TBA
 
-## datasets considered
+## Datasets
 * Fashion MNIST
 * MRI brain scans : [Open Access Series of Imaging Studies (OASIS)](https://oasis-brains.org/#data)
 * synthetic datasets of points on high-dimensional circle and torus 
