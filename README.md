@@ -25,6 +25,9 @@ The image shows different autoencoder embeddings of high dimensional tori to the
 * CNN-VAE : Convolutional neural network based variational autoencoder
 
 ## Topology retention experiments using synthetic datasets of points on highdimensional circle and torus 
+
+Before the running any files in the repository change the directory to root using `cd ./autoencoder-regularisation-`
+
 * 15 dimensional circle : `python ./cycle_tori_experiments/circle_exp.py`
 * 15 dimensional torus : `python ./cycle_tori_experiments/tori_exp.py`
 * 1024 dimensional torus : `python ./cycle_tori_experiments/tori_dim_1024_exp.py`
@@ -38,7 +41,6 @@ From [Open Access Series of Imaging Studies (OASIS)](https://oasis-brains.org/#d
 
 This step prior to training of the proposed Hybrid AE-REG involves fitting involves extraction of the coefficients for the fitted orthogonal polynomial series
 
-Before the running any files in the repository change the directory to root using `cd ./autoencoder-regularisation-`
 
 * Run `python ./coefficients_computation_for_fitted_polynomials/FashionMNIST/parallel_0_to_10_dq25.py` to perform polynomial regression over Fashion MNIST dataset. Set `no_images` and `deg_quad` as required of keep the default values.
 * Run `python ./coefficients_computation_for_fitted_polynomials/FashionMNIST/LSTSQparallel_fmnsit_train_dq20.py` to extract coefficients in parallel using multiple cores.
