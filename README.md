@@ -22,13 +22,15 @@ This repo contains code and supplementary material of the corresponding article,
 
 Before running any files in the repository, change the directory to `./autoencoder-regularisation-` using `cd ./autoencoder-regularisation-`
 
+Then train the autoencoders with the following data using the corresponding commands:
+
 * 15-dimensional circle: `python ./cycle_tori_experiments/circle_exp.py`
 * 15-dimensional torus: `python ./cycle_tori_experiments/tori_exp.py`
 * 1024-dimensional torus: `python ./cycle_tori_experiments/tori_dim_1024_exp.py`
 
 ![plot](./display/consolidated.png)
 
-The image shows different autoencoder embeddings of high dimensional tori to their intrisic three dimensional space
+The image shows different autoencoder embeddings of high-dimensional tori to their intrinsic three-dimensional space
 
 ## Preprocessing of MRI brain scans dataset 
 
