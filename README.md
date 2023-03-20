@@ -3,7 +3,7 @@ Legendre-Latent-Space Regularisation ensures Toplogical Data-Structure Preservat
 
 This repo contains code and supplemenatry material of the corresponding article, available here: TBA
 
-![CHEESE!](./all_results/tori1024_experiments/results_6/Reg on legendre nodes.png)
+![CHEESE!](/home/ramana44/autoencoder-regularisation-/all_results/tori1024_experiments/results_6/Reg on legendre nodes.png)
 
 ## datasets considered
 * Fashion MNIST
