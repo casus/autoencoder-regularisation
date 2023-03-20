@@ -5,7 +5,7 @@ This repo contains code and supplemenatry material of the corresponding article,
 
 ![CHEESE!](/home/ramana44/autoencoder-regularisation-/all_results/tori1024_experiments/results_6/Reg on legendre nodes.png)
 
-![alt text](https://github.com/[ChethanKodase]/[autoencoder-regularisation-]/blob/[main]/autoencoder-regularisation-/all_results/tori1024_experiments/results_6/Reg on legendre nodes.png.jpg?raw=true)
+![alt text](https://github.com/[ChethanKodase]/[autoencoder-regularisation-]/blob/[main]/./all_results/tori1024_experiments/results_6/Reg on legendre nodes.png.jpg?raw=true)
 
 
 ## datasets considered
