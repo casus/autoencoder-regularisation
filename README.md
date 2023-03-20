@@ -5,7 +5,7 @@ This repo contains code and supplemenatry material of the corresponding article,
 
 
 ![plot](./all_results/tori1024_experiments/results_6/torusIn3DSpace.png)
-![plot](./all_results/tori1024_experiments/results_6/Reg on legendre nodes.png)
+![plot](./all_results/tori1024_experiments/results_6/Reg_on_legendre_nodes.png)
 
 
 ## datasets considered
