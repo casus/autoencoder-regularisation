@@ -20,7 +20,7 @@ This repo contains code and supplementary material of the corresponding article,
 
 ## Topology retention experiments using synthetic datasets of points on high-dimensional circles and tori 
 
-Before running any files in the repository, change the directory to root using `cd ./autoencoder-regularisation-`
+Before running any files in the repository, change the directory to `./autoencoder-regularisation-` using `cd ./autoencoder-regularisation-`
 
 * 15-dimensional circle: `python ./cycle_tori_experiments/circle_exp.py`
 * 15-dimensional torus: `python ./cycle_tori_experiments/tori_exp.py`
