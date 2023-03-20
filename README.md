@@ -6,7 +6,7 @@ This repo contains code and supplemenatry material of the corresponding article,
 
 ![plot](./display/consolidated.png)
 
-The image shows autoencoder embeddings of high dimensional tori to their intrisic three dimensional space
+The image shows different autoencoder embeddings of high dimensional tori to their intrisic three dimensional space
 
 
 ## datasets considered
