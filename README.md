@@ -4,8 +4,8 @@ Legendre-Latent-Space Regularisation ensures Toplogical Data-Structure Preservat
 This repo contains code and supplemenatry material of the corresponding article, available here: TBA
 
 
-![plot](./all_results/tori1024_experiments/results_6/torusIn3DSpace.png)
-![plot](./all_results/tori1024_experiments/results_6/Reg_on_legendre_nodes.png)
+![plot](./all_results/tori1024_experiments/results_6/torusIn3DSpace.png, ./all_results/tori1024_experiments/results_6/Reg_on_legendre_nodes.png)
+
 
 
 ## datasets considered
