@@ -3,12 +3,6 @@ Legendre-Latent-Space Regularisation ensures Toplogical Data-Structure Preservat
 
 This repo contains code and supplemenatry material of the corresponding article, available here: TBA
 
-
-![plot](./display/consolidated.png)
-
-The image shows different autoencoder embeddings of high dimensional tori to their intrisic three dimensional space
-
-
 ## datasets considered
 * Fashion MNIST
 * MRI brain scans : [Open Access Series of Imaging Studies (OASIS)](https://oasis-brains.org/#data)
@@ -31,6 +25,10 @@ Before the running any files in the repository change the directory to root usin
 * 15 dimensional circle : `python ./cycle_tori_experiments/circle_exp.py`
 * 15 dimensional torus : `python ./cycle_tori_experiments/tori_exp.py`
 * 1024 dimensional torus : `python ./cycle_tori_experiments/tori_dim_1024_exp.py`
+
+![plot](./display/consolidated.png)
+
+The image shows different autoencoder embeddings of high dimensional tori to their intrisic three dimensional space
 
 ## Preprocessing of MRI brain scans dataset 
 
