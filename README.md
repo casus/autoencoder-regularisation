@@ -73,4 +73,6 @@ To pre-save the MRI dataset to later enumerate through it while training, run `p
 
 ## Reconstruction quality box plots
 
-To replicate the box plots for reconstruction qualities of different autoencoders against perturbations for Fashion MNIST dataset, run `./reconstruction_quality_all_AE_box_plots/FashionMNIST_box_plotting.py` and for MRI brains scans run `./reconstruction_quality_all_AE_box_plots/MRI_box_plotting.py`. THe coefficients of hybrid autoencoders are required to be precomputed and loaded to get the box plots by running the above codes. 
+To replicate the box plots for reconstruction qualities of different autoencoders against perturbations for Fashion MNIST dataset, run `python ./reconstruction_quality_all_AE_box_plots/FashionMNIST_box_plotting.py` and for MRI brains scans run `python ./reconstruction_quality_all_AE_box_plots/MRI_box_plotting.py`. THe coefficients of hybrid autoencoders are required to be precomputed and loaded to get the box plots by running the above codes. 
+
+The plots would be found in `./all_results/FinalResultsPSNR_SSIM_FashionMNIST/` and `./all_results/MRI_box_plots/`after running the files. 
