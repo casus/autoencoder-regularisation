@@ -69,3 +69,8 @@ To pre-save the MRI dataset to later enumerate through it while training, run `p
 * Contra AE : `python ./train_ContraAE_FMNIST_MRI/contraAE_MRI.py` 
 * MLP-VAE : `python ./train_MLP_VAE_FMNIST_MRI/vae_mlp_MRI.py`
 * CNN-VAE : `python ./train_CNN_VAE_FMNIST_MRI/vae_cnn_MRI.py`
+
+
+## Reconstruction quality box plots
+
+To replicate the box plots for reconstruction qualities of different autoencoders against perturbations for Fashion MNIST dataset, run `./reconstruction_quality_all_AE_box_plots/FashionMNIST_box_plotting.py` and for MRI brains scans run `./reconstruction_quality_all_AE_box_plots/MRI_box_plotting.py`. THe coefficients of hybrid autoencoders are required to be precomputed and loaded to get the box plots by running the above codes. 
