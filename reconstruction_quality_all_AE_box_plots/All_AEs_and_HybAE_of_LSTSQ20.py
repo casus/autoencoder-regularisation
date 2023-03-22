@@ -1,8 +1,11 @@
 import sys
-sys.path.append('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders')
+#sys.path.append('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders')
 
 
-from get_data import get_data, get_data_train, get_data_val
+sys.path.append('./')
+
+
+#from get_data import get_data, get_data_train, get_data_val
 import torch
 import os
 import numpy as np
@@ -23,7 +26,7 @@ import jmp_solver1.surrogates
 import matplotlib
 matplotlib.rcdefaults() 
 
-
+path_in_repo = './models_saved/'
 
 deg_quad = 20
 u_ob = jmp_solver1.surrogates.Polynomial(n=deg_quad,p=np.inf, dim=2)
@@ -104,12 +107,14 @@ testCoeffs = testCoeffs[:Analys_size]
 
 # load trained rAE and bAE
 
-from models_un import AE_un
+#from models_un import AE_un
 from models import AE
 from activations import Sin
 
-path_hyb = '/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_space/output/MRT_full/test_run_saving/'
-path_unhyb = '/home/ramana44/FashionMNIST5LayersTrials/output/MRT_full/test_run_saving/'
+#path_hyb = '/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_space/output/MRT_full/test_run_saving/'
+#path_unhyb = '/home/ramana44/FashionMNIST5LayersTrials/output/MRT_full/test_run_saving/'
+path_hyb = path_in_repo
+path_unhyb = path_in_repo
 
 #specify hyperparameters
 reg_nodes_sampling = 'legendre'
@@ -134,17 +139,26 @@ inp_dim_unhyb = [1,32,32]
 RK_model_reg = AE(inp_dim_hyb, hidden_size, latent_dim, no_layers, Sin()).to(device)
 RK_model_base = AE(inp_dim_hyb, hidden_size, latent_dim, no_layers, Sin()).to(device)
 
-model_reg = AE_un(inp_dim_unhyb, hidden_size, latent_dim, no_layers, Sin()).to(device)
-model_base = AE_un(inp_dim_unhyb, hidden_size, latent_dim, no_layers, Sin()).to(device)
+model_reg = AE(inp_dim_unhyb, hidden_size, latent_dim, no_layers, Sin()).to(device)
+model_base = AE(inp_dim_unhyb, hidden_size, latent_dim, no_layers, Sin()).to(device)
 
 #model_reg.load_state_dict(torch.load(path+'model_reg'+name, map_location=torch.device('cpu'))["model"])
 #model_base.load_state_dict(torch.load(path+'model_reg'+name, map_location=torch.device('cpu'))["model"])
 
+
+
 RK_model_reg.load_state_dict(torch.load(path_hyb+'model_regLSTQS'+str(deg_quad)+''+name_hyb, map_location=torch.device('cpu')))
 RK_model_base.load_state_dict(torch.load(path_hyb+'model_baseLSTQS'+str(deg_quad)+''+name_hyb, map_location=torch.device('cpu')))
 
+#torch.save(RK_model_reg.state_dict(), path_in_repo+'model_regLSTQS'+str(deg_quad)+''+name_hyb)
+#torch.save(RK_model_base.state_dict(), path_in_repo+'model_baseLSTQS'+str(deg_quad)+''+name_hyb)
+
 model_reg.load_state_dict(torch.load(path_unhyb+'model_reg_TDA'+name_unhyb, map_location=torch.device('cpu')))
 model_base.load_state_dict(torch.load(path_unhyb+'model_base_TDA'+name_unhyb, map_location=torch.device('cpu')))
+
+#torch.save(model_reg.state_dict(), path_in_repo+'/model_reg_TDA'+name_unhyb)
+#torch.save(model_base.state_dict(), path_in_repo+'/model_base_TDA'+name_unhyb)
+
 #model_reg.eval()
 #model_base.eval()
 
@@ -159,6 +173,7 @@ lr_cae =1e-3
 name_unhyb_cae = '_'+str(frac)+'_'+str(latent_dim_cae)+'_'+str(lr_cae)+'_'+str(no_layers_cae)
 model_convAE = ConvoAE(latent_dim_cae).to(device)
 model_convAE.load_state_dict(torch.load(path_unhyb+'model_base_cae_TDA'+name_unhyb_cae, map_location=torch.device(device)), strict=False)
+#torch.save(model_convAE.state_dict(), path_in_repo+'/model_base_cae_TDA'+name_unhyb_cae)
 
 
 #rec = model_convAE(trainImages).view(trainImages.shape).detach().numpy() 
@@ -180,6 +195,11 @@ model_cnnVAE_ = VAE_try(image_channels=1, h_dim=8*2*2, z_dim=latent_dim).to(devi
 #model_betaVAE = BetaVAE(batch_size = 1, img_depth = 1, net_depth = no_layers, z_dim = latent_dim, img_dim = 32).to(device)
 model_mlpVAE_.load_state_dict(torch.load(path_unhyb+'model_base_mlp_vae_TDA'+name_unhyb, map_location=torch.device(device)), strict=False)
 model_cnnVAE_.load_state_dict(torch.load(path_unhyb+'model_base_cnn_vae_TDA'+name_unhyb, map_location=torch.device(device)), strict=False)
+#torch.save(model_cnnVAE_.state_dict(), path_in_repo+'/model_base_cnn_vae_TDA'+name_unhyb)
+#torch.save(model_mlpVAE_.state_dict(), path_in_repo+'/model_base_mlp_vae_TDA'+name_unhyb)
+
+
+
 
 def model_mlpVAE(input):
     #print('model_betaVAE(input).shape', model_betaVAE(input).shape)
@@ -206,6 +226,8 @@ lr_contraae =1e-3
 name_unhyb_contraae = '_'+str(frac)+'_'+str(latent_dim_contraae)+'_'+str(lr_contraae)+'_'+str(no_layers_contraae)
 model_contra_ = Autoencoder_linear(latent_dim).to(device)
 model_contra_.load_state_dict(torch.load(path_unhyb+'model_base_contraAE_TDA'+name_unhyb_contraae, map_location=torch.device(device)), strict=False)
+#torch.save(model_contra_.state_dict(), path_in_repo+'/model_base_contraAE_TDA'+name_unhyb_contraae)
+
 
 def model_contra(input):
     input = input.reshape(-1, 32*32)
@@ -794,7 +816,7 @@ ax1.set_ylabel('SSIM', fontsize=10)
 ax1.set_ylim([0,1])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/SSIM_directReconOfTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/SSIM_directReconOfTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 
@@ -815,7 +837,7 @@ ax1.set_ylabel('PSNR(dB)', fontsize=10)
 ax1.set_ylim([0,28])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/PSNR_directReconOfTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/PSNR_directReconOfTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 
@@ -833,7 +855,7 @@ ax1.set_ylabel('PSNR(dB)', fontsize=10)
 ax1.set_ylim([0,25])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/PSNR_ReconOf70percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/PSNR_ReconOf70percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(psnrlists_perturb4_base))
@@ -859,7 +881,7 @@ ax1.set_ylabel('PSNR(dB)', fontsize=10)
 ax1.set_ylim([0,25])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/PSNR_ReconOf50percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/PSNR_ReconOf50percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(psnrlists_perturb3_base))
@@ -884,7 +906,7 @@ ax1.set_ylabel('PSNR(dB)', fontsize=10)
 ax1.set_ylim([0,25])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/PSNR_ReconOf20percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/PSNR_ReconOf20percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(psnrlists_perturb2_base))
@@ -910,7 +932,7 @@ ax1.set_ylabel('PSNR(dB)', fontsize=10)
 ax1.set_ylim([0,25])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/PSNR_ReconOf10percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/PSNR_ReconOf10percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(psnrlists_perturb1_base))
@@ -935,7 +957,7 @@ ax1.set_ylabel('SSIM', fontsize=10)
 ax1.set_ylim([0,1])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/SSIM_ReconOf70percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/SSIM_ReconOf70percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(ssimlists_perturb4_base))
@@ -961,7 +983,7 @@ ax1.set_ylabel('SSIM', fontsize=10)
 ax1.set_ylim([0,1])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/SSIM_ReconOf50percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/SSIM_ReconOf50percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(ssimlists_perturb3_base))
@@ -985,7 +1007,7 @@ ax1.set_ylabel('SSIM', fontsize=10)
 ax1.set_ylim([0,1])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/SSIM_ReconOf20percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/SSIM_ReconOf20percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(ssimlists_perturb2_base))
@@ -1010,7 +1032,7 @@ ax1.set_ylabel('SSIM', fontsize=10)
 ax1.set_ylim([0,1])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/SSIM_ReconOf10percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/FinalResultsPSNR_SSIM_FashionMNIST/SSIM_ReconOf10percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 

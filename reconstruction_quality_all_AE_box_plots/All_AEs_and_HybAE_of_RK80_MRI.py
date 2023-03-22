@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders')
+sys.path.append('./')
 
 
 from get_data import get_data, get_data_train, get_data_val
@@ -29,9 +29,10 @@ import scipy
 import scipy.integrate
 from vae_models_for_fmnist import VAE_try_MRI, VAE_mlp_MRI
 
+path_in_repo = './models_saved/'
 
 Hybrid_poly_deg = 80
-latent_dim = 10
+latent_dim = 40
 
 deg_quad = Hybrid_poly_deg
 
@@ -176,20 +177,36 @@ RK_model_reg = AE(inp_dim_hyb, hidden_size, latent_dim, no_layers, Sin()).to(dev
 RK_model_base = AE(inp_dim_hyb, hidden_size, latent_dim, no_layers, Sin()).to(device)
 
 if(frac == 0.8):
-    name_hyb = '_'+reg_nodes_sampling+'_'+str(frac)+'_'+str(alpha_full)+'_'+str(hidden_size)+'_'+str(deg_poly_full)+'_'+str(latent_dim)+'_'+str(lr)+'_'+str(no_layers)
-    name_unhyb = '_'+reg_nodes_sampling+'_'+str(frac)+'_'+str(alpha_full)+'_'+str(hidden_size)+'_'+str(deg_poly_full)+'_'+str(latent_dim)+'_'+str(lr)+'_'+str(no_layers)#+'_'+str(no_epochs)
+    name_hyb_ = '_'+reg_nodes_sampling+'_'+str(frac)+'_'+str(alpha_full)+'_'+str(hidden_size)+'_'+str(deg_poly_full)+'_'+str(latent_dim)+'_'+str(lr)+'_'+str(no_layers)
+    name_unhyb_ = '_'+reg_nodes_sampling+'_'+str(frac)+'_'+str(alpha_full)+'_'+str(hidden_size)+'_'+str(deg_poly_full)+'_'+str(latent_dim)+'_'+str(lr)+'_'+str(no_layers)#+'_'+str(no_epochs)
 
-    RK_model_reg.load_state_dict(torch.load(path_hyb+'model_reg'+name_hyb, map_location=torch.device('cpu')))
-    RK_model_base.load_state_dict(torch.load(path_hyb+'model_base'+name_hyb, map_location=torch.device('cpu')))
+    RK_model_reg.load_state_dict(torch.load(path_hyb+'model_reg'+name_hyb_, map_location=torch.device('cpu')))
+    RK_model_base.load_state_dict(torch.load(path_hyb+'model_base'+name_hyb_, map_location=torch.device('cpu')))
 
-    model_reg.load_state_dict(torch.load(path_unhyb+'model_reg'+name_unhyb, map_location=torch.device('cpu')))
-    model_base.load_state_dict(torch.load(path_unhyb+'model_base'+name_unhyb, map_location=torch.device('cpu')))
+    torch.save(RK_model_reg.state_dict(), path_in_repo+'/model_reg_RKMRI_TDA'+name_hyb)
+    torch.save(RK_model_base.state_dict(), path_in_repo+'/model_base_RKMRI_TDA'+name_hyb) 
+
+    model_reg.load_state_dict(torch.load(path_unhyb+'model_reg'+name_unhyb_, map_location=torch.device('cpu')))
+    model_base.load_state_dict(torch.load(path_unhyb+'model_base'+name_unhyb_, map_location=torch.device('cpu')))
+
+    torch.save(model_reg.state_dict(), path_in_repo+'/model_reg_MRI_TDA'+name_unhyb) 
+    torch.save(model_reg.state_dict(), path_in_repo+'/model_base_MRI_TDA'+name_unhyb) 
+
+
 else:
     RK_model_reg.load_state_dict(torch.load(path_hyb+'model_reg_RKMRI_TDA'+name_hyb, map_location=torch.device('cuda')))
     RK_model_base.load_state_dict(torch.load(path_hyb+'model_base_RKMRI_TDA'+name_hyb, map_location=torch.device('cuda')))
 
+    torch.save(RK_model_reg.state_dict(), path_in_repo+'/model_reg_RKMRI_TDA'+name_hyb) 
+    torch.save(RK_model_base.state_dict(), path_in_repo+'/model_base_RKMRI_TDA'+name_hyb) 
+
     model_reg.load_state_dict(torch.load(path_unhyb_new+'model_reg_MRI_TDA'+name_unhyb, map_location=torch.device('cuda')))
     model_base.load_state_dict(torch.load(path_unhyb_new+'model_base_MRI_TDA'+name_unhyb, map_location=torch.device('cuda')))
+
+    torch.save(model_reg.state_dict(), path_in_repo+'/model_reg_MRI_TDA'+name_unhyb) 
+    torch.save(model_base.state_dict(), path_in_repo+'/model_base_MRI_TDA'+name_unhyb) 
+
+
     #/home/ramana44/FashionMNIST5LayersTrials/output/MRT_full/test_run_saving/model_reg_MRI_TDA_legendre__0.4_0.5_1000_21_70_0.0001_5_10
     #model_reg.eval()
     #model_base.eval()
@@ -214,6 +231,8 @@ path_cae_mri = '/home/ramana44/FashionMNIST5LayersTrials/output/MRT_full/test_ru
 name_unhyb_cae = '_'+str(frac_cae)+'_'+str(latent_dim_cae)+'_'+str(lr_cae)+'_'+str(no_layers_cae)
 model_convAE = ConvoAE_MRI(latent_dim_cae).to(device)
 model_convAE.load_state_dict(torch.load(path_cae_mri+'model_base_cae_MRI'+name_unhyb_cae, map_location=torch.device(device)), strict=False)
+
+torch.save(model_convAE.state_dict(), path_in_repo+'/model_base_cae_MRI'+name_unhyb_cae) 
 
 
 print("loaded ?")
@@ -245,6 +264,11 @@ model_cnnVAE_ = VAE_try_MRI(image_channels=1, h_dim=16*9*9, z_dim=latent_dim).to
 model_mlpVAE_.load_state_dict(torch.load(path_unhyb_bvae+'model_base_mlp_vae_MRI'+name_bvae, map_location=torch.device(device)), strict=False)
 model_cnnVAE_.load_state_dict(torch.load(path_unhyb_bvae+'model_base_cnn_vae_MRI'+name_bvae, map_location=torch.device(device)), strict=False)
 
+torch.save(model_mlpVAE_.state_dict(), path_in_repo+'/model_base_mlp_vae_MRI'+name_bvae) 
+torch.save(model_cnnVAE_.state_dict(), path_in_repo+'/model_base_cnn_vae_MRI'+name_bvae) 
+
+
+
 print("loaded bvae?")
 
 #loading contractive autoencoder
@@ -256,6 +280,8 @@ path_unhyb_contraae = '/home/ramana44/FashionMNIST5LayersTrials/output/MRT_full/
 name_unhyb_contraae = '_'+str(frac_contraae)+'_'+str(latent_dim_contraae)+'_'+str(lr_contraae)+'_'+str(no_layers_contraae)
 model_contra_ = Autoencoder_linear_MRI(latent_dim_contraae).to(device)
 model_contra_.load_state_dict(torch.load(path_unhyb_contraae+'model_base_contraAE_MRI'+name_unhyb_contraae, map_location=torch.device(device)), strict=False)
+
+torch.save(model_contra_.state_dict(), path_in_repo+'/model_base_contraAE_MRI'+name_unhyb_contraae) 
 
 #############################################################################################################################################################################
 
@@ -993,7 +1019,7 @@ ax1.set_ylabel('Wasserstein Error', fontsize=10)
 ax1.set_ylim([0,1])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/MRI_box_plots/Wasserstein Error_directReconOfTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/MRI_box_plots/Wasserstein Error_directReconOfTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 
@@ -1012,7 +1038,7 @@ ax1.set_ylabel('SSIM', fontsize=10)
 ax1.set_ylim([0,1])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/MRI_box_plots/SSIM_directReconOfTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/MRI_box_plots/SSIM_directReconOfTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 
@@ -1033,7 +1059,7 @@ ax1.set_ylabel('PSNR(dB)', fontsize=10)
 ax1.set_ylim([0,28])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/MRI_box_plots/PSNR_directReconOfTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/MRI_box_plots/PSNR_directReconOfTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 
@@ -1051,7 +1077,7 @@ ax1.set_ylabel('PSNR(dB)', fontsize=10)
 ax1.set_ylim([0,25])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/MRI_box_plots/PSNR_ReconOf70percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/MRI_box_plots/PSNR_ReconOf70percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(psnrlists_perturb4_base))
@@ -1077,7 +1103,7 @@ ax1.set_ylabel('PSNR(dB)', fontsize=10)
 ax1.set_ylim([0,25])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/MRI_box_plots/PSNR_ReconOf50percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/MRI_box_plots/PSNR_ReconOf50percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(psnrlists_perturb3_base))
@@ -1102,7 +1128,7 @@ ax1.set_ylabel('PSNR(dB)', fontsize=10)
 ax1.set_ylim([0,25])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/MRI_box_plots/PSNR_ReconOf20percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/MRI_box_plots/PSNR_ReconOf20percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(psnrlists_perturb2_base))
@@ -1128,7 +1154,7 @@ ax1.set_ylabel('PSNR(dB)', fontsize=10)
 ax1.set_ylim([0,25])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/MRI_box_plots/PSNR_ReconOf10percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/MRI_box_plots/PSNR_ReconOf10percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(psnrlists_perturb1_base))
@@ -1153,7 +1179,7 @@ ax1.set_ylabel('SSIM', fontsize=10)
 ax1.set_ylim([0,1])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/MRI_box_plots/SSIM_ReconOf70percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/MRI_box_plots/SSIM_ReconOf70percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(ssimlists_perturb4_base))
@@ -1179,7 +1205,7 @@ ax1.set_ylabel('SSIM', fontsize=10)
 ax1.set_ylim([0,1])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/MRI_box_plots/SSIM_ReconOf50percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/MRI_box_plots/SSIM_ReconOf50percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(ssimlists_perturb3_base))
@@ -1203,7 +1229,7 @@ ax1.set_ylabel('SSIM', fontsize=10)
 ax1.set_ylim([0,1])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/MRI_box_plots/SSIM_ReconOf20percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/MRI_box_plots/SSIM_ReconOf20percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(ssimlists_perturb2_base))
@@ -1228,7 +1254,7 @@ ax1.set_ylabel('SSIM', fontsize=10)
 ax1.set_ylim([0,1])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/MRI_box_plots/SSIM_ReconOf10percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/MRI_box_plots/SSIM_ReconOf10percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 
@@ -1254,7 +1280,7 @@ ax1.set_ylabel('Wasserstein Error', fontsize=10)
 ax1.set_ylim([0,1])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/MRI_box_plots/Wasserstein_Error_ReconOf70percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/MRI_box_plots/Wasserstein_Error_ReconOf70percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(wasslists_perturb4_base))
@@ -1280,7 +1306,7 @@ ax1.set_ylabel('Wasserstein Error', fontsize=10)
 ax1.set_ylim([0,1])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/MRI_box_plots/Wasserstein_Error_ReconOf50percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/MRI_box_plots/Wasserstein_Error_ReconOf50percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(wasslists_perturb3_base))
@@ -1304,7 +1330,7 @@ ax1.set_ylabel('Wasserstein Error', fontsize=10)
 ax1.set_ylim([0,1])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/MRI_box_plots/Wasserstein_Error_ReconOf20percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/MRI_box_plots/Wasserstein_Error_ReconOf20percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 print(np.mean(wasslists_perturb2_base))
@@ -1329,7 +1355,7 @@ ax1.set_ylabel('Wasserstein Error', fontsize=10)
 ax1.set_ylim([0,1])
 plt.xticks([1, 2, 3, 4, 5, 6, 7], [str(s) for s in fracs], fontsize=10)
 plt.yticks(fontsize=10)
-plt.savefig('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders/reconstruction_quality_all_AE_box_plots/MRI_box_plots/Wasserstein_Error_ReconOf10percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
+plt.savefig('./reconstruction_quality_all_AE_box_plots/MRI_box_plots/Wasserstein_Error_ReconOf10percentNoiseedTestData_LossBal'+str(alpha)+'Lat_dim'+str(latent_dim)+'TDA_'+str(frac)+'LSTSQ_deg_'+str(deg_quad)+'.png')
 plt.show()
 
 
