@@ -178,10 +178,10 @@ print("Anything here to see")
 #from vae import BetaVAE
 from activations import Sin
 activation = Sin()
-from vae_models_for_fmnist import VAE_try, VAE_mlp, Autoencoder_linear_MRI
+from models import VAE_try, VAE_mlp, Autoencoder_linear_MRI
 
 #loading convolutional autoencoder
-from convAE import ConvoAE_MRI
+from models import ConvoAE_mri
 no_layers_cae = 5
 latent_dim_cae = latent_dim
 lr_cae =1e-4
@@ -195,7 +195,7 @@ frac_cae = frac
 path_cae_mri = path_in_repo
 
 name_unhyb_cae = '_'+str(frac_cae)+'_'+str(latent_dim_cae)+'_'+str(lr_cae)+'_'+str(no_layers_cae)
-model_convAE = ConvoAE_MRI(latent_dim_cae).to(device)
+model_convAE = ConvoAE_mri(latent_dim_cae).to(device)
 model_convAE.load_state_dict(torch.load(path_cae_mri+'model_base_cae_MRI'+name_unhyb_cae, map_location=torch.device(device)), strict=False)
 
 

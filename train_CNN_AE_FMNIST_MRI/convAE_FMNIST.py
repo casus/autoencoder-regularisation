@@ -48,4 +48,3 @@ path = './models_saved/'
 os.makedirs(path, exist_ok=True)
 name = '_'+str(TDA)+'_'+str(latent_dim)+'_'+str(lr)+'_'+str(no_layers)
 torch.save(model.state_dict(), path+'/model_base_cae_TDA'+name)
-3
