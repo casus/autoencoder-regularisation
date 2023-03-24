@@ -16,8 +16,9 @@ import torch
 from torch import nn
 
 import nibabel as nib     # Read / write access to some common neuroimaging file formats
-#device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-device = torch.device('cpu')
+#device = device
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
 from scipy import interpolate
 import ot
 
@@ -71,26 +72,26 @@ def get_all_thetas(listedImage):
 
 
 #before executing this cell you need to have preexisting trained coefficients for what ever degree you want
-trainImages = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/trainDataSet.pt',map_location=torch.device('cpu'))
-trainCoeffs = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/trainDataRK_coeffs.pt',map_location=torch.device('cpu'))
+trainImages = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/trainDataSet.pt',map_location=device)
+trainCoeffs = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/trainDataRK_coeffs.pt',map_location=device)
 
 
-testImages = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/testDataSet.pt',map_location=torch.device('cpu'))
-testCoeffs = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/testDataRK_coeffs.pt',map_location=torch.device('cpu'))
+testImages = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/testDataSet.pt',map_location=device)
+testCoeffs = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/savedDatasetAndCoeffs/testDataRK_coeffs.pt',map_location=device)
 
-perturbed_testImages_noise_percent_10 = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/MRI_testImages_N_10.pt',map_location=torch.device('cpu'))
-perturbed_testImages_noise_percent_20 = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/MRI_testImages_N_20.pt',map_location=torch.device('cpu'))
-perturbed_testImages_noise_percent_50 = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/MRI_testImages_N_50.pt',map_location=torch.device('cpu'))
-perturbed_testImages_noise_percent_70 = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/MRI_testImages_N_70.pt',map_location=torch.device('cpu'))
+perturbed_testImages_noise_percent_10 = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/MRI_testImages_N_10.pt',map_location=device)
+perturbed_testImages_noise_percent_20 = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/MRI_testImages_N_20.pt',map_location=device)
+perturbed_testImages_noise_percent_50 = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/MRI_testImages_N_50.pt',map_location=device)
+perturbed_testImages_noise_percent_70 = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/MRI_testImages_N_70.pt',map_location=device)
 
 
 print('perturbed_testImages_noise_percent_10.shape', perturbed_testImages_noise_percent_10.shape)
 
 
-perturbed_testCoeffs_10 = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/coeffs_saved/LSTSQ_N10_testcoeffs_MRI_dq'+str(deg_quad)+'.pt',map_location=torch.device('cpu'))
-perturbed_testCoeffs_20 = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/coeffs_saved/LSTSQ_N20_testcoeffs_MRI_dq'+str(deg_quad)+'.pt',map_location=torch.device('cpu'))
-perturbed_testCoeffs_50 = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/coeffs_saved/LSTSQ_N50_testcoeffs_MRI_dq'+str(deg_quad)+'.pt',map_location=torch.device('cpu'))
-perturbed_testCoeffs_70 = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/coeffs_saved/LSTSQ_N70_testcoeffs_MRI_dq'+str(deg_quad)+'.pt',map_location=torch.device('cpu'))
+perturbed_testCoeffs_10 = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/coeffs_saved/LSTSQ_N10_testcoeffs_MRI_dq'+str(deg_quad)+'.pt',map_location=device)
+perturbed_testCoeffs_20 = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/coeffs_saved/LSTSQ_N20_testcoeffs_MRI_dq'+str(deg_quad)+'.pt',map_location=device)
+perturbed_testCoeffs_50 = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/coeffs_saved/LSTSQ_N50_testcoeffs_MRI_dq'+str(deg_quad)+'.pt',map_location=device)
+perturbed_testCoeffs_70 = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/coeffs_saved/LSTSQ_N70_testcoeffs_MRI_dq'+str(deg_quad)+'.pt',map_location=device)
 
 
 Analys_size = 200
@@ -138,16 +139,16 @@ RK_model_base = AE(inp_dim_hyb, hidden_size, latent_dim, no_layers, Sin()).to(de
 
     path_hyb = path_in_repo
 
-    RK_model_reg.load_state_dict(torch.load(path_hyb+'model_reg'+name_hyb_, map_location=torch.device('cpu')))
-    RK_model_base.load_state_dict(torch.load(path_hyb+'model_base'+name_hyb_, map_location=torch.device('cpu')))
+    RK_model_reg.load_state_dict(torch.load(path_hyb+'model_reg'+name_hyb_, map_location=device))
+    RK_model_base.load_state_dict(torch.load(path_hyb+'model_base'+name_hyb_, map_location=device))
 
     torch.save(RK_model_reg.state_dict(), path_in_repo+'/model_reg_RKMRI_TDA'+name_hyb)
     torch.save(RK_model_base.state_dict(), path_in_repo+'/model_base_RKMRI_TDA'+name_hyb) 
 
     path_unhyb = path_in_repo
 
-    model_reg.load_state_dict(torch.load(path_unhyb+'model_reg'+name_unhyb_, map_location=torch.device('cpu')))
-    model_base.load_state_dict(torch.load(path_unhyb+'model_base'+name_unhyb_, map_location=torch.device('cpu')))
+    model_reg.load_state_dict(torch.load(path_unhyb+'model_reg'+name_unhyb_, map_location=device))
+    model_base.load_state_dict(torch.load(path_unhyb+'model_base'+name_unhyb_, map_location=device))
 
     torch.save(model_reg.state_dict(), path_in_repo+'/model_reg_MRI_TDA'+name_unhyb) 
     torch.save(model_reg.state_dict(), path_in_repo+'/model_base_MRI_TDA'+name_unhyb) 
@@ -178,7 +179,7 @@ print("Anything here to see")
 #from vae import BetaVAE
 from activations import Sin
 activation = Sin()
-from models import VAE_try, VAE_mlp, Autoencoder_linear_MRI
+from models import VAE_mlp_MRI, CNN_VAE_MRI, Autoencoder_linear_contra_MRI
 
 #loading convolutional autoencoder
 from models import ConvoAE_mri
@@ -225,7 +226,7 @@ model_mlpVAE_ = VAE_mlp_MRI(image_size=96*96, h_dim=1000, z_dim=latent_dim).to(d
 #model_betaVAE = BetaVAE([96, 96], 1, no_filters=4, no_layers=3,
                 #kernel_size=3, latent_dim=10, activation = Sin()).to(device) # regularised autoencoder
 
-model_cnnVAE_ = VAE_try_MRI(image_channels=1, h_dim=16*9*9, z_dim=latent_dim).to(device)
+model_cnnVAE_ = CNN_VAE_MRI(image_channels=1, h_dim=16*9*9, z_dim=latent_dim).to(device)
 
 #model_betaVAE = BetaVAE(batch_size = 1, img_depth = 1, net_depth = no_layers, z_dim = latent_dim, img_dim = 96).to(device)
 model_mlpVAE_.load_state_dict(torch.load(path_unhyb_bvae+'model_base_mlp_vae_MRI'+name_bvae, map_location=torch.device(device)), strict=False)
@@ -243,7 +244,7 @@ frac_contraae = frac
 path_unhyb_contraae = path_in_repo
 
 name_unhyb_contraae = '_'+str(frac_contraae)+'_'+str(latent_dim_contraae)+'_'+str(lr_contraae)+'_'+str(no_layers_contraae)
-model_contra_ = Autoencoder_linear_MRI(latent_dim_contraae).to(device)
+model_contra_ = Autoencoder_linear_contra_MRI(latent_dim_contraae).to(device)
 model_contra_.load_state_dict(torch.load(path_unhyb_contraae+'model_base_contraAE_MRI'+name_unhyb_contraae, map_location=torch.device(device)), strict=False)
 
 
@@ -309,18 +310,18 @@ print()
 print("anything ? all ok")
 
 
-unhyb_rec_rAE_train = model_reg(trainImages).view(trainImages.shape).detach().numpy() 
-unhyb_rec_bAE_train = model_base(trainImages).view(trainImages.shape).detach().numpy() 
+unhyb_rec_rAE_train = model_reg(trainImages).view(trainImages.shape)
+unhyb_rec_bAE_train = model_base(trainImages).view(trainImages.shape) 
 unhyb_rec_rAE_train = torch.tensor(unhyb_rec_rAE_train, requires_grad=False)
 unhyb_rec_bAE_train = torch.tensor(unhyb_rec_bAE_train, requires_grad=False)
 
 
-unhyb_rec_rAE_test = model_reg(testImages).view(testImages.shape).detach().numpy() 
-unhyb_rec_bAE_test = model_base(testImages).view(testImages.shape).detach().numpy() 
-convAE_rec_test = model_convAE(testImages).view(testImages.shape).detach().numpy() 
-mlpVAE_rec_test = model_mlpVAE(testImages).view(testImages.shape).detach().numpy() 
-cnnVAE_rec_test = model_cnnVAE(testImages).view(testImages.shape).detach().numpy() 
-contra_rec_test = model_contra(testImages).view(testImages.shape).detach().numpy() 
+unhyb_rec_rAE_test = model_reg(testImages).view(testImages.shape) 
+unhyb_rec_bAE_test = model_base(testImages).view(testImages.shape) 
+convAE_rec_test = model_convAE(testImages).view(testImages.shape) 
+mlpVAE_rec_test = model_mlpVAE(testImages).view(testImages.shape) 
+cnnVAE_rec_test = model_cnnVAE(testImages).view(testImages.shape) 
+contra_rec_test = model_contra(testImages).view(testImages.shape) 
 
 
 unhyb_rec_rAE_test = torch.tensor(unhyb_rec_rAE_test, requires_grad=False)
@@ -355,8 +356,7 @@ rec_rAE_test = torch.tensor(rec_rAE_test, requires_grad=False)
 rec_bAE_test = torch.tensor(rec_bAE_test, requires_grad=False)
 
 
-
-
+X_p = X_p.to(device)
 
 reconReg_train = torch.matmul(X_p.float(), rec_rAE_train.squeeze(1).T).T
 reconBase_train = torch.matmul(X_p.float(), rec_bAE_train.squeeze(1).T).T
@@ -377,10 +377,10 @@ rec_rAE_test[np.where(rec_rAE_test < 0.0)] = 0
 rec_bAE_test[np.where(rec_bAE_test < 0.0)] = 0'''
 # Doesn't make sense to remove negatives from unhybrid because they are coming from sine activation function. Normalization is sufficient
 # Getting rid of negatives
-hybrd_reconReg_train[np.where(hybrd_reconReg_train < 0.0)] = 0
-hybrd_reconBase_train[np.where(hybrd_reconBase_train < 0.0)] = 0
-hybrd_reconReg_test[np.where(hybrd_reconReg_test < 0.0)] = 0
-hybrd_reconBase_test[np.where(hybrd_reconBase_test < 0.0)] = 0
+hybrd_reconReg_train[torch.where(hybrd_reconReg_train < 0.0)] = 0
+hybrd_reconBase_train[torch.where(hybrd_reconBase_train < 0.0)] = 0
+hybrd_reconReg_test[torch.where(hybrd_reconReg_test < 0.0)] = 0
+hybrd_reconBase_test[torch.where(hybrd_reconBase_test < 0.0)] = 0
 
 
 
@@ -388,28 +388,28 @@ hybrd_reconBase_test[np.where(hybrd_reconBase_test < 0.0)] = 0
 #unhyb_base_prturb4_recon = torch.load('/home/ramana44/autoencoder_regulrization_conf_tasks/perturbedReconstructions/all_perturb4_recons_baseline_Lat'+str(latent_dim)+'_TDA'+str(frac)+'.pt')
 #unhyb_base_prturb4_recon = unhyb_base_prturb4_recon.reshape(200, 1, 96, 96)
 #unhyb_base_prturb4_recon = torch.tensor(unhyb_base_prturb4_recon, requires_grad=False)
-unhyb_base_prturb4_recon = model_base(perturbed_testImages_noise_percent_70.float()).view(perturbed_testImages_noise_percent_70.shape).detach().numpy() 
+unhyb_base_prturb4_recon = model_base(perturbed_testImages_noise_percent_70.float()).view(perturbed_testImages_noise_percent_70.shape)
 unhyb_base_prturb4_recon = torch.tensor(unhyb_base_prturb4_recon, requires_grad=False)
 unhyb_base_prturb4_recon = unhyb_base_prturb4_recon.reshape(200, 1, 96, 96)
 
 #here convAE
-convAE_prturb4_recon = model_convAE(perturbed_testImages_noise_percent_70.float()).view(perturbed_testImages_noise_percent_70.shape).detach().numpy() 
+convAE_prturb4_recon = model_convAE(perturbed_testImages_noise_percent_70.float()).view(perturbed_testImages_noise_percent_70.shape) 
 convAE_prturb4_recon = torch.tensor(convAE_prturb4_recon, requires_grad=False)
 convAE_prturb4_recon = convAE_prturb4_recon.reshape(200, 1, 96, 96)
 
 #mlpVAE here
-mlpVAE_prturb4_recon = model_mlpVAE(perturbed_testImages_noise_percent_70.float()).view(perturbed_testImages_noise_percent_70.shape).detach().numpy() 
+mlpVAE_prturb4_recon = model_mlpVAE(perturbed_testImages_noise_percent_70.float()).view(perturbed_testImages_noise_percent_70.shape) 
 mlpVAE_prturb4_recon = torch.tensor(mlpVAE_prturb4_recon, requires_grad=False)
 mlpVAE_prturb4_recon = mlpVAE_prturb4_recon.reshape(200, 1, 96, 96)
 
 
 #cnnVAE here
-cnnVAE_prturb4_recon = model_cnnVAE(perturbed_testImages_noise_percent_70.float()).view(perturbed_testImages_noise_percent_70.shape).detach().numpy() 
+cnnVAE_prturb4_recon = model_cnnVAE(perturbed_testImages_noise_percent_70.float()).view(perturbed_testImages_noise_percent_70.shape) 
 cnnVAE_prturb4_recon = torch.tensor(cnnVAE_prturb4_recon, requires_grad=False)
 cnnVAE_prturb4_recon = cnnVAE_prturb4_recon.reshape(200, 1, 96, 96)
 
 #contra here
-contra_prturb4_recon = model_contra(perturbed_testImages_noise_percent_70.float()).view(perturbed_testImages_noise_percent_70.shape).detach().numpy() 
+contra_prturb4_recon = model_contra(perturbed_testImages_noise_percent_70.float()).view(perturbed_testImages_noise_percent_70.shape) 
 contra_prturb4_recon = torch.tensor(contra_prturb4_recon, requires_grad=False)
 contra_prturb4_recon = contra_prturb4_recon.reshape(200, 1, 96, 96)
 
@@ -417,7 +417,7 @@ contra_prturb4_recon = contra_prturb4_recon.reshape(200, 1, 96, 96)
 #unhyb_reg_prturb4_recon = unhyb_reg_prturb4_recon.reshape(200, 1, 96, 96)
 #unhyb_reg_prturb4_recon = torch.tensor(unhyb_reg_prturb4_recon, requires_grad=False)
 
-unhyb_reg_prturb4_recon = model_reg(perturbed_testImages_noise_percent_70.float()).view(perturbed_testImages_noise_percent_70.shape).detach().numpy() 
+unhyb_reg_prturb4_recon = model_reg(perturbed_testImages_noise_percent_70.float()).view(perturbed_testImages_noise_percent_70.shape) 
 unhyb_reg_prturb4_recon = torch.tensor(unhyb_reg_prturb4_recon, requires_grad=False)
 unhyb_reg_prturb4_recon = unhyb_reg_prturb4_recon.reshape(200, 1, 96, 96)
 
@@ -445,27 +445,27 @@ hyb_reg_prturb4_recon = hyb_reg_prturb4_recon.reshape(Analys_size,1,96,96)
 #unhyb_base_prturb3_recon = unhyb_base_prturb3_recon.reshape(200, 1, 96, 96)
 #unhyb_base_prturb3_recon = torch.tensor(unhyb_base_prturb3_recon, requires_grad=False)
 
-unhyb_base_prturb3_recon = model_base(perturbed_testImages_noise_percent_50.float()).view(perturbed_testImages_noise_percent_50.shape).detach().numpy() 
+unhyb_base_prturb3_recon = model_base(perturbed_testImages_noise_percent_50.float()).view(perturbed_testImages_noise_percent_50.shape)
 unhyb_base_prturb3_recon = torch.tensor(unhyb_base_prturb3_recon, requires_grad=False)
 unhyb_base_prturb3_recon = unhyb_base_prturb3_recon.reshape(200, 1, 96, 96)
 
 #here convAE
-convAE_prturb3_recon = model_convAE(perturbed_testImages_noise_percent_50.float()).view(perturbed_testImages_noise_percent_50.shape).detach().numpy() 
+convAE_prturb3_recon = model_convAE(perturbed_testImages_noise_percent_50.float()).view(perturbed_testImages_noise_percent_50.shape) 
 convAE_prturb3_recon = torch.tensor(convAE_prturb3_recon, requires_grad=False)
 convAE_prturb3_recon = convAE_prturb3_recon.reshape(200, 1, 96, 96)
 
 # MLP VAE
-mlpVAE_prturb3_recon = model_mlpVAE(perturbed_testImages_noise_percent_50.float()).view(perturbed_testImages_noise_percent_50.shape).detach().numpy() 
+mlpVAE_prturb3_recon = model_mlpVAE(perturbed_testImages_noise_percent_50.float()).view(perturbed_testImages_noise_percent_50.shape) 
 mlpVAE_prturb3_recon = torch.tensor(mlpVAE_prturb3_recon, requires_grad=False)
 mlpVAE_prturb3_recon = mlpVAE_prturb3_recon.reshape(200, 1, 96, 96)
 
 # CNN VAE
-cnnVAE_prturb3_recon = model_cnnVAE(perturbed_testImages_noise_percent_50.float()).view(perturbed_testImages_noise_percent_50.shape).detach().numpy() 
+cnnVAE_prturb3_recon = model_cnnVAE(perturbed_testImages_noise_percent_50.float()).view(perturbed_testImages_noise_percent_50.shape) 
 cnnVAE_prturb3_recon = torch.tensor(cnnVAE_prturb3_recon, requires_grad=False)
 cnnVAE_prturb3_recon = cnnVAE_prturb3_recon.reshape(200, 1, 96, 96)
 
 # contra VAE
-contra_prturb3_recon = model_contra(perturbed_testImages_noise_percent_50.float()).view(perturbed_testImages_noise_percent_50.shape).detach().numpy() 
+contra_prturb3_recon = model_contra(perturbed_testImages_noise_percent_50.float()).view(perturbed_testImages_noise_percent_50.shape) 
 contra_prturb3_recon = torch.tensor(contra_prturb3_recon, requires_grad=False)
 contra_prturb3_recon = contra_prturb3_recon.reshape(200, 1, 96, 96)
 
@@ -474,7 +474,7 @@ contra_prturb3_recon = contra_prturb3_recon.reshape(200, 1, 96, 96)
 #unhyb_reg_prturb3_recon = unhyb_reg_prturb3_recon.reshape(200, 1, 96, 96)
 #unhyb_reg_prturb3_recon = torch.tensor(unhyb_reg_prturb3_recon, requires_grad=False)
 
-unhyb_reg_prturb3_recon = model_reg(perturbed_testImages_noise_percent_50.float()).view(perturbed_testImages_noise_percent_50.shape).detach().numpy() 
+unhyb_reg_prturb3_recon = model_reg(perturbed_testImages_noise_percent_50.float()).view(perturbed_testImages_noise_percent_50.shape) 
 unhyb_reg_prturb3_recon = torch.tensor(unhyb_reg_prturb3_recon, requires_grad=False)
 unhyb_reg_prturb3_recon = unhyb_reg_prturb3_recon.reshape(200, 1, 96, 96)
 
@@ -502,27 +502,27 @@ hyb_reg_prturb3_recon = hyb_reg_prturb3_recon.reshape(Analys_size,1,96,96)
 #unhyb_base_prturb2_recon = unhyb_base_prturb2_recon.reshape(200, 1, 96, 96)
 #unhyb_base_prturb2_recon = torch.tensor(unhyb_base_prturb2_recon, requires_grad=False)
 
-unhyb_base_prturb2_recon = model_base(perturbed_testImages_noise_percent_20.float()).view(perturbed_testImages_noise_percent_20.shape).detach().numpy() 
+unhyb_base_prturb2_recon = model_base(perturbed_testImages_noise_percent_20.float()).view(perturbed_testImages_noise_percent_20.shape) 
 unhyb_base_prturb2_recon = torch.tensor(unhyb_base_prturb2_recon, requires_grad=False)
 unhyb_base_prturb2_recon = unhyb_base_prturb2_recon.reshape(200, 1, 96, 96)
 
 #convAE here
-convAE_prturb2_recon = model_convAE(perturbed_testImages_noise_percent_20.float()).view(perturbed_testImages_noise_percent_20.shape).detach().numpy() 
+convAE_prturb2_recon = model_convAE(perturbed_testImages_noise_percent_20.float()).view(perturbed_testImages_noise_percent_20.shape) 
 convAE_prturb2_recon = torch.tensor(convAE_prturb2_recon, requires_grad=False)
 convAE_prturb2_recon = convAE_prturb2_recon.reshape(200, 1, 96, 96)
 
 #mlpVAE here
-mlpVAE_prturb2_recon = model_mlpVAE(perturbed_testImages_noise_percent_20.float()).view(perturbed_testImages_noise_percent_20.shape).detach().numpy() 
+mlpVAE_prturb2_recon = model_mlpVAE(perturbed_testImages_noise_percent_20.float()).view(perturbed_testImages_noise_percent_20.shape) 
 mlpVAE_prturb2_recon = torch.tensor(mlpVAE_prturb2_recon, requires_grad=False)
 mlpVAE_prturb2_recon = mlpVAE_prturb2_recon.reshape(200, 1, 96, 96)
 
 #cnnVAE here
-cnnVAE_prturb2_recon = model_cnnVAE(perturbed_testImages_noise_percent_20.float()).view(perturbed_testImages_noise_percent_20.shape).detach().numpy() 
+cnnVAE_prturb2_recon = model_cnnVAE(perturbed_testImages_noise_percent_20.float()).view(perturbed_testImages_noise_percent_20.shape) 
 cnnVAE_prturb2_recon = torch.tensor(cnnVAE_prturb2_recon, requires_grad=False)
 cnnVAE_prturb2_recon = cnnVAE_prturb2_recon.reshape(200, 1, 96, 96)
 
 #contraVAE here
-contra_prturb2_recon = model_contra(perturbed_testImages_noise_percent_20.float()).view(perturbed_testImages_noise_percent_20.shape).detach().numpy() 
+contra_prturb2_recon = model_contra(perturbed_testImages_noise_percent_20.float()).view(perturbed_testImages_noise_percent_20.shape) 
 contra_prturb2_recon = torch.tensor(contra_prturb2_recon, requires_grad=False)
 contra_prturb2_recon = contra_prturb2_recon.reshape(200, 1, 96, 96)
 
@@ -530,7 +530,7 @@ contra_prturb2_recon = contra_prturb2_recon.reshape(200, 1, 96, 96)
 #unhyb_reg_prturb2_recon = unhyb_reg_prturb2_recon.reshape(200, 1, 96, 96)
 #unhyb_reg_prturb2_recon = torch.tensor(unhyb_reg_prturb2_recon, requires_grad=False)
 
-unhyb_reg_prturb2_recon = model_reg(perturbed_testImages_noise_percent_20.float()).view(perturbed_testImages_noise_percent_20.shape).detach().numpy() 
+unhyb_reg_prturb2_recon = model_reg(perturbed_testImages_noise_percent_20.float()).view(perturbed_testImages_noise_percent_20.shape) 
 unhyb_reg_prturb2_recon = torch.tensor(unhyb_reg_prturb2_recon, requires_grad=False)
 unhyb_reg_prturb2_recon = unhyb_reg_prturb2_recon.reshape(200, 1, 96, 96)
 
@@ -557,27 +557,27 @@ hyb_reg_prturb2_recon = hyb_reg_prturb2_recon.reshape(Analys_size,1,96,96)
 #unhyb_base_prturb1_recon = unhyb_base_prturb1_recon.reshape(200, 1, 96, 96)
 #unhyb_base_prturb1_recon = torch.tensor(unhyb_base_prturb1_recon, requires_grad=False)
 
-unhyb_base_prturb1_recon = model_base(perturbed_testImages_noise_percent_10.float()).view(perturbed_testImages_noise_percent_10.shape).detach().numpy() 
+unhyb_base_prturb1_recon = model_base(perturbed_testImages_noise_percent_10.float()).view(perturbed_testImages_noise_percent_10.shape)
 unhyb_base_prturb1_recon = torch.tensor(unhyb_base_prturb1_recon, requires_grad=False)
 unhyb_base_prturb1_recon = unhyb_base_prturb1_recon.reshape(200, 1, 96, 96)
 
 #convAE Here
-convAE_prturb1_recon = model_convAE(perturbed_testImages_noise_percent_10.float()).view(perturbed_testImages_noise_percent_10.shape).detach().numpy() 
+convAE_prturb1_recon = model_convAE(perturbed_testImages_noise_percent_10.float()).view(perturbed_testImages_noise_percent_10.shape) 
 convAE_prturb1_recon = torch.tensor(convAE_prturb1_recon, requires_grad=False)
 convAE_prturb1_recon = convAE_prturb1_recon.reshape(200, 1, 96, 96)
 
 #mlpVAE Here
-mlpVAE_prturb1_recon = model_mlpVAE(perturbed_testImages_noise_percent_10.float()).view(perturbed_testImages_noise_percent_10.shape).detach().numpy() 
+mlpVAE_prturb1_recon = model_mlpVAE(perturbed_testImages_noise_percent_10.float()).view(perturbed_testImages_noise_percent_10.shape) 
 mlpVAE_prturb1_recon = torch.tensor(mlpVAE_prturb1_recon, requires_grad=False)
 mlpVAE_prturb1_recon = mlpVAE_prturb1_recon.reshape(200, 1, 96, 96)
 
 #cnnVAE Here
-cnnVAE_prturb1_recon = model_cnnVAE(perturbed_testImages_noise_percent_10.float()).view(perturbed_testImages_noise_percent_10.shape).detach().numpy() 
+cnnVAE_prturb1_recon = model_cnnVAE(perturbed_testImages_noise_percent_10.float()).view(perturbed_testImages_noise_percent_10.shape) 
 cnnVAE_prturb1_recon = torch.tensor(cnnVAE_prturb1_recon, requires_grad=False)
 cnnVAE_prturb1_recon = cnnVAE_prturb1_recon.reshape(200, 1, 96, 96)
 
 #contraVAE Here
-contra_prturb1_recon = model_contra(perturbed_testImages_noise_percent_10.float()).view(perturbed_testImages_noise_percent_10.shape).detach().numpy() 
+contra_prturb1_recon = model_contra(perturbed_testImages_noise_percent_10.float()).view(perturbed_testImages_noise_percent_10.shape) 
 contra_prturb1_recon = torch.tensor(contra_prturb1_recon, requires_grad=False)
 contra_prturb1_recon = contra_prturb1_recon.reshape(200, 1, 96, 96)
 
@@ -585,7 +585,7 @@ contra_prturb1_recon = contra_prturb1_recon.reshape(200, 1, 96, 96)
 #unhyb_reg_prturb1_recon = unhyb_reg_prturb1_recon.reshape(200, 1, 96, 96)
 #unhyb_reg_prturb1_recon = torch.tensor(unhyb_reg_prturb1_recon, requires_grad=False)
 
-unhyb_reg_prturb1_recon = model_reg(perturbed_testImages_noise_percent_10.float()).view(perturbed_testImages_noise_percent_10.shape).detach().numpy() 
+unhyb_reg_prturb1_recon = model_reg(perturbed_testImages_noise_percent_10.float()).view(perturbed_testImages_noise_percent_10.shape) 
 unhyb_reg_prturb1_recon = torch.tensor(unhyb_reg_prturb1_recon, requires_grad=False)
 unhyb_reg_prturb1_recon = unhyb_reg_prturb1_recon.reshape(200, 1, 96, 96)
 
@@ -610,15 +610,15 @@ hyb_reg_prturb1_recon = hyb_reg_prturb1_recon.reshape(Analys_size,1,96,96)
 
 # Get rid of negatives again to the perturbed
  
-hyb_base_prturb4_recon[np.where(hyb_base_prturb4_recon < 0.0)] = 0
-hyb_base_prturb3_recon[np.where(hyb_base_prturb3_recon < 0.0)] = 0
-hyb_base_prturb2_recon[np.where(hyb_base_prturb2_recon < 0.0)] = 0
-hyb_base_prturb1_recon[np.where(hyb_base_prturb1_recon < 0.0)] = 0
+hyb_base_prturb4_recon[torch.where(hyb_base_prturb4_recon < 0.0)] = 0
+hyb_base_prturb3_recon[torch.where(hyb_base_prturb3_recon < 0.0)] = 0
+hyb_base_prturb2_recon[torch.where(hyb_base_prturb2_recon < 0.0)] = 0
+hyb_base_prturb1_recon[torch.where(hyb_base_prturb1_recon < 0.0)] = 0
 
-hyb_reg_prturb4_recon[np.where(hyb_reg_prturb4_recon < 0.0)] = 0
-hyb_reg_prturb3_recon[np.where(hyb_reg_prturb3_recon < 0.0)] = 0
-hyb_reg_prturb2_recon[np.where(hyb_reg_prturb2_recon < 0.0)] = 0
-hyb_reg_prturb1_recon[np.where(hyb_reg_prturb1_recon < 0.0)] = 0
+hyb_reg_prturb4_recon[torch.where(hyb_reg_prturb4_recon < 0.0)] = 0
+hyb_reg_prturb3_recon[torch.where(hyb_reg_prturb3_recon < 0.0)] = 0
+hyb_reg_prturb2_recon[torch.where(hyb_reg_prturb2_recon < 0.0)] = 0
+hyb_reg_prturb1_recon[torch.where(hyb_reg_prturb1_recon < 0.0)] = 0
 
 
 
@@ -769,51 +769,51 @@ psnrlists_perturb1_hyb_reg = []
 
 for i in range(len(testImages)):
 
-    testImage_normal = Normalize()(testImages[i])
-    recon_normal_unhyb_base = Normalize()(unhyb_rec_bAE_test[i])
-    recon_normal_convAE = Normalize()(convAE_rec_test[i])
-    recon_normal_mlpVAE = Normalize()(mlpVAE_rec_test[i])
-    recon_normal_cnnVAE = Normalize()(cnnVAE_rec_test[i])
-    recon_normal_contra = Normalize()(contra_rec_test[i])
-    recon_normal_unhyb_reg = Normalize()(unhyb_rec_rAE_test[i])
-    recon_normal_hyb_base = Normalize()(hybrd_reconBase_test[i])
-    recon_normal_hyb_reg = Normalize()(hybrd_reconReg_test[i])
+    testImage_normal = Normalize()(testImages[i].cpu())
+    recon_normal_unhyb_base = Normalize()(unhyb_rec_bAE_test[i].cpu())
+    recon_normal_convAE = Normalize()(convAE_rec_test[i].cpu())
+    recon_normal_mlpVAE = Normalize()(mlpVAE_rec_test[i].cpu())
+    recon_normal_cnnVAE = Normalize()(cnnVAE_rec_test[i].cpu())
+    recon_normal_contra = Normalize()(contra_rec_test[i].cpu())
+    recon_normal_unhyb_reg = Normalize()(unhyb_rec_rAE_test[i].cpu())
+    recon_normal_hyb_base = Normalize()(hybrd_reconBase_test[i].cpu())
+    recon_normal_hyb_reg = Normalize()(hybrd_reconReg_test[i].cpu())
 
-    recon_normal_unhyb_base_perturb4 = Normalize()(unhyb_base_prturb4_recon[i])
-    recon_normal_convAE_perturb4 = Normalize()(convAE_prturb4_recon[i])
-    recon_normal_mlpVAE_perturb4 = Normalize()(mlpVAE_prturb4_recon[i])
-    recon_normal_cnnVAE_perturb4 = Normalize()(cnnVAE_prturb4_recon[i])
-    recon_normal_contra_perturb4 = Normalize()(contra_prturb4_recon[i])
-    recon_normal_unhyb_reg_perturb4 = Normalize()(unhyb_reg_prturb4_recon[i])
-    recon_normal_hyb_base_perturb4 = Normalize()(hyb_base_prturb4_recon[i])
-    recon_normal_hyb_reg_perturb4 = Normalize()(hyb_reg_prturb4_recon[i])
+    recon_normal_unhyb_base_perturb4 = Normalize()(unhyb_base_prturb4_recon[i].cpu())
+    recon_normal_convAE_perturb4 = Normalize()(convAE_prturb4_recon[i].cpu())
+    recon_normal_mlpVAE_perturb4 = Normalize()(mlpVAE_prturb4_recon[i].cpu())
+    recon_normal_cnnVAE_perturb4 = Normalize()(cnnVAE_prturb4_recon[i].cpu())
+    recon_normal_contra_perturb4 = Normalize()(contra_prturb4_recon[i].cpu())
+    recon_normal_unhyb_reg_perturb4 = Normalize()(unhyb_reg_prturb4_recon[i].cpu())
+    recon_normal_hyb_base_perturb4 = Normalize()(hyb_base_prturb4_recon[i].cpu())
+    recon_normal_hyb_reg_perturb4 = Normalize()(hyb_reg_prturb4_recon[i].cpu())
 
-    recon_normal_unhyb_base_perturb3 = Normalize()(unhyb_base_prturb3_recon[i])
-    recon_normal_convAE_perturb3 = Normalize()(convAE_prturb3_recon[i])
-    recon_normal_mlpVAE_perturb3 = Normalize()(mlpVAE_prturb3_recon[i])
-    recon_normal_cnnVAE_perturb3 = Normalize()(cnnVAE_prturb3_recon[i])
-    recon_normal_contra_perturb3 = Normalize()(contra_prturb3_recon[i])
-    recon_normal_unhyb_reg_perturb3 = Normalize()(unhyb_reg_prturb3_recon[i])
-    recon_normal_hyb_base_perturb3 = Normalize()(hyb_base_prturb3_recon[i])
-    recon_normal_hyb_reg_perturb3 = Normalize()(hyb_reg_prturb3_recon[i])
+    recon_normal_unhyb_base_perturb3 = Normalize()(unhyb_base_prturb3_recon[i].cpu())
+    recon_normal_convAE_perturb3 = Normalize()(convAE_prturb3_recon[i].cpu())
+    recon_normal_mlpVAE_perturb3 = Normalize()(mlpVAE_prturb3_recon[i].cpu())
+    recon_normal_cnnVAE_perturb3 = Normalize()(cnnVAE_prturb3_recon[i].cpu())
+    recon_normal_contra_perturb3 = Normalize()(contra_prturb3_recon[i].cpu())
+    recon_normal_unhyb_reg_perturb3 = Normalize()(unhyb_reg_prturb3_recon[i].cpu())
+    recon_normal_hyb_base_perturb3 = Normalize()(hyb_base_prturb3_recon[i].cpu())
+    recon_normal_hyb_reg_perturb3 = Normalize()(hyb_reg_prturb3_recon[i].cpu())
 
-    recon_normal_unhyb_base_perturb2 = Normalize()(unhyb_base_prturb2_recon[i])
-    recon_normal_convAE_perturb2 = Normalize()(convAE_prturb2_recon[i])
-    recon_normal_mlpVAE_perturb2 = Normalize()(mlpVAE_prturb2_recon[i])
-    recon_normal_cnnVAE_perturb2 = Normalize()(cnnVAE_prturb2_recon[i])
-    recon_normal_contra_perturb2 = Normalize()(contra_prturb2_recon[i])
-    recon_normal_unhyb_reg_perturb2 = Normalize()(unhyb_reg_prturb2_recon[i])
-    recon_normal_hyb_base_perturb2 = Normalize()(hyb_base_prturb2_recon[i])
-    recon_normal_hyb_reg_perturb2 = Normalize()(hyb_reg_prturb2_recon[i])
+    recon_normal_unhyb_base_perturb2 = Normalize()(unhyb_base_prturb2_recon[i].cpu())
+    recon_normal_convAE_perturb2 = Normalize()(convAE_prturb2_recon[i].cpu())
+    recon_normal_mlpVAE_perturb2 = Normalize()(mlpVAE_prturb2_recon[i].cpu())
+    recon_normal_cnnVAE_perturb2 = Normalize()(cnnVAE_prturb2_recon[i].cpu())
+    recon_normal_contra_perturb2 = Normalize()(contra_prturb2_recon[i].cpu())
+    recon_normal_unhyb_reg_perturb2 = Normalize()(unhyb_reg_prturb2_recon[i].cpu())
+    recon_normal_hyb_base_perturb2 = Normalize()(hyb_base_prturb2_recon[i].cpu())
+    recon_normal_hyb_reg_perturb2 = Normalize()(hyb_reg_prturb2_recon[i].cpu())
 
-    recon_normal_unhyb_base_perturb1 = Normalize()(unhyb_base_prturb1_recon[i])
-    recon_normal_convAE_perturb1 = Normalize()(convAE_prturb1_recon[i])
-    recon_normal_mlpVAE_perturb1 = Normalize()(mlpVAE_prturb1_recon[i])
-    recon_normal_cnnVAE_perturb1 = Normalize()(cnnVAE_prturb1_recon[i])
-    recon_normal_contra_perturb1 = Normalize()(contra_prturb1_recon[i])
-    recon_normal_unhyb_reg_perturb1 = Normalize()(unhyb_reg_prturb1_recon[i])
-    recon_normal_hyb_base_perturb1 = Normalize()(hyb_base_prturb1_recon[i])
-    recon_normal_hyb_reg_perturb1 = Normalize()(hyb_reg_prturb1_recon[i])
+    recon_normal_unhyb_base_perturb1 = Normalize()(unhyb_base_prturb1_recon[i].cpu())
+    recon_normal_convAE_perturb1 = Normalize()(convAE_prturb1_recon[i].cpu())
+    recon_normal_mlpVAE_perturb1 = Normalize()(mlpVAE_prturb1_recon[i].cpu())
+    recon_normal_cnnVAE_perturb1 = Normalize()(cnnVAE_prturb1_recon[i].cpu())
+    recon_normal_contra_perturb1 = Normalize()(contra_prturb1_recon[i].cpu())
+    recon_normal_unhyb_reg_perturb1 = Normalize()(unhyb_reg_prturb1_recon[i].cpu())
+    recon_normal_hyb_base_perturb1 = Normalize()(hyb_base_prturb1_recon[i].cpu())
+    recon_normal_hyb_reg_perturb1 = Normalize()(hyb_reg_prturb1_recon[i].cpu())
 
 
     ###########################################################################################
