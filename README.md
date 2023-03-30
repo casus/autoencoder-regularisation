@@ -83,4 +83,4 @@ Perturbation experiments are performed on the Fashion MNIST and MRI datasets. To
 
 # Geodesic experiments
 
-Files for the code of geodesic computation and plotting are in `. topological_analysis_in_latent_space/FashionMNIST_geodesics/` and `. topological_analysis_in_latent_space/MRI_geodesics/` respectively.
+Files for the code of geodesic computation and plotting are in `./topological_analysis_in_latent_space/FashionMNIST_geodesics/` and `./topological_analysis_in_latent_space/MRI_geodesics/` respectively.
