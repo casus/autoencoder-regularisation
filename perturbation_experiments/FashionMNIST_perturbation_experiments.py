@@ -14,6 +14,13 @@ import re
 from datasets import getMNIST, getFashionMNIST, getCifar10, getDataset
 import copy
 
+import sys
+#sys.path.append('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders')
+
+
+sys.path.append('./')
+
+
 #device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 #device = torch.device('cpu')

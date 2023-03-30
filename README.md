@@ -76,3 +76,11 @@ To pre-save the MRI dataset to later enumerate through it while training, run `p
 To replicate the box plots for reconstruction qualities of different autoencoders against perturbations for Fashion MNIST dataset, run `python ./reconstruction_quality_all_AE_box_plots/FashionMNIST_box_plotting.py` and for MRI brains scans run `python ./reconstruction_quality_all_AE_box_plots/MRI_box_plotting.py`. THe coefficients of hybrid autoencoders are required to be precomputed and loaded to get the box plots by running the above codes. 
 
 The plots would be found in `./all_results/FinalResultsPSNR_SSIM_FashionMNIST/` and `./all_results/MRI_box_plots/`after running the files. 
+
+## Perturbation experiments
+
+Perturbation experiments are performed on the Fashion MNIST and MRI datasets. To replicate the results, run `python ./perturbation_experiments/FashionMNIST_perturbation_experiments.py` for Fashion MNIST dataset and `python ./perturbation_experiments/MRI_perturbation_experiments.py` for MRI dataset.
+
+# Geodesic experiments
+
+Files for the code of geodesic computation and plotting are in `. topological_analysis_in_latent_space/FashionMNIST_geodesics/` and `. topological_analysis_in_latent_space/MRI_geodesics/` respectively.
