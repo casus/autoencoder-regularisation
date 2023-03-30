@@ -14,4 +14,4 @@ class Sin(nn.Module):
 
         return sin_(input)
 
-#comment
+#comment_
