@@ -7,9 +7,9 @@ from models import AE
 import matplotlib.pyplot as plt
 import torch.nn as nn
 from activations import Sin
-import copy
-from  models_circle import ConvAE
-from models_circle import BetaVAE, reconstruction_loss, kl_divergence, MLPVAE
+#import copy
+#from  models_circle import ConvAE
+#from models_circle import BetaVAE, reconstruction_loss, kl_divergence, MLPVAE
 
 from torchvision import datasets, transforms
 
@@ -190,7 +190,7 @@ plt.grid(True)
 plt.show()
 plt.savefig('/home/ramana44/autoencoder-regularisation-/all_results/cycle_experimnets/imagesaves/baselineLoss.png')
 plt.close()'''
-from regularisers_without_vegas import computeC1Loss, sampleChebyshevNodes, sampleLegendreNodes
+from regularisers_without_vegas_fmnist import computeC1Loss, sampleChebyshevNodes, sampleLegendreNodes
 
 '''regNodesSamplings = (["trainingData", "random", "chebyshev", "legendre",
                     "conv", "vae", "mlp_vae"])'''
