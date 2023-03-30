@@ -81,6 +81,8 @@ The plots would be found in `./all_results/FinalResultsPSNR_SSIM_FashionMNIST/` 
 
 Perturbation experiments are performed on the Fashion MNIST and MRI datasets. To replicate the results, run `python ./perturbation_experiments/FashionMNIST_perturbation_experiments.py` for Fashion MNIST dataset and `python ./perturbation_experiments/MRI_perturbation_experiments.py` for MRI dataset.
 
+The outputs of perturbation experiments are saved in `./all_results/FashionMNIST_perturbation_results/` and `./all_results/MRI_perturbation_results/` respectively.
+
 # Geodesic experiments
 
 Files for the code of geodesic computation and plotting are in `./topological_analysis_in_latent_space/FashionMNIST_geodesics/` and `./topological_analysis_in_latent_space/MRI_geodesics/` respectively.

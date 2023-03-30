@@ -179,7 +179,7 @@ print("Anything here to see")
 #from vae import BetaVAE
 from activations import Sin
 activation = Sin()
-from models import VAE_mlp_MRI, CNN_VAE_MRI, Autoencoder_linear_contra_MRI
+from models import VAE_mlp_MRI, CNN_VAE_MRI, Autoencoder_linear_contra_MRI, ConvoAE_mri
 
 #loading convolutional autoencoder
 from models import ConvoAE_mri

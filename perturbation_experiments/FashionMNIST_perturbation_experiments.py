@@ -1,46 +1,28 @@
+import sys
+sys.path.append('./')
+
 import torch
 import torch.utils.data
-from torch import nn
-import torch.nn.functional as F
-import torchvision
+
 from torchvision import transforms
-from models_of_VAEs import BetaVAE, MLPVAE
-from vae_models_for_fmnist import VAE_try, VAE_mlp
+
 import numpy as np
 import matplotlib.pyplot as plt
 
-import os
-import re
-from datasets import getMNIST, getFashionMNIST, getCifar10, getDataset
-import copy
-
-import sys
-#sys.path.append('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders')
 
 
-sys.path.append('./')
 
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-#device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-#device = torch.device('cpu')
-device = torch.device('cuda')
 from models import AE
-#from vae import BetaVAE
 from activations import Sin
-from regularisers import computeC1Loss
-#from models_circle import MLPVAE
 
-#from tabulate import tabulate
 
-from skimage.metrics import structural_similarity as ssim
-from skimage.metrics import peak_signal_noise_ratio as psnr
-
-filename = "table_model_reg_legendre_legendre.txt"
+#filename = "table_model_reg_legendre_legendre.txt"
 latent_dim = 10
 
 
-class Autoencoder_linear(nn.Module):
+'''class Autoencoder_linear(nn.Module):
     def __init__(self):
 
         super().__init__()
@@ -72,7 +54,7 @@ class Autoencoder_linear(nn.Module):
     def forward(self, x):
         encoded = self.encoder(x)
         decoded = self.decoder(encoded)
-        return decoded
+        return decoded'''
 
 #row arrangements
 ori_row_im_ind = 0
@@ -88,8 +70,7 @@ hyb_AEREG_inm_ind = 7
 
 loadableDatas = ["train", "test"]
 choosenData = loadableDatas[1]
-#availableModels = ["baseline", "regularized"]
-#modelSelected = availableModels[1]
+
 
 coeff_sol_method = "LSTQS"
 
@@ -110,24 +91,22 @@ rand_perturb = []
 orig_perturb = []
 rec_perturb = []
 
-path_ = '/home/ramana44/autoencoder_regulrization_conf_tasks/models/'
-paths = [path_+'model_base_legendre_', path_+'model_reg_trainingData_', path_+'model_reg_legendre_', '/home/willma32/regularizedautoencoder/output/FMNIST_vae/model_reg_']
 
-names = ['baseline', 'contractive', 'legendre', 'vae']
 
 flh = transforms.RandomHorizontalFlip(p=1.)
 flv = transforms.RandomVerticalFlip(p=1.)
 
 labels = ['baseline', 'contractive', 'legendre', 'vae']
 path_file = '/home/ramana44/autoencoder_regulrization_conf_tasks/FMNIST_samples/'
-path_to_dir = '/home/ramana44/autoencoder_regulrization_conf_tasks_hybrid/output_FMNIST_trans/all_AEs/image_'+str(ChoosenImageIndex)+'/lstqs_deg_'+str(Hybrid_poly_deg)+'_all_lats/'
+
+path_to_dir = '/home/ramana44/autoencoder-regularisation/all_results/perturbation_experiments/FMNIST/image_'+str(ChoosenImageIndex)+'/lstqs_deg_'+str(Hybrid_poly_deg)+'_all_lats/'
+
 
 global_ind = 0
 
 rand_perturb = []
 orig_perturb = []
 rec_perturb = []
-path_to_model = paths[2] + str(alpha)+'_'+str(latent_dim)+'_'+str(hidden_size)+'_'+str(frac)
 
 
 # loading MLPAE and AE-REG
@@ -146,8 +125,6 @@ no_epochs= 100
 
 name_unhyb = '_'+reg_nodes_sampling+'__'+str(frac)+'_'+str(alpha)+'_'+str(hidden_size)+'_'+str(deg_poly)+'_'+str(latent_dim)+'_'+str(lr)+'_'+str(no_layers)#+'_'+str(no_epochs)
 
-#name_unhyb = '_'+reg_nodes_sampling+'__'+str(frac)+'_'+str(alpha)+'_'+str(hidden_size)+'_'+str(deg_poly)+'_'+str(latent_dim)+'_'+str(lr)+'_'+str(no_layers)#+'_'+str(no_epochs)
-
 
 inp_dim_hyb = (Hybrid_poly_deg+1)*(Hybrid_poly_deg+1)
 
@@ -161,29 +138,26 @@ model_base.load_state_dict(torch.load(path_unhyb+'model_base_TDA'+name_unhyb, ma
 
 
 #loading convolutional autoencoder
-from convAE import ConvoAE
+from models import ConvoAE_fmnist
 no_layers_cae = 3
 latent_dim_cae = latent_dim
 lr_cae =1e-3
 name_unhyb_cae = '_'+str(frac)+'_'+str(latent_dim_cae)+'_'+str(lr_cae)+'_'+str(no_layers_cae)
-model_convAE = ConvoAE(latent_dim_cae).to(device)
+model_convAE = ConvoAE_fmnist(latent_dim_cae).to(device)
 model_convAE.load_state_dict(torch.load(path_unhyb+'model_base_cae_TDA'+name_unhyb_cae, map_location=torch.device(device)), strict=False)
 
 
 #from vae import BetaVAE
 from activations import Sin
 activation = Sin()
-#model_mlpVAE = MLPVAE(1*32*32, hidden_size, latent_dim, 
-                #    no_layers, activation).to(device) # regularised autoencoder
+from models import CNN_VAE_FMNIST, MLP_VAE_FMNIST, Autoencoder_linear_contra_fmnist
 
-model_mlpVAE = VAE_mlp(32*32, hidden_size, latent_dim).to(device)
 
-#model_betaVAE = BetaVAE([32, 32], 1, no_filters=4, no_layers=3,
-                #kernel_size=3, latent_dim=10, activation = Sin()).to(device) # regularised autoencoder
+model_mlpVAE = MLP_VAE_FMNIST(32*32, hidden_size, latent_dim).to(device)
 
-model_betaVAE = VAE_try(image_channels=1, h_dim=8*2*2, z_dim=latent_dim).to(device)
 
-#model_betaVAE = BetaVAE(batch_size = 1, img_depth = 1, net_depth = no_layers, z_dim = latent_dim, img_dim = 32).to(device)
+model_betaVAE = CNN_VAE_FMNIST(image_channels=1, h_dim=8*2*2, z_dim=latent_dim).to(device)
+
 model_mlpVAE.load_state_dict(torch.load(path_unhyb+'model_base_mlp_vae_TDA'+name_unhyb, map_location=torch.device(device)), strict=False)
 model_betaVAE.load_state_dict(torch.load(path_unhyb+'model_base_cnn_vae_TDA'+name_unhyb, map_location=torch.device(device)), strict=False)
 
@@ -193,9 +167,14 @@ no_layers_contraae = 3
 latent_dim_contraae = latent_dim
 lr_contraae =1e-3
 name_unhyb_contraae = '_'+str(frac)+'_'+str(latent_dim_contraae)+'_'+str(lr_contraae)+'_'+str(no_layers_contraae)
-model_contra = Autoencoder_linear().to(device)
-model_contra.load_state_dict(torch.load(path_unhyb+'model_base_contraAE_TDA'+name_unhyb_contraae, map_location=torch.device(device)), strict=False)
+model_contra_ = Autoencoder_linear_contra_fmnist(latent_dim).to(device)
+model_contra_.load_state_dict(torch.load(path_unhyb+'model_base_contraAE_TDA'+name_unhyb_contraae, map_location=torch.device(device)), strict=False)
 
+
+def model_contra(input):
+    input = input.reshape(-1, 32*32)
+    recon= model_contra_(input)
+    return recon
 
 model = model_base
 orig = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/'+choosenData+'Images.pt')
@@ -529,38 +508,17 @@ for k in range(len(rand_perturb)):
 
 
 #####################################################################################################################
-from matplotlib.style import available
 import torch
 import torch.utils.data
-from torch import nn
-import torch.nn.functional as F
-import torchvision
+
 from torchvision import transforms
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-import os
-import re
-from datasets import getMNIST, getFashionMNIST, getCifar10, getDataset
-import copy
 
-#device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-#device = torch.device('cpu')
 from models import AE
-from vae import BetaVAE
 from activations import Sin
-from regularisers import computeC1Loss
-from models_circle import MLPVAE
-
-#from tabulate import tabulate
-
-#from skimage.metrics import structural_similarity as ssim
-#from skimage.metrics import peak_signal_noise_ratio as psnr
-
-
-#imports for Runge kutta
-import scipy
 import scipy.integrate
 from jmp_solver1.sobolev import Sobolev
 from jmp_solver1.sobolev import Sobolev
@@ -568,25 +526,15 @@ from jmp_solver1.solver import Solver
 from jmp_solver1.utils import matmul
 import jmp_solver1.surrogates
 import time
-#import minterpy as mp
+
 from jmp_solver1.diffeomorphisms import hyper_rect
-#imports for Runge Kutta done
 
-
-
-#loadableDatas = ["train", "test"]
-#choosenData = loadableDatas[1]
-#availableModels = ["RK_baseline", "RK_regularized"]
-#modelSelected = availableModels[0]
-
-#ChoosenImageIndex = 9
-#RK_quadratureDegree = 25
 deg_quad = Hybrid_poly_deg
 
-#hidden_size = 100
+
 
 alphas = [0.1]
-#alpha = 0.1
+
 
 latent_dims = [2,3,4,5,6,7,8,9,10]
 #latent_dim = 10
@@ -622,8 +570,7 @@ orig_perturb = []
 rec_perturb = []
 rec_perturb_hybrid = []
 path_to_model = paths[2] + str(alpha)+'_'+str(latent_dim)+'_'+str(hidden_size)+'_'+str(frac)
-#model = AE([1,32,32], hidden_size, latent_dim, 3, Sin()).to(device)
-#model.load_state_dict(torch.load(path_to_model)['model']) 
+
 
 
 #importing my models
@@ -677,15 +624,6 @@ rec = model(torch.from_numpy(orig).reshape(1,1,32,32).to(device))
 
 print('rec.shape', rec.shape)
 
-#model = model_base
-#orig = np.load(path_file+labels[2]+'_'+str(hidden_size)+'_'+str(alpha)+'_'+str(frac)+'_'+str(latent_dim)+'.npy')
-#orig = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/'+choosenData+'Images.pt')
-#orig = np.array(orig[ChoosenImageIndex])
-#print(orig.shape)
-#orig = orig.reshape(32,32)
-#orig_cj = cj(torch.from_numpy(orig).reshape(1,32,32).to('cuda'))
-
-#orig = orig.reshape(1,1024)
 
 orig_flh = flh(torch.from_numpy(orig).reshape(1,32,32).to(device))
 orig_flv = flv(torch.from_numpy(orig).reshape(1,32,32).to(device))
@@ -742,40 +680,20 @@ for k in range(len(rand_perturb)):
 ####################################################################################################################
 
 
-#orig = torch.load('/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/FMNIST_RK_coeffs/'+choosenData+'Images.pt')
-#orig = np.array(orig[ChoosenImageIndex])
-#orig = orig.reshape(1,1024)
+
 model_reg = RK_model_base
 
 u_ob = jmp_solver1.surrogates.Polynomial(n=deg_quad,p=np.inf, dim=2)
 x = np.linspace(-1,1,32)
 X_p = u_ob.data_axes([x,x]).T
 
-#now get Runge Kutta coefficients for flipped and noised images before sending them to the autoencoders
 
-#Fr = torch.tensor(orig).reshape(32*32)
 
 def get_all_thetas(listedImage):
     #print('listedImage.shape',listedImage.shape)
     Fr = torch.tensor(listedImage).reshape(32*32)
 
-    '''def grad_x(t,theta):
-        theta_t = torch.tensor(theta)
-        return -2*torch.matmul(X_p.T,(torch.matmul(X_p,theta_t)-Fr)).detach().numpy()
 
-    def give_theta_t():
-        start = time.time()
-        u_ob.set_weights_val(0.0)
-        theta_0 =  list(u_ob.parameters())[0][0]
-        dt = 0.01
-        theta_t = theta_0
-        for k in range(20):
-            theta_int =  scipy.integrate.RK45(grad_x, 0.1, theta_t.detach().numpy(), 100)
-            theta_int.step()
-            theta_t = torch.tensor(theta_int.y)
-        return theta_t
-
-    act_theta = give_theta_t()'''
 
     get = np.linalg.lstsq(np.array(X_p), listedImage.reshape(32*32), rcond='warn')
     act_theta = torch.tensor(get[0])
@@ -795,46 +713,21 @@ rec_AE = torch.tensor(rec_AE, requires_grad=False)
 recIM_AE = torch.matmul(X_p.float().to(device), rec_AE.squeeze(1).T.to(device)).T
 recIM_AE[np.where(recIM_AE.cpu() < 0.0)] = 0
 
-#recIM_AE = torch.matmul(X_p.float(), rec_AE)
 
-#reconBase_train = torch.matmul(X_p.float(), rec_bAE_train.squeeze(1).T).T
 
 reconReg_train = recIM_AE.reshape(1,32,32)
-#reconBase_train = reconBase_train.reshape(1,32,32)
 
-
-#test getting image back from coeffs and save it
-
-#reconReg_train = torch.matmul(X_p, testRK)
-#reconReg_train = reconReg_train.reshape(32,32)
-#plt.savefig(reconReg_train, '/home/ramana44/autoencoder_regulrization_conf_tasks_hybrid/output_new/reconReg_train.png')
-
-'''plt.imshow(reconReg_train[0])
-cbar = plt.colorbar()
-cbar.ax.tick_params(labelsize=15)
-plt.xticks(fontsize = 15)
-plt.yticks(fontsize = 15)
-plt.savefig('/home/ramana44/autoencoder_regulrization_conf_tasks_hybrid/output_new/reconReg_train.png')'''
-#plt.show()
-
-#print('reconReg_train.shape', reconReg_train.shape)
-
-#print('orig.shape',orig.shape)
 orig = orig.reshape(1,1024)
 
-#orig = orig.reshape(32,32)
-#orig_cj = cj(torch.from_numpy(orig).reshape(1,32,32).to('cuda'))
+
 orig_flh = flh(torch.from_numpy(orig).reshape(1,32,32).to(device))
 orig_flv = flv(torch.from_numpy(orig).reshape(1,32,32).to(device))
-#orig_cr = cr(torch.from_numpy(orig).reshape(1,32,32).to('cuda'))
-#orig_rot = torchvision.transforms.functional.rotate(torch.from_numpy(orig).reshape(1,32,32).to('cuda'), angle=60)
+
 for proz in prozs:
     rand_perturb.append(np.random.rand(1, 1024)*(np.max(orig)-np.min(orig))*proz)
 print((rand_perturb[0].shape))
-#rec = model(torch.from_numpy(orig).reshape(1,32,32).to(device))
+
 rec = reconReg_train
-#rec = model_reg(torch.from_numpy(orig).reshape(1,32,32).to(device))
-#rec_cj = model(cj(torch.from_numpy(orig).reshape(1,32,32).to('cuda')))
 
 vertical_filpped = flv(torch.from_numpy(orig).reshape(1,32,32).to(device))
 horizontal_filpped = flh(torch.from_numpy(orig).reshape(1,32,32).to(device))
@@ -873,10 +766,6 @@ orig_perturb_Allcoeffs = []
 
 for rand_transform in rand_perturb:
     orig_perturb.append(torch.from_numpy(np.add(orig,rand_transform)).reshape(1,32,32).to(device))
-    #print('orig_perturb[0].shape', orig_perturb[0].shape)    
-    #rec_perturb.append(model(orig_perturb[-1].float()))
-
-
 
     orig_perturb_coeffs = get_all_thetas(orig_perturb[-1].float().cpu())
     orig_perturb_coeffs = orig_perturb_coeffs.unsqueeze(0)
@@ -888,50 +777,11 @@ for rand_transform in rand_perturb:
     reconed_images = torch.matmul(X_p.float().to(device), reconed_coeffs.squeeze(1).T.to(device)).T
     reconed_images[np.where(reconed_images.cpu() < 0.0)] = 0
 
-    #reconed_images = reconed_images.reshape(1,32,32)
+
     print(reconed_images.shape)
 
     rec_perturb_hybrid.append(reconed_images)
-    #print('rec_perturb[0].shape', rec_perturb[0].shape)    
     print('orig_perturb_coeffs.shape',orig_perturb_coeffs.shape)
-
-#rec_perturb = rec_perturb_hybrid
-
-
-
-'''ax[3,0].imshow(rec.detach().cpu().numpy().reshape(32,32))
-maxv = max(np.max(rec.detach().cpu().numpy().reshape(32,32)), np.max(orig.reshape(32,32)))
-minv = min(np.min(rec.detach().cpu().numpy().reshape(32,32)), np.min(orig.reshape(32,32)))
-rec_n = (rec.detach().cpu().numpy().reshape(32,32) - minv)/(maxv-minv)*255.
-orig_n = (orig.reshape(32,32) - minv)/(maxv-minv)*255.
-
-
-ax[3,1].imshow(rec_flh.detach().cpu().numpy().reshape(32,32))
-maxv = max(np.max(rec_flh.detach().cpu().numpy().reshape(32,32)), 
-            np.max(orig_flh.detach().cpu().numpy().reshape(32,32)))
-minv = min(np.min(rec_flh.detach().cpu().numpy().reshape(32,32)), 
-            np.min(orig_flh.detach().cpu().numpy().reshape(32,32)))
-rec_n = (rec_flh.detach().cpu().numpy().reshape(32,32) - minv)/(maxv-minv)*255.
-orig_n = (orig_flh.detach().cpu().numpy().reshape(32,32) - minv)/(maxv-minv)*255.
-
-
-ax[3,2].imshow(rec_flv.detach().cpu().numpy().reshape(32,32))
-maxv = max(np.max(rec_flv.detach().cpu().numpy().reshape(32,32)), 
-            np.max(orig_flv.detach().cpu().numpy().reshape(32,32)))
-minv = min(np.min(rec_flv.detach().cpu().numpy().reshape(32,32)), 
-            np.min(orig_flv.detach().cpu().numpy().reshape(32,32)))
-rec_n = (rec_flv.detach().cpu().numpy().reshape(32,32) - minv)/(maxv-minv)*255.
-orig_n = (orig_flv.detach().cpu().numpy().reshape(32,32) - minv)/(maxv-minv)*255.
-
-
-for k in range(len(rand_perturb)):
-    ax[3,3+k].imshow(rec_perturb[k].detach().cpu().numpy().reshape(32,32))
-    maxv = max(np.max(rec_perturb[k].detach().cpu().numpy().reshape(32,32)), 
-                np.max(orig_perturb[k].detach().cpu().numpy().reshape(32,32)))
-    minv = min(np.min(rec_perturb[k].detach().cpu().numpy().reshape(32,32)), 
-                np.min(orig_perturb[k].detach().cpu().numpy().reshape(32,32)))
-    rec_n = (rec_perturb[k].detach().cpu().numpy().reshape(32,32) - minv)/(maxv-minv)*255.
-    orig_n = (orig_perturb[k].detach().cpu().numpy().reshape(32,32) - minv)/(maxv-minv)*255.'''
 
 
 ###############################################################################################################
@@ -946,32 +796,7 @@ u_ob = jmp_solver1.surrogates.Polynomial(n=deg_quad,p=np.inf, dim=2)
 x = np.linspace(-1,1,32)
 X_p = u_ob.data_axes([x,x]).T
 
-#now get Runge Kutta coefficients for flipped and noised images before sending them to the autoencoders
 
-#Fr = torch.tensor(orig).reshape(32*32)
-
-'''def get_all_thetas(listedImage):
-    #print('listedImage.shape',listedImage.shape)
-    Fr = torch.tensor(listedImage).reshape(32*32)
-
-    def grad_x(t,theta):
-        theta_t = torch.tensor(theta)
-        return -2*torch.matmul(X_p.T,(torch.matmul(X_p,theta_t)-Fr)).detach().numpy()
-
-    def give_theta_t():
-        start = time.time()
-        u_ob.set_weights_val(0.0)
-        theta_0 =  list(u_ob.parameters())[0][0]
-        dt = 0.01
-        theta_t = theta_0
-        for k in range(20):
-            theta_int =  scipy.integrate.RK45(grad_x, 0.1, theta_t.detach().numpy(), 100)
-            theta_int.step()
-            theta_t = torch.tensor(theta_int.y)
-        return theta_t
-
-    act_theta = give_theta_t()
-    return act_theta'''
 
 testRK = get_all_thetas(orig)
 testRK = testRK.unsqueeze(0)
@@ -987,31 +812,10 @@ recIM_AE = torch.matmul(X_p.float().to(device), rec_AE.squeeze(1).T.to(device)).
 recIM_AE[np.where(recIM_AE.cpu() < 0.0)] = 0
 
 
-#recIM_AE = torch.matmul(X_p.float(), rec_AE)
 
-#reconBase_train = torch.matmul(X_p.float(), rec_bAE_train.squeeze(1).T).T
 
 reconReg_train = recIM_AE.reshape(1,32,32)
-#reconBase_train = reconBase_train.reshape(1,32,32)
 
-
-#test getting image back from coeffs and save it
-
-#reconReg_train = torch.matmul(X_p, testRK)
-#reconReg_train = reconReg_train.reshape(32,32)
-#plt.savefig(reconReg_train, '/home/ramana44/autoencoder_regulrization_conf_tasks_hybrid/output_new/reconReg_train.png')
-
-'''plt.imshow(reconReg_train[0])
-cbar = plt.colorbar()
-cbar.ax.tick_params(labelsize=15)
-plt.xticks(fontsize = 15)
-plt.yticks(fontsize = 15)
-plt.savefig('/home/ramana44/autoencoder_regulrization_conf_tasks_hybrid/output_new/reconReg_train.png')'''
-#plt.show()
-
-#print('reconReg_train.shape', reconReg_train.shape)
-
-#print('orig.shape',orig.shape)
 orig = orig.reshape(1,1024)
 
 #orig = orig.reshape(32,32)
@@ -1025,8 +829,7 @@ for proz in prozs:
 print((rand_perturb[0].shape))
 #rec = model(torch.from_numpy(orig).reshape(1,32,32).to(device))
 rec = reconReg_train
-#rec = model_reg(torch.from_numpy(orig).reshape(1,32,32).to(device))
-#rec_cj = model(cj(torch.from_numpy(orig).reshape(1,32,32).to('cuda')))
+
 
 vertical_filpped = flv(torch.from_numpy(orig).reshape(1,32,32).to(device))
 horizontal_filpped = flh(torch.from_numpy(orig).reshape(1,32,32).to(device))
@@ -1068,9 +871,6 @@ orig_perturb_Allcoeffs = []
 rec_perturb_hybrid = []
 for rand_transform in rand_perturb:
     orig_perturb.append(torch.from_numpy(np.add(orig,rand_transform)).reshape(1,32,32).to(device))
-    #print('orig_perturb[0].shape', orig_perturb[0].shape)    
-    #rec_perturb.append(model(orig_perturb[-1].float()))
-
 
 
     orig_perturb_coeffs = get_all_thetas(orig_perturb[-1].float().cpu())
@@ -1119,12 +919,7 @@ for i in range(8):
         ax[i,j].set_axis_off()
 
 
-'''plt.subplots_adjust(left=0.01,
-                    bottom=0.01, 
-                    right=0.99, 
-                    top=0.99, 
-                    wspace=0.03, 
-                    hspace=0.03)'''
+
 
 plt.subplots_adjust(left=0.01,
                     bottom=0.01, 
@@ -1132,7 +927,6 @@ plt.subplots_adjust(left=0.01,
                     top=1.0, 
                     wspace=0.0005, 
                     hspace=0.05)
-
 
 
 

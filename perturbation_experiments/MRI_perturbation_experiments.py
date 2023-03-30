@@ -1,3 +1,6 @@
+import sys
+sys.path.append('./')
+
 import torch
 import torch.utils.data
 from torch import nn
@@ -8,30 +11,15 @@ from torchvision import transforms
 import numpy as np
 import matplotlib.pyplot as plt
 
-import os
-import re
-from datasets import getMNIST, getFashionMNIST, getCifar10, getDataset
-import copy
+
+from models import VAE_mlp_MRI, CNN_VAE_MRI, Autoencoder_linear_contra_MRI, ConvoAE_mri
 
 
-
-#device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-#device = torch.device('cpu')
 device = torch.device('cuda')
 from models import AE
-from vae import BetaVAE
+
 from activations import Sin
-from regularisers import computeC1Loss
-#from models_circle import MLPVAE
-from models_of_VAEs import BetaVAE, MLPVAE
-from vae_models_for_fmnist import VAE_try_MRI, VAE_mlp_MRI
-#from tabulate import tabulate
 
-from skimage.metrics import structural_similarity as ssim
-from skimage.metrics import peak_signal_noise_ratio as psnr
-
-#imports for Runge kutta
 import scipy
 import scipy.integrate
 from jmp_solver1.sobolev import Sobolev
@@ -40,57 +28,14 @@ from jmp_solver1.solver import Solver
 from jmp_solver1.utils import matmul
 import jmp_solver1.surrogates
 import time
-#import minterpy as mp
+
 from jmp_solver1.diffeomorphisms import hyper_rect
-#imports for Runge Kutta done
 
 
 filename = "table_model_reg_legendre_legendre.txt"
-#latent_dim = 4
 
 
-class Autoencoder_linear(nn.Module):
-    def __init__(self,latent_dim):
-
-        super().__init__()
-        self.encoder = nn.Sequential(
-            nn.Linear(96*96, 1000),  #input layer
-            nn.ReLU(),
-            nn.Linear(1000, 1000),   #h1
-            nn.ReLU(),
-            nn.Linear(1000, 1000),    #h1
-            nn.ReLU(),
-            nn.Linear(1000, 1000),    #h1
-            nn.ReLU(),
-            nn.Linear(1000, 1000),    #h1
-            nn.ReLU(),
-            nn.Linear(1000, 1000),    #h1
-            nn.ReLU(),
-            nn.Linear(1000,latent_dim)  # latent layer
-        )
-
-        self.decoder = nn.Sequential(
-            nn.Linear(latent_dim, 1000),  #input layer
-            nn.ReLU(),
-            nn.Linear(1000, 1000),   #h1
-            nn.ReLU(),
-            nn.Linear(1000, 1000),   #h1
-            nn.ReLU(),
-            nn.Linear(1000, 1000),   #h1
-            nn.ReLU(),
-            nn.Linear(1000, 1000),    #h1
-            nn.ReLU(),
-            nn.Linear(1000, 1000),    #h1
-            nn.ReLU(),
-            nn.Linear(1000, 96*96),  # latent layer
-            nn.Sigmoid()
-        )
-
-    def forward(self, x):
-        encoded = self.encoder(x)
-        decoded = self.decoder(encoded)
-        return decoded
-
+path_in_repo = './models_saved/'
 
 #row arrangements
 ori_row_im_ind = 0
@@ -143,8 +88,7 @@ def get_all_thetas(listedImage):
 
 loadableDatas = ["train", "test"]
 choosenData = loadableDatas[1]
-#availableModels = ["baseline", "regularized"]
-#modelSelected = availableModels[1]
+
 
 coeff_sol_method = "RK45"
 
@@ -170,14 +114,18 @@ flv = transforms.RandomVerticalFlip(p=1.)
 
 labels = ['baseline', 'contractive', 'legendre', 'vae']
 path_file = '/home/ramana44/autoencoder_regulrization_conf_tasks/FMNIST_samples/'
-path_to_dir = '/home/ramana44/autoencoder_regulrization_conf_tasks_hybrid/output_MRI_trans/all_AEs/image_'+str(ChoosenImageIndex)+'/lstqs_deg_'+str(Hybrid_poly_deg)+'_all_lats/'
+#path_to_dir = '/home/ramana44/autoencoder_regulrization_conf_tasks_hybrid/output_MRI_trans/all_AEs/image_'+str(ChoosenImageIndex)+'/lstqs_deg_'+str(Hybrid_poly_deg)+'_all_lats/'
+
+
+path_to_dir = './all_results/perturbation_experiments/MRI/image_'+str(ChoosenImageIndex)+'/lstqs_deg_'+str(Hybrid_poly_deg)+'_all_lats/'
+
+
 
 global_ind = 0
 
 rand_perturb = []
 orig_perturb = []
 rec_perturb = []
-#path_to_model = paths[2] + str(alpha)+'_'+str(latent_dim)+'_'+str(hidden_size)+'_'+str(frac)
 
 
 # loading MLPAE and AE-REG
@@ -187,6 +135,9 @@ from activations import Sin
 path_unhyb = '/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/NonHybridOasisMRI_AE-REG/output/MRT_full/test_run_saving/'
 path_hyb = '/home/ramana44/topological-analysis-of-curved-spaces-and-hybridization-of-autoencoders-STORAGE_SPACE/output/MRT_full/test_run_saving/'
 #specify hyperparameters
+
+#path_unhyb = path_in_repo
+#path_unhyb = path_in_repo
 
 reg_nodes_sampling = 'legendre'
 alpha = 0.1
@@ -233,28 +184,17 @@ print("")
 
 
 
-'''testRK = get_all_thetas(orig).to(device)
-testRK = testRK.unsqueeze(0)
-print('testRK.shape',testRK.shape)
-rec_AE = RK_model_reg(testRK.float()).view(testRK.shape)
-rec_AE = torch.tensor(rec_AE.to(device), requires_grad=False)
-recIM_AE = torch.matmul(X_p.float().to(device), rec_AE.squeeze(1).T).T
-recIM_AE[np.where(recIM_AE.cpu() < 0.0)] = 0
-reconReg_train = recIM_AE.reshape(1,96,96)
-print('reconReg_train.shape', reconReg_train.shape)'''
-
-
 
 
 #loading convolutional autoencoder
-from convAE import ConvoAE_MRI
+#from convAE import ConvoAE_MRI, ConvoAE_mri
 no_layers_cae = 5
 latent_dim_cae = latent_dim
 lr_cae =1e-4
 frac_cae = 1.0
 path_cae_mri = '/home/ramana44/FashionMNIST5LayersTrials/output/MRT_full/test_run_saving/'
 name_unhyb_cae = '_'+str(frac_cae)+'_'+str(latent_dim_cae)+'_'+str(lr_cae)+'_'+str(no_layers_cae)
-model_convAE = ConvoAE_MRI(latent_dim_cae).to(device)
+model_convAE = ConvoAE_mri(latent_dim_cae).to(device)
 model_convAE.load_state_dict(torch.load(path_cae_mri+'model_base_cae_MRI'+name_unhyb_cae, map_location=torch.device(device)), strict=False)
 
 print("loaded ?")
@@ -281,7 +221,7 @@ model_mlpVAE = VAE_mlp_MRI(image_size=96*96, h_dim=1000, z_dim=latent_dim).to(de
 #model_betaVAE = BetaVAE([96, 96], 1, no_filters=4, no_layers=3,
                 #kernel_size=3, latent_dim=10, activation = Sin()).to(device) # regularised autoencoder
 
-model_betaVAE = VAE_try_MRI(image_channels=1, h_dim=16*9*9, z_dim=latent_dim).to(device)
+model_betaVAE = CNN_VAE_MRI(image_channels=1, h_dim=16*9*9, z_dim=latent_dim).to(device)
 
 #model_betaVAE = BetaVAE(batch_size = 1, img_depth = 1, net_depth = no_layers, z_dim = latent_dim, img_dim = 32).to(device)
 model_mlpVAE.load_state_dict(torch.load(path_unhyb_bvae+'model_base_mlp_vae_MRI'+name_bvae, map_location=torch.device(device)), strict=False)
@@ -296,7 +236,7 @@ lr_contraae =1e-3
 frac_contraae = 1.0
 path_unhyb_contraae = '/home/ramana44/FashionMNIST5LayersTrials/output/MRT_full/test_run_saving/'
 name_unhyb_contraae = '_'+str(frac_contraae)+'_'+str(latent_dim_contraae)+'_'+str(lr_contraae)+'_'+str(no_layers_contraae)
-model_contra = Autoencoder_linear(latent_dim_contraae).to(device)
+model_contra = Autoencoder_linear_contra_MRI(latent_dim_contraae).to(device)
 model_contra.load_state_dict(torch.load(path_unhyb_contraae+'model_base_contraAE_MRI'+name_unhyb_contraae, map_location=torch.device(device)), strict=False)
 
 print("contra ae loaded ?")
@@ -639,18 +579,18 @@ from torchvision import transforms
 import numpy as np
 import matplotlib.pyplot as plt
 
-import os
+'''import os
 import re
 from datasets import getMNIST, getFashionMNIST, getCifar10, getDataset
-import copy
+import copy'''
 
 #device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 #device = torch.device('cpu')
 from models import AE
-from vae import BetaVAE
+#from vae import BetaVAE
 from activations import Sin
-from regularisers import computeC1Loss
-from models_circle import MLPVAE
+#from regularisers import computeC1Loss
+#from models_circle import MLPVAE
 
 #from tabulate import tabulate
 
