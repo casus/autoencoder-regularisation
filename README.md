@@ -22,6 +22,8 @@ This repo contains code and supplementary material of the corresponding article,
 
 Before running any files in the repository, change the directory to `./autoencoder-regularisation-` using `cd ./autoencoder-regularisation-`
 
+The libraries required to run the code are listed in `environment.yml`. Install the libraries using `conda env create -f environment.yml` and activate the environment using `conda activate` followed by the name of the environment.`
+
 Then train the autoencoders with the following data using the corresponding commands:
 
 * 15-dimensional circle: `python ./cycle_tori_experiments/circle_exp.py`
