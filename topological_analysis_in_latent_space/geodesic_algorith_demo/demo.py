@@ -380,6 +380,8 @@ def get_potential_positions(input_edges, all_edges):
     return potential_positions
 
 
+
+# Indices of images between which we want to compute the approximation of geodeic
 input_im1 = 8
 input_im2 = 83
 
